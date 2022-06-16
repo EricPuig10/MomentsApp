@@ -20,7 +20,7 @@ export const NavBar = (props) => {
     <nav>
       <NavBarDiv>
         <Title>
-          <H1>Moments</H1>
+          <H1>InstaKg</H1>
         </Title>
 
         <InputDiv>
@@ -45,9 +45,11 @@ export const NavBar = (props) => {
           <BtnNavAdd onClick={props.showForm}>
             <i className="fa-solid fa-plus fa-2xl"></i>
           </BtnNavAdd>
+          <Link to="/log-in">
           <LogInBtn>
             <i className="fa-regular fa-user fa-2xl"></i>
           </LogInBtn>
+          </Link>
         </BtnDiv>
       </NavBarDiv>
     </nav>

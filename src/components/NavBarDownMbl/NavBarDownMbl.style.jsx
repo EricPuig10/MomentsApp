@@ -33,8 +33,25 @@ export const BtnNavMbl = styled.button`
   font-weight: bold;
   margin-top: 2%;
   margin-bottom: 2%;
-  margin-left: 7%;
-  font-size: 1em;
+  margin-left: 4%;
+  font-size: 1.2em;
+  width: 10%;
+  margin-right: 7%;
+  &:active,
+  :hover {
+    color: grey;
+  }
+`;
+export const BtnNavHomeMbl = styled.button`
+  background-color: rgb(255, 255, 255);
+  border: none;
+  color: black;
+  font-weight: bold;
+  margin-top: 52%;
+  margin-bottom: 2%;
+  margin-left: -5%;
+  margin-right: 5%;
+  font-size: 1.1em;
   width: 10%;
   &:active,
   :hover {
@@ -49,9 +66,10 @@ export const BtnNavAddMbl = styled.button`
   color: black;
   font-weight: bold;
   margin-top: 2%;
-  margin-bottom: 2%;
-  margin-left: 7%;
+  margin-bottom: 4%;
   font-size: 1em;
+  margin-left: 0%;
+  margin-right: 1%;
   width: 15%;
   &:active,
   :hover {
@@ -62,18 +80,16 @@ export const BtnNavAddMbl = styled.button`
 export const LogInBtnMbl = styled.button`
   @media (max-width: 450px) {
     background-color: rgb(255, 255, 255);
-    text-align: center;
     border-radius: 50%;
     border: 3px solid black;
     color: black;
     font-weight: bold;
-    margin-top: 3%;
+    margin-top: 30%;
     margin-bottom: 2%;
-    margin-right: 4%;
+    margin-left:20%;
     font-size: 1em;
-    width: 14%;
-    margin-left: 7%;
-    height: 70%;
+    height: 60%;
+    width:110%;
     &:active,
     :hover {
       color: grey;

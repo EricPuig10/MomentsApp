@@ -7,6 +7,7 @@ import {
   Input,
   InputsCont,
   SubmitBtnForm,
+  TextArea,
 } from "./MomentForm.styled";
 
 export const MomentForm = (props) => {
@@ -84,13 +85,13 @@ export const MomentForm = (props) => {
                 type="text"
                 placeholder="Title..."
               ></Input>
-              <Input
+              <TextArea rows="5"
+              cols="10"
                 onChange={onInputChange}
                 value={newMoment.description}
                 name="description"
-                type="text"
                 placeholder="Add description..."
-              ></Input>
+              ></TextArea>
               {isEditMode ? (
                 <SubmitBtnForm type="submit" className="submitBtn">
                   <i className="fa-solid fa-pen-to-square fa-xl"></i>

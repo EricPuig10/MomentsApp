@@ -4,7 +4,7 @@ import { MomentCard } from "../MomentCard/MomentCard";
 import { MomentForm } from "../MomentForm/MomentForm";
 import { NavBar } from "../NavBar/NavBar";
 import { NavBarDownMbl } from "../NavBarDownMbl/NavBarDownMbl";
-import { ContainerMomentsFilm, MainDiv } from "./MomentsList.styled";
+import { ContainerMomentsFilm } from "./MomentsList.styled";
 
 export const MomentsList = () => {
   const [moments, setMoments] = useState([]);
@@ -16,7 +16,7 @@ export const MomentsList = () => {
     description: "",
   });
   const [isEditMode, setIsEditMode] = useState(false);
-  //const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   //const [favList, setFavList] = useState([]);
   //const [isPreview, setIsPreview] = useState(false);
 
@@ -25,10 +25,10 @@ export const MomentsList = () => {
   }, []);
 
   const getAllMoments = () => {
-    //setIsLoading(true);
+    setIsLoading(true);
     momentsServices.getAllMoments().then((res) => {
       setMoments(res);
-      //setIsLoading(false);
+      setIsLoading(false);
     });
   };
 
@@ -105,19 +105,22 @@ export const MomentsList = () => {
   return (
     <section>
       <NavBar showForm={showForm} />
-      <MainDiv>
-        {isShowForm ? (
-          <MomentForm
-            addNewMoment={addNewMoment}
-            momentToEdit={momentToEdit}
-            updateMoment={updateMoment}
-            isEditMode={isEditMode}
-            isShowForm={isShowForm}
-            showForm={showForm}
-          />
-        ) : (
-          ""
-        )}
+
+      {isShowForm ? (
+        <MomentForm
+          addNewMoment={addNewMoment}
+          momentToEdit={momentToEdit}
+          updateMoment={updateMoment}
+          isEditMode={isEditMode}
+          isShowForm={isShowForm}
+          showForm={showForm}
+        />
+      ) : (
+        ""
+      )}
+      {isLoading ? (
+        ""
+      ) : (
         <ContainerMomentsFilm>
           {moments.map((moment, key) => (
             <MomentCard
@@ -128,8 +131,9 @@ export const MomentsList = () => {
             />
           ))}
         </ContainerMomentsFilm>
-      </MainDiv>
-      <NavBarDownMbl />
+      )}
+
+      <NavBarDownMbl showForm={showForm} />
     </section>
   );
 };

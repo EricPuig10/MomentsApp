@@ -24,9 +24,7 @@ export const MomentCard = (props) => {
   return (
     <MomentCardDiv>
       <ImgMomentCont>
-        <Link to={`/moment-info/${moment.id}`}>
-          <ImgMoment src={moment.imgUrl} />
-        </Link>
+        <ImgMoment src={moment.imgUrl} />
       </ImgMomentCont>
 
       <TextMomentCont>
@@ -38,9 +36,11 @@ export const MomentCard = (props) => {
             <BtnCard>
               <i className="fa-regular fa-star fa-2xl"></i>
             </BtnCard>
-            <BtnCard>
-              <i className="fa-regular fa-eye fa-2xl"></i>
-            </BtnCard>
+            <Link to={`/moment-info/${moment.id}`}>
+              <BtnCard>
+                <i className="fa-regular fa-eye fa-2xl"></i>
+              </BtnCard>
+            </Link>
           </BtnCardContLeft>
 
           <BtnCardContRight>

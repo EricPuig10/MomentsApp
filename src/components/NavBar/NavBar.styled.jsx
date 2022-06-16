@@ -140,11 +140,10 @@ export const LogInBtn = styled.button`
   border: 3px solid black;
   color: black;
   font-weight: bold;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  margin-right: 4%;
+  margin-top: 40%;
   font-size: 1em;
-  width: 9.5%;
+  padding-top:22%;
+  padding-bottom:22%;
   &:active,
   :hover {
     color: grey;
