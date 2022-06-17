@@ -22,7 +22,9 @@ export const SignUpForm = () => {
       <div className="border">
         <form /*action="action_page.php" */ method="post">
           <Container>
-            <Label><b>Name</b></Label>
+            <Label>
+              <b>Name</b>
+            </Label>
             <InputsLogIn
               type="text"
               placeholder="Enter name"
@@ -39,7 +41,9 @@ export const SignUpForm = () => {
               required
             />
 
-            <Label><b>E-mail</b></Label>
+            <Label>
+              <b>E-mail</b>
+            </Label>
             <InputsLogIn
               type="text"
               placeholder="Enter E-mail"

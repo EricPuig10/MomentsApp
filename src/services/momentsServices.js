@@ -36,8 +36,8 @@ export const momentsServices = {
   },
 
   getLikedMoments() {
-    const moments = axios.get(baseURL + "/moments").then(res => {
-      return res.data.filter(newMoment => newMoment.isLiked === true);
+    const moments = axios.get(baseURL + "/moments").then((res) => {
+      return res.data.filter((newMoment) => newMoment.isLiked === true);
     });
     return moments;
   },

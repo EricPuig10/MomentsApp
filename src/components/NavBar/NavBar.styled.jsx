@@ -6,11 +6,11 @@ export const NavBarDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-left: 1%;
-  height: 80px;
+  height:80px;
   width: 100%;
   z-index: 10000;
   position: fixed;
-  top:0%;
+  top: 0%;
   border: 1px solid #dedede;
 `;
 
@@ -90,7 +90,7 @@ export const BtnNavHeart = styled.button`
   margin-left: 4%;
   font-size: 1em;
   width: 10%;
-  &:active{
+  &:active {
     color: #5b5b5b;
   }
   @media (max-width: 450px) {
@@ -150,8 +150,8 @@ export const LogInBtn = styled.button`
   margin-top: 40%;
   margin-right: 2%;
   font-size: 1em;
-  padding-top:22%;
-  padding-bottom:22%;
+  padding-top: 22%;
+  padding-bottom: 22%;
   &:active,
   :hover {
     color: grey;

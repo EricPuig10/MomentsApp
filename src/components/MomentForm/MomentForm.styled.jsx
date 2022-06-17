@@ -23,8 +23,8 @@ export const FormCont = styled.div`
   left: 8%;
   background-color: white;
   z-index: 300;
-  @media (max-width:450px){
-  height:300px;
+  @media (max-width: 450px) {
+    height: 300px;
   }
 `;
 
@@ -34,14 +34,14 @@ export const InputsCont = styled.div`
   margin-left: 2.3%;
   display: flex;
   z-index: 4;
-  @media (max-width:450px){
+  @media (max-width: 450px) {
     width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-left: 8%;
-  display: flex;
-  z-index: 4;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8%;
+    display: flex;
+    z-index: 4;
   }
 `;
 
@@ -56,12 +56,11 @@ export const Input = styled.input`
   width: 60%;
   color: black;
   margin-bottom: 2%;
-  @media (max-width: 450px){
-    padding:5%;
-    margin-bottom:5%;
-    width:90%;
+  @media (max-width: 450px) {
+    padding: 5%;
+    margin-bottom: 5%;
+    width: 90%;
     font-size: 1.2em;
-
   }
 `;
 
@@ -75,14 +74,13 @@ export const TextArea = styled.textarea`
   max-width: 1000px;
   color: black;
   max-height: 200px;
-  @media (max-width: 450px){
-    padding:5%;
-    margin-bottom:5%;
-    width:90%;
+  @media (max-width: 450px) {
+    padding: 5%;
+    margin-bottom: 5%;
+    width: 90%;
     font-size: 1.2em;
-
   }
-`
+`;
 
 export const SubmitBtnForm = styled.button`
   background-color: transparent;
@@ -95,14 +93,13 @@ export const SubmitBtnForm = styled.button`
   left: 95%;
   &:hover {
     color: grey;
-    
   }
-  @media (max-width: 450px){
-      position: absolute;
-      top:85%;
-      left:45%;
-      font-size: 1.2em;
-    }
+  @media (max-width: 450px) {
+    position: absolute;
+    top: 85%;
+    left: 45%;
+    font-size: 1.2em;
+  }
 `;
 
 export const CloseCont = styled.div`
@@ -127,9 +124,9 @@ export const CloseBtn = styled.button`
   &:hover {
     color: grey;
   }
-  @media (max-width: 450px){
-      position: absolute;
-      top:1%;
-      left:44%;
-    }
+  @media (max-width: 450px) {
+    position: absolute;
+    top: 1%;
+    left: 44%;
+  }
 `;

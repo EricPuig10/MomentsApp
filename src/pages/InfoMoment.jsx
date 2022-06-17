@@ -4,9 +4,11 @@ import { NavBar } from "../components/NavBarDownMbl";
 import { NavBarDownMbl } from "../components/NavBarDownMbl/NavBarDownMbl";
 
 export const InfoMoment = () => {
-  return <section> 
-      <NavBar/>
+  return (
+    <section>
+      <NavBar />
       <MomentInfo />
-      <NavBarDownMbl/>
-      </section>;
+      <NavBarDownMbl />
+    </section>
+  );
 };

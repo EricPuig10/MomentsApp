@@ -1,6 +1,4 @@
-
 import { MomentsList } from "../components/MomentsList/MomentsList";
-
 
 export const Home = () => {
   return (

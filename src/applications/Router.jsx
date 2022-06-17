@@ -11,10 +11,10 @@ export default function Router(props) {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/moment-info/:id" element={<InfoMoment/>} />
-        <Route path="/log-in" element={<LogInPage/>} />  
-        <Route path="/sign-up" element={<SignUpPage/>}/>
-        <Route path="/liked-moments" element={<LikedMomentsPage/>} />
+        <Route path="/moment-info/:id" element={<InfoMoment />} />
+        <Route path="/log-in" element={<LogInPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/liked-moments" element={<LikedMomentsPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -85,8 +85,9 @@ export const MomentForm = (props) => {
                 type="text"
                 placeholder="Title..."
               ></Input>
-              <TextArea rows="5"
-              cols="10"
+              <TextArea
+                rows="5"
+                cols="10"
                 onChange={onInputChange}
                 value={newMoment.description}
                 name="description"

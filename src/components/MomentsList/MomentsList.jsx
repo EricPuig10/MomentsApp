@@ -17,9 +17,7 @@ export const MomentsList = () => {
   });
   const [isEditMode, setIsEditMode] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [favList, setFavList] = useState([]);
   const [likeList, setLikeList] = useState([]);
-  //const [isPreview, setIsPreview] = useState(false);
 
   useEffect(() => {
     getAllMoments();
@@ -39,7 +37,6 @@ export const MomentsList = () => {
     else setIsShowForm(true);
     resetInputsForm();
     setIsEditMode(false);
-    //setIsPreview(false);
   };
 
   const addNewMoment = (data) => {
@@ -63,19 +60,11 @@ export const MomentsList = () => {
     });
   };
 
-  //opcio 2 de delete
-  // const deleteMovie = (id) => {
-  //   movieServices.deleteMovie(id).then((res) => {
-  //     getAllMovies();
-  //   });
-  // };
-
   const editMoment = (id) => {
     showForm();
     let momentToEdit = moments.find((moment) => moment.id === id);
     setMomentToEdit(momentToEdit);
     setIsEditMode(true);
-    //setIsPreview(true);
   };
 
   const updateMoment = (newMoment) => {
@@ -83,12 +72,6 @@ export const MomentsList = () => {
       let momentToEdit = moments.map((moment) =>
         moment.id === newMoment.id ? newMoment : moment
       );
-
-      // let movieToEditIndex = newMoviesState.findIndex(
-      //   (movie) => movie.id === newMovie.id
-      // );
-
-      // newMoviesState[movieToEditIndex] = res;
       setMoments(momentToEdit);
     });
 
@@ -131,29 +114,29 @@ export const MomentsList = () => {
   const addToLikeList = (newMoment) => {
     let moment = newMoment;
 
-    if(moment.isLiked === true){
+    if (moment.isLiked === true) {
       likeList.push(moment);
       showLikeList();
     } else {
-      let likeIndex=likeList.findIndex((moment)=> moment.id === newMoment.id);
-      likeList.splice(likeIndex,1);
+      let likeIndex = likeList.findIndex(
+        (moment) => moment.id === newMoment.id
+      );
+      likeList.splice(likeIndex, 1);
       showLikeList();
     }
-  }
+  };
 
-  const showLikeList = () =>{
+  const showLikeList = () => {
     setIsLoading(true);
     momentsServices.getLikedMoments().then((res) => {
       setLikeList(res);
       setIsLoading(false);
     });
-  }
+  };
 
   return (
     <section>
-      <NavBar showForm={showForm}
-              setFavorite={setFavorite}
-              setLike={setLike} />
+      <NavBar showForm={showForm} setFavorite={setFavorite} setLike={setLike} />
 
       {isShowForm ? (
         <MomentForm

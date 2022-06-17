@@ -2,9 +2,16 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { momentsServices } from "../../services/momentsServices";
-import { Container, DescriptionOfMoment, ImageCont, ImageOfMoment, MomentInfoCont, TextCont, TitleOfMoment } from "./MomentInfo.styled";
+import {
+  Container,
+  DescriptionOfMoment,
+  ImageCont,
+  ImageOfMoment,
+  MomentInfoCont,
+  TextCont,
+  TitleOfMoment,
+} from "./MomentInfo.styled";
 import { ImgMoment } from "../MomentCard/MomentCard.styled";
-
 
 export const MomentInfo = () => {
   const [moment, setMoment] = useState([]);
@@ -29,16 +36,16 @@ export const MomentInfo = () => {
 
   return (
     <Container>
-        <MomentInfoCont>
-          <TextCont>
-            <TitleOfMoment>{moment.title}</TitleOfMoment>
-            <DescriptionOfMoment>{moment.description}</DescriptionOfMoment>
-          </TextCont>
+      <MomentInfoCont>
+        <TextCont>
+          <TitleOfMoment>{moment.title}</TitleOfMoment>
+          <DescriptionOfMoment>{moment.description}</DescriptionOfMoment>
+        </TextCont>
 
-          <ImageCont>
-            <ImageOfMoment src={moment.imgUrl} alt="momentfoto" />
-          </ImageCont>
-        </MomentInfoCont>
+        <ImageCont>
+          <ImageOfMoment src={moment.imgUrl} alt="momentfoto" />
+        </ImageCont>
+      </MomentInfoCont>
     </Container>
   );
 };

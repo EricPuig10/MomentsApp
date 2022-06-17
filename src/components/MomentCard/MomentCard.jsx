@@ -20,12 +20,12 @@ import {
 
 export const MomentCard = (props) => {
   const [moment, setMoment] = useState(props.moment);
-  const setFavorite = (moment) =>{
+  const setFavorite = (moment) => {
     props.setFavorite(moment);
-  }
-  const setLike = (moment) =>{
+  };
+  const setLike = (moment) => {
     props.setLike(moment);
-  }
+  };
 
   useEffect(() => {
     setMoment(props.moment);
@@ -40,14 +40,24 @@ export const MomentCard = (props) => {
       <TextMomentCont>
         <BtnCardCont>
           <BtnCardContLeft>
-            {moment.isLiked ? (<BtnCardLiked onClick={()=> setLike(moment)}>
-              <i className="fa-solid fa-heart fa-2xl"></i>
-            </BtnCardLiked>):(<BtnCardUnLiked onClick={()=> setLike(moment)} >
-              <i className="fa-regular fa-heart fa-2xl"></i>
-            </BtnCardUnLiked>)}
-            {moment.isFav ? (<BtnCardFav onClick={() => setFavorite(moment)}><i className="fa-solid fa-star fa-2xl"></i>
-            </BtnCardFav>) : (<BtnCardUnFav onClick={() => setFavorite(moment)}><i className="fa-regular fa-star fa-2xl"></i>
-            </BtnCardUnFav>)}
+            {moment.isLiked ? (
+              <BtnCardLiked onClick={() => setLike(moment)}>
+                <i className="fa-solid fa-heart fa-2xl"></i>
+              </BtnCardLiked>
+            ) : (
+              <BtnCardUnLiked onClick={() => setLike(moment)}>
+                <i className="fa-regular fa-heart fa-2xl"></i>
+              </BtnCardUnLiked>
+            )}
+            {moment.isFav ? (
+              <BtnCardFav onClick={() => setFavorite(moment)}>
+                <i className="fa-solid fa-star fa-2xl"></i>
+              </BtnCardFav>
+            ) : (
+              <BtnCardUnFav onClick={() => setFavorite(moment)}>
+                <i className="fa-regular fa-star fa-2xl"></i>
+              </BtnCardUnFav>
+            )}
             <Link to={`/moment-info/${moment.id}`}>
               <BtnCard>
                 <i className="fa-regular fa-eye fa-2xl"></i>

@@ -86,10 +86,10 @@ export const LogInBtnMbl = styled.button`
     font-weight: bold;
     margin-top: 30%;
     margin-bottom: 2%;
-    margin-left:20%;
+    margin-left: 20%;
     font-size: 1em;
     height: 60%;
-    width:110%;
+    width: 110%;
     &:active,
     :hover {
       color: grey;
