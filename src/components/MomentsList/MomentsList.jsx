@@ -17,11 +17,13 @@ export const MomentsList = () => {
   });
   const [isEditMode, setIsEditMode] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  //const [favList, setFavList] = useState([]);
+  const [favList, setFavList] = useState([]);
+  const [likeList, setLikeList] = useState([]);
   //const [isPreview, setIsPreview] = useState(false);
 
   useEffect(() => {
     getAllMoments();
+    showLikeList();
   }, []);
 
   const getAllMoments = () => {
@@ -102,9 +104,56 @@ export const MomentsList = () => {
     });
   };
 
+  const setFavorite = (newMoment) => {
+    let moment = newMoment;
+
+    if (moment.isFav === false) moment.isFav = true;
+    else moment.isFav = false;
+
+    momentsServices.updateMoment(moment.id, moment).then((res) => {
+      if (res) getAllMoments();
+    });
+  };
+
+  const setLike = (newMoment) => {
+    let moment = newMoment;
+
+    if (moment.isLiked === false) moment.isLiked = true;
+    else moment.isLiked = false;
+
+    momentsServices.updateMoment(moment.id, moment).then((res) => {
+      if (res) getAllMoments();
+    });
+
+    addToLikeList(moment);
+  };
+
+  const addToLikeList = (newMoment) => {
+    let moment = newMoment;
+
+    if(moment.isLiked === true){
+      likeList.push(moment);
+      showLikeList();
+    } else {
+      let likeIndex=likeList.findIndex((moment)=> moment.id === newMoment.id);
+      likeList.splice(likeIndex,1);
+      showLikeList();
+    }
+  }
+
+  const showLikeList = () =>{
+    setIsLoading(true);
+    momentsServices.getLikedMoments().then((res) => {
+      setLikeList(res);
+      setIsLoading(false);
+    });
+  }
+
   return (
     <section>
-      <NavBar showForm={showForm} />
+      <NavBar showForm={showForm}
+              setFavorite={setFavorite}
+              setLike={setLike} />
 
       {isShowForm ? (
         <MomentForm
@@ -128,6 +177,8 @@ export const MomentsList = () => {
               key={key}
               deleteMoment={deleteMoment}
               editMoment={editMoment}
+              setFavorite={setFavorite}
+              setLike={setLike}
             />
           ))}
         </ContainerMomentsFilm>

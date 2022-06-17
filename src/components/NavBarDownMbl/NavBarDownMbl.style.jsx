@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavBarDivMbl = styled.div`
   display: none;
-  @media (max-width: 450px) {
+  @media (max-width: 790px) {
     background-color: #d05f5f;
     display: flex;
     align-items: center;
@@ -18,7 +18,7 @@ export const NavBarDivMbl = styled.div`
 `;
 export const BtnDivMbl = styled.div`
   display: none;
-  @media (max-width: 450px) {
+  @media (max-width: 790px) {
     width: 100%;
     height: 100%;
     background-color: rgb(255, 255, 255);
@@ -78,7 +78,7 @@ export const BtnNavAddMbl = styled.button`
 `;
 
 export const LogInBtnMbl = styled.button`
-  @media (max-width: 450px) {
+  @media (max-width: 790px) {
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
     border: 3px solid black;

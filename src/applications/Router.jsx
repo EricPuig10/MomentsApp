@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "../pages/Home";
 import { InfoMoment } from "../pages/InfoMoment";
+import { LikedMomentsPage } from "../pages/LikedMomentsPage";
 import { LogInPage } from "../pages/LogInPage";
 import { SignUpPage } from "../pages/SignUpPage";
 
@@ -13,6 +14,7 @@ export default function Router(props) {
         <Route path="/moment-info/:id" element={<InfoMoment/>} />
         <Route path="/log-in" element={<LogInPage/>} />  
         <Route path="/sign-up" element={<SignUpPage/>}/>
+        <Route path="/liked-moments" element={<LikedMomentsPage/>} />
       </Routes>
     </BrowserRouter>
   );

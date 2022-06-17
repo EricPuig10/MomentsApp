@@ -21,7 +21,7 @@ export const Title = styled.div`
   font-size: 1.5em;
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: #ffffff;
 `;
 export const H1 = styled.h1`
   color: black;
@@ -38,7 +38,7 @@ export const BtnDiv = styled.div`
   height: 100%;
   background-color: rgb(255, 255, 255);
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 `;
 
 export const BtnNavHome = styled.button`
@@ -48,12 +48,14 @@ export const BtnNavHome = styled.button`
   font-weight: bold;
   margin-top: 60%;
   margin-bottom: 2%;
-  margin-right: 4%;
   font-size: 1em;
   width: 10%;
   &:active,
   :hover {
     color: grey;
+  }
+  @media (max-width: 790px) {
+    display: none;
   }
   @media (max-width: 450px) {
     display: none;
@@ -65,9 +67,8 @@ export const BtnNavSend = styled.button`
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 2%;
+  margin-top: 1%;
   margin-bottom: 2%;
-  margin-right: 4%;
   font-size: 1em;
   width: 10%;
   &:active,
@@ -75,7 +76,7 @@ export const BtnNavSend = styled.button`
     color: grey;
   }
   @media (max-width: 450px) {
-    margin-left: 15%;
+    margin-right: 1%;
   }
 `;
 
@@ -84,15 +85,16 @@ export const BtnNavHeart = styled.button`
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 2%;
+  margin-top: 65%;
   margin-bottom: 2%;
-  margin-right: 4%;
   margin-left: 4%;
   font-size: 1em;
   width: 10%;
-  &:active,
-  :hover {
-    color: grey;
+  &:active{
+    color: #5b5b5b;
+  }
+  @media (max-width: 450px) {
+    margin-left: 50%;
   }
 `;
 
@@ -106,9 +108,12 @@ export const BtnNavSearch = styled.button`
   margin-right: 4%;
   font-size: 1em;
   width: 10%;
-  &:active,
+  &:focus,
   :hover {
     color: grey;
+  }
+  @media (max-width: 790px) {
+    display: none;
   }
   @media (max-width: 450px) {
     display: none;
@@ -122,12 +127,14 @@ export const BtnNavAdd = styled.button`
   font-weight: bold;
   margin-top: 2%;
   margin-bottom: 2%;
-  margin-right: 4%;
   font-size: 1em;
   width: 10%;
   &:active,
   :hover {
     color: grey;
+  }
+  @media (max-width: 790px) {
+    display: none;
   }
   @media (max-width: 450px) {
     display: none;
@@ -141,6 +148,7 @@ export const LogInBtn = styled.button`
   color: black;
   font-weight: bold;
   margin-top: 40%;
+  margin-right: 2%;
   font-size: 1em;
   padding-top:22%;
   padding-bottom:22%;
@@ -148,6 +156,9 @@ export const LogInBtn = styled.button`
   :hover {
     color: grey;
     border: 3px solid grey;
+  }
+  @media (max-width: 790px) {
+    display: none;
   }
   @media (max-width: 450px) {
     display: none;
@@ -162,7 +173,10 @@ export const InputDiv = styled.div`
   border-radius: 1vw;
   display: flex;
   align-items: center;
-  margin-left: 10%;
+  margin-left: 5%;
+  @media (max-width: 790px) {
+    display: none;
+  }
   @media (max-width: 450px) {
     display: none;
   }

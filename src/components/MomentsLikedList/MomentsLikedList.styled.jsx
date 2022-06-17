@@ -9,15 +9,6 @@ export const MomentCardDiv = styled.div`
   margin: 1%;
   margin-left: 3%;
   margin-bottom: 2%;
-  @media (max-width: 1020px) {
-    width: 25%;
-  }
-  @media (max-width: 790px) {
-    width: 30%;
-  }
-  @media (max-width: 650px) {
-    width: 80%;
-  }
   @media (max-width: 450px) {
     width: 80%;
   }
