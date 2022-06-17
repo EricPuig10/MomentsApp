@@ -18,7 +18,7 @@ export const Title = styled.div`
   height: 100%;
   width: 10%;
   margin-left: 2%;
-  font-size: 1.6em;
+  font-size: 1.5em;
   display: flex;
   align-items: center;
   background-color: white;
@@ -157,7 +157,7 @@ export const LogInBtn = styled.button`
 export const InputDiv = styled.div`
   background-color: #dedede;
   width: 40%;
-  height: 70%;
+  height: 60%;
   border: none;
   border-radius: 1vw;
   display: flex;
@@ -181,7 +181,7 @@ export const SearchInput = styled.input`
   padding-left: 2%;
   border: transparent;
   border-radius: 1vw;
-  font-size: 1.4em;
+  font-size: 1.2em;
   &:focus {
     outline: none;
   }
