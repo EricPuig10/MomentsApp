@@ -5,7 +5,6 @@ import {
   BtnCard,
   BtnCardCont,
   BtnCardContLeft,
-  BtnCardContRight,
   BtnCardFav,
   BtnCardLiked,
   BtnCardUnFav,
@@ -25,8 +24,11 @@ import { momentsServices } from "../../services/momentsServices";
 export const MomentsLikedList = (props) => {
   const [likeList, setLikeList] = useState([]);
 
+
   useEffect(() => {
+
     getAllLikedMoments();
+ 
   }, []);
 
   const getAllLikedMoments = () => {
@@ -94,6 +96,15 @@ export const MomentsLikedList = (props) => {
     showLikeList();
   };
 
+  const ellipse = (element) =>{
+    if(element.length>30){
+      element = element.substr(0,100) + "..."
+      return element;
+    } else return element
+
+  }
+
+
   return (
     <>
       <NavBar />
@@ -135,7 +146,7 @@ export const MomentsLikedList = (props) => {
               </BtnCardCont>
               <TextCont>
                 <TitleMoment>{moment.title}</TitleMoment>
-                <MomentDescription>{moment.description}</MomentDescription>
+                <MomentDescription>{ellipse(moment.description)}</MomentDescription>
               </TextCont>
             </TextMomentCont>
           </MomentCardDiv>

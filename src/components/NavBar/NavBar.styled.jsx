@@ -6,8 +6,10 @@ export const NavBarDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-left: 1%;
-  height:80px;
-  width: 100%;
+  height: 80px;
+  width: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
   z-index: 10000;
   position: fixed;
   top: 0%;
@@ -34,7 +36,7 @@ export const H1 = styled.h1`
 `;
 
 export const BtnDiv = styled.div`
-  width: 40%;
+  width: 30%;
   height: 100%;
   background-color: rgb(255, 255, 255);
   display: flex;
@@ -168,7 +170,7 @@ export const LogInBtn = styled.button`
 export const InputDiv = styled.div`
   background-color: #dedede;
   width: 40%;
-  height: 60%;
+  height: 55%;
   border: none;
   border-radius: 1vw;
   display: flex;

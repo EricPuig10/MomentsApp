@@ -130,4 +130,10 @@ export const MomentDescription = styled.p`
   margin-left: 2%;
   color: black;
   margin-top: -3%;
+  //tallar text
+  /*
+  width:95%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;*/
 `;

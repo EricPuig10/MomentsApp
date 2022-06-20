@@ -134,8 +134,13 @@ export const MomentsList = () => {
     });
   };
 
+
+
+   
+
   return (
     <section>
+
       <NavBar showForm={showForm} setFavorite={setFavorite} setLike={setLike} />
 
       {isShowForm ? (

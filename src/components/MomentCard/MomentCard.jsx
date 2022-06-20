@@ -28,8 +28,19 @@ export const MomentCard = (props) => {
   };
 
   useEffect(() => {
+    props.moment.description=ellipse(props.moment.description);
     setMoment(props.moment);
-  }, [props.moment]);
+  }, [props.moment, props.moment.description]);
+
+
+  const ellipse = (element) =>{
+    if(element.length>100){
+      element = element.substr(0,100) + "..."
+      return element;
+    } else return element
+
+  }
+
 
   return (
     <MomentCardDiv>
