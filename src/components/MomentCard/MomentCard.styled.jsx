@@ -9,6 +9,7 @@ export const MomentCardDiv = styled.div`
   margin: 1%;
   margin-left: 3%;
   margin-bottom: 2%;
+  position: relative;
   @media (max-width: 1020px) {
     width: 25%;
     border-color: white;
@@ -26,6 +27,7 @@ export const MomentCardDiv = styled.div`
     border-color: white;
     margin:0;
     margin-left: -0.45%;
+    margin-bottom: 0%;
     
   }
 `;
@@ -37,7 +39,7 @@ align-items: center;
 height: 8%;
 margin:1%;
 @media (max-width: 450px){
-  height:9%;
+  height:8.3%;
 } 
 `
 
@@ -158,6 +160,7 @@ export const BtnCardComment = styled.button`
 export const TextCont = styled.div`
   display: flex;
   flex-direction: column;
+  padding-bottom: 10%;
 `;
 export const TitleMoment = styled.h2`
   font-size: 1.2em;
@@ -172,3 +175,48 @@ export const MomentDescription = styled.p`
   color: black;
   margin-top: -3%;
 `;
+
+export const ComentsDiv = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-top: 2px solid #dedede;
+border-bottom: 2px solid #dedede;
+height:45px;
+width:100%;
+position: absolute;
+top:91.5%;
+@media (max-width:450px) {
+  
+}
+`
+
+export const Emote = styled.div`
+margin-left:4%;
+`
+
+export const AddCommentInput = styled.input`
+ background-color: #ffffff;
+  width: 50%;
+  height: 60%;
+  padding-left: 2%;
+  border: transparent;
+  font-size: 1em;
+  &:focus {
+    outline: none;
+  }
+`
+
+export const Publish = styled.button`
+width:20%;
+margin-right: 5%;
+height: 90%;
+color:#1385ff;
+font-size: 0.95em;
+font-weight: bold;
+background-color: transparent;
+border: none;
+text-decoration: none;
+
+
+`

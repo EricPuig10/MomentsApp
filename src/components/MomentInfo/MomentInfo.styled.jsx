@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding-top: 7.5%;
   @media (max-width: 450px) {
-    padding-top: 30%;
+    padding-top: 22%;
   }
 `;
 
@@ -23,6 +23,10 @@ export const MomentInfoCont = styled.div`
     flex-direction: column;
     align-items: center;
     margin-bottom: 25%;
+    width: 100%;
+    margin-left: 0%;
+    padding-top: 4%;
+    padding:4%;
   }
 `;
 
@@ -57,11 +61,19 @@ export const ImageOfMoment = styled.img`
 
 export const TitleOfMoment = styled.h1`
   color: black;
+  margin-bottom: 0%;
+  margin-top: 0%;
+  @media (max-width:450px){
+    margin-bottom: 6%;
+    margin-top: 5%;
+  }
+ 
 `;
 
 export const DescriptionOfMoment = styled.p`
   color: black;
   font-size: 1.1em;
+  margin-top: 0%;
   @media (max-width: 450px) {
     margin-top: -8%;
   }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  AddCommentInput,
   BtnCard,
   BtnCardComment,
   BtnCardCont,
@@ -8,6 +9,8 @@ import {
   BtnCardContRight,
   BtnCardLiked,
   BtnCardUnLiked,
+  ComentsDiv,
+  Emote,
   ImageUser,
   ImageUserDiv,
   ImgMoment,
@@ -16,6 +19,7 @@ import {
   MomentDescription,
   NameUser,
   NameUserDiv,
+  Publish,
   TextCont,
   TextMomentCont,
   TitleMoment,
@@ -94,6 +98,14 @@ export const MomentCard = (props) => {
           <MomentDescription>{moment.description}</MomentDescription>
         </TextCont>
       </TextMomentCont>
+
+      <ComentsDiv>
+        <Emote>
+          <i class="fa-regular fa-face-grin fa-xl"></i>
+        </Emote>
+        <AddCommentInput placeholder="Add a comment..." />
+        <Publish>Publish</Publish>
+      </ComentsDiv>
     </MomentCardDiv>
   );
 };
