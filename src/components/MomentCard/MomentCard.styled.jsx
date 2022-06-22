@@ -19,9 +19,52 @@ export const MomentCardDiv = styled.div`
     width: 80%;
   }
   @media (max-width: 450px) {
-    width: 80%;
+    width: 100%;
+    margin:0;
+    
   }
 `;
+
+export const UserMomentDiv = styled.div`
+display: flex;
+justify-content: flex-start;
+align-items: center;
+height: 8%;
+margin:1%;
+`
+
+export const NameUser = styled.p`
+font-size: 1.15em;
+font-weight: bold;
+margin: 0;
+margin-bottom: -4%;
+`
+export const UbiMoment = styled.p`
+font-size: 1em;
+color: black;
+margin: 0;
+`
+
+export const ImageUserDiv = styled.div`
+width:14%;
+margin: 1%;
+height: 100%;
+border-radius: 50%;
+
+`
+
+export const ImageUser = styled.img`
+width:100%;
+height: 100%;
+border-radius: 50%;
+`
+export const NameUserDiv = styled.div `
+margin-left:2%;
+margin-top: 1%;
+display: flex;
+flex-direction: column;
+
+`
 
 export const ImgMomentCont = styled.div`
   border: none;
@@ -130,10 +173,4 @@ export const MomentDescription = styled.p`
   margin-left: 2%;
   color: black;
   margin-top: -3%;
-  //tallar text
-  /*
-  width:95%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;*/
 `;

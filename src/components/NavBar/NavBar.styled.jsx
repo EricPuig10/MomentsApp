@@ -75,7 +75,11 @@ export const BtnNavSend = styled.button`
   width: 10%;
   &:active,
   :hover {
+    cursor: pointer;
     color: grey;
+  }
+  @media (max-width: 650px) {
+    margin-right: 12%;
   }
   @media (max-width: 450px) {
     margin-right: 1%;
@@ -92,8 +96,9 @@ export const BtnNavHeart = styled.button`
   margin-left: 4%;
   font-size: 1em;
   width: 10%;
-  &:active {
+  &:active, :hover {
     color: #5b5b5b;
+    cursor: pointer;
   }
   @media (max-width: 450px) {
     margin-left: 50%;

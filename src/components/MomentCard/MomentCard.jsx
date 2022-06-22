@@ -9,13 +9,19 @@ import {
   BtnCardLiked,
   BtnCardUnFav,
   BtnCardUnLiked,
+  ImageUser,
+  ImageUserDiv,
   ImgMoment,
   ImgMomentCont,
   MomentCardDiv,
   MomentDescription,
+  NameUser,
+  NameUserDiv,
   TextCont,
   TextMomentCont,
   TitleMoment,
+  UbiMoment,
+  UserMomentDiv,
 } from "./MomentCard.styled";
 
 export const MomentCard = (props) => {
@@ -28,22 +34,28 @@ export const MomentCard = (props) => {
   };
 
   useEffect(() => {
-    props.moment.description=ellipse(props.moment.description);
+    props.moment.description = ellipse(props.moment.description);
     setMoment(props.moment);
   }, [props.moment, props.moment.description]);
 
-
-  const ellipse = (element) =>{
-    if(element.length>100){
-      element = element.substr(0,100) + "..."
+  const ellipse = (element) => {
+    if (element.length > 100) {
+      element = element.substr(0, 100) + "...";
       return element;
-    } else return element
-
-  }
-
+    } else return element;
+  };
 
   return (
     <MomentCardDiv>
+      <UserMomentDiv>
+        <ImageUserDiv>
+          <ImageUser src={moment.userImg} />
+        </ImageUserDiv>
+        <NameUserDiv>
+          <NameUser>{moment.user}</NameUser>
+          <UbiMoment>Ubicacion</UbiMoment>
+        </NameUserDiv>
+      </UserMomentDiv>
       <ImgMomentCont>
         <ImgMoment src={moment.imgUrl} />
       </ImgMomentCont>

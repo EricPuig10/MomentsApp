@@ -40,6 +40,8 @@ export const BtnNavMbl = styled.button`
   &:active,
   :hover {
     color: grey;
+    cursor: pointer;
+
   }
 `;
 export const BtnNavHomeMbl = styled.button`
@@ -56,24 +58,27 @@ export const BtnNavHomeMbl = styled.button`
   &:active,
   :hover {
     color: grey;
+    cursor: pointer;
   }
+
 `;
 
 export const BtnNavAddMbl = styled.button`
   background-color: rgb(255, 255, 255);
-  border-radius: 2vw;
+  border-radius: 50%;
   border: 3px solid grey;
   color: black;
   font-weight: bold;
-  margin-top: 2%;
-  margin-bottom: 4%;
+  margin-top: 3%;
   font-size: 1em;
   margin-left: 0%;
   margin-right: 1%;
-  width: 15%;
+  width: 12%;
+  height: 60%;
   &:active,
   :hover {
     color: grey;
+    cursor: pointer;
   }
 `;
 
@@ -94,6 +99,7 @@ export const LogInBtnMbl = styled.button`
     :hover {
       color: grey;
       border: 3px solid grey;
+      cursor: pointer;
     }
   }
 `;

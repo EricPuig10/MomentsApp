@@ -14,7 +14,8 @@ export const ContainerMomentsFilm = styled.div`
   width: 99.8%;
   justify-content: center;
   @media (max-width: 450px) {
-    padding-top: 25%;
+    padding-top: 20%;
     padding-bottom: 25%;
+    
   }
 `;
