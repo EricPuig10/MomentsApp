@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding-top: 10%;
+  padding-top: 7.5%;
   @media (max-width: 450px) {
     padding-top: 30%;
   }
@@ -37,6 +37,7 @@ export const TextCont = styled.div`
 
 export const ImageCont = styled.div`
   width: 50%;
+  height: 60vh;
   border-radius: 2vw;
   @media (max-width: 450px) {
     width: 100%;
@@ -45,6 +46,7 @@ export const ImageCont = styled.div`
 
 export const ImageOfMoment = styled.img`
   width: 100%;
+  height:100%;
   border-radius: 2vw;
   box-shadow: 0 0 15px grey;
   @media (max-width: 450px) {

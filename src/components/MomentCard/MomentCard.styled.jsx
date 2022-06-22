@@ -11,16 +11,21 @@ export const MomentCardDiv = styled.div`
   margin-bottom: 2%;
   @media (max-width: 1020px) {
     width: 25%;
+    border-color: white;
   }
   @media (max-width: 790px) {
     width: 30%;
+    border-color: white;
   }
   @media (max-width: 650px) {
     width: 80%;
+    border-color: white;
   }
   @media (max-width: 450px) {
     width: 100%;
+    border-color: white;
     margin:0;
+    margin-left: -0.45%;
     
   }
 `;
@@ -31,6 +36,9 @@ justify-content: flex-start;
 align-items: center;
 height: 8%;
 margin:1%;
+@media (max-width: 450px){
+  height:9%;
+} 
 `
 
 export const NameUser = styled.p`
@@ -136,8 +144,8 @@ export const BtnCardUnLiked = styled.button`
   }
 `;
 
-export const BtnCardFav = styled.button`
-  color: yellow;
+export const BtnCardComment = styled.button`
+  color: #000000;
   background-color: transparent;
   border: none;
   margin-right: 2%;
@@ -147,16 +155,6 @@ export const BtnCardFav = styled.button`
   }
 `;
 
-export const BtnCardUnFav = styled.button`
-  color: black;
-  background-color: transparent;
-  border: none;
-  margin-right: 2%;
-  cursor: pointer;
-  &:hover {
-    color: grey;
-  }
-`;
 export const TextCont = styled.div`
   display: flex;
   flex-direction: column;

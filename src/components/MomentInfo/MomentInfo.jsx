@@ -11,11 +11,9 @@ import {
   TextCont,
   TitleOfMoment,
 } from "./MomentInfo.styled";
-import { ImgMoment } from "../MomentCard/MomentCard.styled";
 
 export const MomentInfo = () => {
   const [moment, setMoment] = useState([]);
-  //const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(

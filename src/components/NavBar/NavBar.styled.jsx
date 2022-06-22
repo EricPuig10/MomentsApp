@@ -14,6 +14,9 @@ export const NavBarDiv = styled.div`
   position: fixed;
   top: 0%;
   border: 1px solid #dedede;
+  @media (max-width:450px){
+    height:70px;
+  }
 `;
 
 export const Title = styled.div`
@@ -52,6 +55,7 @@ export const BtnNavHome = styled.button`
   margin-bottom: 2%;
   font-size: 1em;
   width: 10%;
+  cursor: pointer;
   &:active,
   :hover {
     color: grey;
@@ -73,6 +77,7 @@ export const BtnNavSend = styled.button`
   margin-bottom: 2%;
   font-size: 1em;
   width: 10%;
+  cursor: pointer;
   &:active,
   :hover {
     cursor: pointer;
@@ -96,12 +101,14 @@ export const BtnNavHeart = styled.button`
   margin-left: 4%;
   font-size: 1em;
   width: 10%;
-  &:active, :hover {
+  cursor: pointer;
+  &:active,
+  :hover {
     color: #5b5b5b;
-    cursor: pointer;
   }
   @media (max-width: 450px) {
     margin-left: 50%;
+    margin-top: 50%;
   }
 `;
 
@@ -115,6 +122,7 @@ export const BtnNavSearch = styled.button`
   margin-right: 4%;
   font-size: 1em;
   width: 10%;
+  cursor: pointer;
   &:focus,
   :hover {
     color: grey;
@@ -136,6 +144,7 @@ export const BtnNavAdd = styled.button`
   margin-bottom: 2%;
   font-size: 1em;
   width: 10%;
+  cursor: pointer;
   &:active,
   :hover {
     color: grey;
@@ -159,6 +168,7 @@ export const LogInBtn = styled.button`
   font-size: 1em;
   padding-top: 22%;
   padding-bottom: 22%;
+  cursor: pointer;
   &:active,
   :hover {
     color: grey;

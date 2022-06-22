@@ -73,8 +73,8 @@ export const BtnNavAddMbl = styled.button`
   font-size: 1em;
   margin-left: 0%;
   margin-right: 1%;
-  width: 12%;
-  height: 60%;
+  width: 14%;
+  height: 65%;
   &:active,
   :hover {
     color: grey;

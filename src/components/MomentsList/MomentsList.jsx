@@ -87,17 +87,6 @@ export const MomentsList = () => {
     });
   };
 
-  const setFavorite = (newMoment) => {
-    let moment = newMoment;
-
-    if (moment.isFav === false) moment.isFav = true;
-    else moment.isFav = false;
-
-    momentsServices.updateMoment(moment.id, moment).then((res) => {
-      if (res) getAllMoments();
-    });
-  };
-
   const setLike = (newMoment) => {
     let moment = newMoment;
 
@@ -133,15 +122,12 @@ export const MomentsList = () => {
       setIsLoading(false);
     });
   };
-
-
-
    
 
   return (
     <section>
 
-      <NavBar showForm={showForm} setFavorite={setFavorite} setLike={setLike} />
+      <NavBar showForm={showForm} setLike={setLike} />
 
       {isShowForm ? (
         <MomentForm
@@ -165,7 +151,6 @@ export const MomentsList = () => {
               key={key}
               deleteMoment={deleteMoment}
               editMoment={editMoment}
-              setFavorite={setFavorite}
               setLike={setLike}
             />
           ))}

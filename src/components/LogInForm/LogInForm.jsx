@@ -4,7 +4,6 @@ import {
   BtnLogIn,
   BtnSignUp,
   ButtonImg,
-  CancelBtn,
   CheckBox,
   Container,
   ImgContainer,

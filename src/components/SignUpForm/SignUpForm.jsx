@@ -1,17 +1,10 @@
 import { NavBar } from "../../components/NavBar/NavBar";
-import { Link } from "react-router-dom";
+
 import {
   BtnLogIn,
-  BtnSignUp,
-  ButtonImg,
-  CancelBtn,
-  CheckBox,
   Container,
-  ImgContainer,
   InputsLogIn,
   Label,
-  LabelRemember,
-  SpanPsw,
 } from "./SignUpForm.styled";
 import { NavBarDownMbl } from "../NavBarDownMbl/NavBarDownMbl";
 

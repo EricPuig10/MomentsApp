@@ -5,9 +5,7 @@ import {
   BtnCard,
   BtnCardCont,
   BtnCardContLeft,
-  BtnCardFav,
   BtnCardLiked,
-  BtnCardUnFav,
   BtnCardUnLiked,
   ImgMoment,
   ImgMomentCont,
@@ -20,15 +18,13 @@ import {
 import { Link } from "react-router-dom";
 import { ContainerMomentsFilm } from "../MomentsList/MomentsList.styled";
 import { momentsServices } from "../../services/momentsServices";
+import { BtnCardComment } from "../MomentCard/MomentCard.styled";
 
 export const MomentsLikedList = (props) => {
   const [likeList, setLikeList] = useState([]);
 
-
   useEffect(() => {
-
     getAllLikedMoments();
- 
   }, []);
 
   const getAllLikedMoments = () => {
@@ -71,39 +67,12 @@ export const MomentsLikedList = (props) => {
     });
   };
 
-  const setFavorite = (newMoment) => {
-    let moment = newMoment;
-
-    if (moment.isFav === false) moment.isFav = true;
-    else moment.isFav = false;
-
-    momentsServices.updateMoment(moment.id, moment).then((res) => {
-      if (res) getAllLikedMoments();
-      showLikeList();
-    });
-
-    addToFavList(moment);
-  };
-
-  const addToFavList = (newMoment) => {
-    let moment = newMoment;
-
-    if (moment.isFav === true) {
-      showLikeList();
-    } else {
-      showLikeList();
-    }
-    showLikeList();
-  };
-
-  const ellipse = (element) =>{
-    if(element.length>30){
-      element = element.substr(0,100) + "..."
+  const ellipse = (element) => {
+    if (element.length > 30) {
+      element = element.substr(0, 100) + "...";
       return element;
-    } else return element
-
-  }
-
+    } else return element;
+  };
 
   return (
     <>
@@ -127,15 +96,9 @@ export const MomentsLikedList = (props) => {
                       <i className="fa-regular fa-heart fa-2xl"></i>
                     </BtnCardUnLiked>
                   )}
-                  {moment.isFav ? (
-                    <BtnCardFav onClick={() => setFavorite(moment)}>
-                      <i className="fa-solid fa-star fa-2xl"></i>
-                    </BtnCardFav>
-                  ) : (
-                    <BtnCardUnFav onClick={() => setFavorite(moment)}>
-                      <i className="fa-regular fa-star fa-2xl"></i>
-                    </BtnCardUnFav>
-                  )}
+                  <BtnCardComment>
+                    <i class="fa-regular fa-comment-dots fa-2xl"></i>
+                  </BtnCardComment>
 
                   <Link to={`/moment-info/${moment.id}`}>
                     <BtnCard>
@@ -146,7 +109,9 @@ export const MomentsLikedList = (props) => {
               </BtnCardCont>
               <TextCont>
                 <TitleMoment>{moment.title}</TitleMoment>
-                <MomentDescription>{ellipse(moment.description)}</MomentDescription>
+                <MomentDescription>
+                  {ellipse(moment.description)}
+                </MomentDescription>
               </TextCont>
             </TextMomentCont>
           </MomentCardDiv>

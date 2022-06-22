@@ -84,8 +84,8 @@ export const BtnCardUnLiked = styled.button`
   }
 `;
 
-export const BtnCardFav = styled.button`
-  color: yellow;
+export const BtnCardComment = styled.button`
+  color: #030303;
   background-color: transparent;
   border: none;
   margin-right: 2%;
@@ -95,16 +95,6 @@ export const BtnCardFav = styled.button`
   }
 `;
 
-export const BtnCardUnFav = styled.button`
-  color: black;
-  background-color: transparent;
-  border: none;
-  margin-right: 2%;
-  cursor: pointer;
-  &:hover {
-    color: grey;
-  }
-`;
 export const TextCont = styled.div`
   display: flex;
   flex-direction: column;

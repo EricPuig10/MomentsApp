@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const MainDiv = styled.div`
   display: flex;
   justify-content: center;
+  margin: 0;
 `;
 
 export const ContainerMomentsFilm = styled.div`
@@ -16,6 +17,7 @@ export const ContainerMomentsFilm = styled.div`
   @media (max-width: 450px) {
     padding-top: 20%;
     padding-bottom: 25%;
+    margin: 0;
     
   }
 `;

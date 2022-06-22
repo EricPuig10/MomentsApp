@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   BtnCard,
+  BtnCardComment,
   BtnCardCont,
   BtnCardContLeft,
   BtnCardContRight,
-  BtnCardFav,
   BtnCardLiked,
-  BtnCardUnFav,
   BtnCardUnLiked,
   ImageUser,
   ImageUserDiv,
@@ -26,16 +25,13 @@ import {
 
 export const MomentCard = (props) => {
   const [moment, setMoment] = useState(props.moment);
-  const setFavorite = (moment) => {
-    props.setFavorite(moment);
-  };
   const setLike = (moment) => {
     props.setLike(moment);
   };
 
   useEffect(() => {
-    props.moment.description = ellipse(props.moment.description);
     setMoment(props.moment);
+    props.moment.description = ellipse(props.moment.description);
   }, [props.moment, props.moment.description]);
 
   const ellipse = (element) => {
@@ -53,7 +49,7 @@ export const MomentCard = (props) => {
         </ImageUserDiv>
         <NameUserDiv>
           <NameUser>{moment.user}</NameUser>
-          <UbiMoment>Ubicacion</UbiMoment>
+          <UbiMoment>{moment.ubication}</UbiMoment>
         </NameUserDiv>
       </UserMomentDiv>
       <ImgMomentCont>
@@ -72,15 +68,11 @@ export const MomentCard = (props) => {
                 <i className="fa-regular fa-heart fa-2xl"></i>
               </BtnCardUnLiked>
             )}
-            {moment.isFav ? (
-              <BtnCardFav onClick={() => setFavorite(moment)}>
-                <i className="fa-solid fa-star fa-2xl"></i>
-              </BtnCardFav>
-            ) : (
-              <BtnCardUnFav onClick={() => setFavorite(moment)}>
-                <i className="fa-regular fa-star fa-2xl"></i>
-              </BtnCardUnFav>
-            )}
+
+            <BtnCardComment>
+              <i class="fa-regular fa-comment-dots fa-2xl"></i>
+            </BtnCardComment>
+
             <Link to={`/moment-info/${moment.id}`}>
               <BtnCard>
                 <i className="fa-regular fa-eye fa-2xl"></i>

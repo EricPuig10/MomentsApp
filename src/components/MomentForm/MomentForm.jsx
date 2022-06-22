@@ -80,6 +80,13 @@ export const MomentForm = (props) => {
               ></Input>
               <Input
                 onChange={onInputChange}
+                value={newMoment.ubication}
+                name="ubication"
+                type="text"
+                placeholder="Ubication..."
+              ></Input>
+              <Input
+                onChange={onInputChange}
                 value={newMoment.title}
                 name="title"
                 type="text"
