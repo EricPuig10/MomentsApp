@@ -36,7 +36,7 @@ export const UserMomentDiv = styled.div`
 display: flex;
 justify-content: flex-start;
 align-items: center;
-height: 8%;
+height: 7.7%;
 margin:1%;
 @media (max-width: 450px){
   height:8.3%;
