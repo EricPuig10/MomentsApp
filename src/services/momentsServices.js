@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = "https://62863528f0e8f0bb7c1250fb.mockapi.io";
+const baseURL = "http://localhost:8080";
 
 export const momentsServices = {
   getAllMoments() {
@@ -41,6 +41,56 @@ export const momentsServices = {
     });
     return moments;
   },
+}
+
+  
+
+
+
+// import axios from "axios";
+// const baseURL = "https://62863528f0e8f0bb7c1250fb.mockapi.io";
+
+// export const momentsServices = {
+//   getAllMoments() {
+//     const moments = axios.get(baseURL + "/moments").then((res) => res.data);
+//     return moments;
+//   },
+
+//   deleteMoment(id) {
+//     const movies = axios
+//       .delete(baseURL + "/moments/" + id)
+//       .then((res) => res.data);
+//     return movies;
+//   },
+
+//   addMoment(data) {
+//     const moments = axios
+//       .post(baseURL + "/moments", data)
+//       .then((res) => res.data);
+//     return moments;
+//   },
+
+//   updateMoment(id, newMoment) {
+//     const moments = axios
+//       .put(baseURL + "/moments/" + id, newMoment)
+//       .then((res) => res.data);
+//     return moments;
+//   },
+
+//   getMomentById(id) {
+//     const moments = axios
+//       .get(baseURL + "/moments/" + id)
+//       .then((res) => res.data);
+//     return moments;
+//   },
+
+//   getLikedMoments() {
+//     const moments = axios.get(baseURL + "/moments").then((res) => {
+//       return res.data.filter((newMoment) => newMoment.isLiked === true);
+//     });
+//     return moments;
+//   },
+//   };
 
   
 
@@ -54,13 +104,13 @@ export const momentsServices = {
     })
     return search;
 }*/
-};
+
 
 /*
 [
   {
    "ubication": "Norway",
-   "user": "eric_puig",
+   "userName": "eric_puig",
    "userImg": "https://media-exp2.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_400_400/0/1587477510501?e=1661385600&v=beta&t=lxPzlDjTbmYs0vSz-B7ef95gRfs-T5Dxj_RTLrcSO8Y",
    "title": "Snowy Day",
    "imgUrl": "http://1.bp.blogspot.com/-PDPkawVpiEM/USKdvazIKFI/AAAAAAAAPoQ/3GunEMDjljY/s1600/bp00.jpg",
@@ -70,7 +120,7 @@ export const momentsServices = {
   },
   {
    "ubication": "Ireland",
-   "user": "eric_puig",
+   "userName": "eric_puig",
    "userImg": "https://media-exp2.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_400_400/0/1587477510501?e=1661385600&v=beta&t=lxPzlDjTbmYs0vSz-B7ef95gRfs-T5Dxj_RTLrcSO8Y",
    "title": "Green Day",
    "imgUrl": "https://static3.leonoticias.com/www/multimedia/202107/06/media/MM-senderismo-asturias/oddle-1-ksRC--1350x900@El%20Comercio.jpg",
@@ -80,7 +130,7 @@ export const momentsServices = {
   },
   {
    "ubication": "New York",
-   "user": "eric_puig",
+   "userName": "eric_puig",
    "userImg": "https://media-exp2.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_400_400/0/1587477510501?e=1661385600&v=beta&t=lxPzlDjTbmYs0vSz-B7ef95gRfs-T5Dxj_RTLrcSO8Y",
    "title": "SunRise",
    "imgUrl": "https://i.pinimg.com/550x/05/12/06/05120683bf99b82b418d6368a37e3e42.jpg",
@@ -90,7 +140,7 @@ export const momentsServices = {
   },
   {
    "ubication": "Pantà de Sau",
-   "user": "eric_puig",
+   "userName": "eric_puig",
    "userImg": "https://media-exp2.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_400_400/0/1587477510501?e=1661385600&v=beta&t=lxPzlDjTbmYs0vSz-B7ef95gRfs-T5Dxj_RTLrcSO8Y",
    "title": "Chilli'n",
    "imgUrl": "https://mott.pe/noticias/wp-content/uploads/2019/03/los-50-paisajes-maravillosos-del-mundo-para-tomar-fotos.jpg",
@@ -100,7 +150,7 @@ export const momentsServices = {
   },
   {
    "ubication": "New York",
-   "user": "eric_puig",
+   "userName": "eric_puig",
    "userImg": "https://media-exp2.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_400_400/0/1587477510501?e=1661385600&v=beta&t=lxPzlDjTbmYs0vSz-B7ef95gRfs-T5Dxj_RTLrcSO8Y",
    "title": "title 5",
    "imgUrl": "https://www.nippon.com/es/ncommon/contents/japan-data/1331263/1331263.jpg",
@@ -109,7 +159,7 @@ export const momentsServices = {
    "isLiked": false
   },
   {
-   "user": "eric_puig",
+   "userName": "eric_puig",
    "userImg": "https://media-exp2.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_400_400/0/1587477510501?e=1661385600&v=beta&t=lxPzlDjTbmYs0vSz-B7ef95gRfs-T5Dxj_RTLrcSO8Y",
    "title": "title 10",
    "imgUrl": "http://1.bp.blogspot.com/-PDPkawVpiEM/USKdvazIKFI/AAAAAAAAPoQ/3GunEMDjljY/s1600/bp00.jpg",
@@ -120,7 +170,7 @@ export const momentsServices = {
   },
   {
    "ubication": "New York",
-   "user": "eric_puig",
+   "userName": "eric_puig",
    "userImg": "https://media-exp2.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_400_400/0/1587477510501?e=1661385600&v=beta&t=lxPzlDjTbmYs0vSz-B7ef95gRfs-T5Dxj_RTLrcSO8Y",
    "title": "title 11",
    "imgUrl": "http://1.bp.blogspot.com/-PDPkawVpiEM/USKdvazIKFI/AAAAAAAAPoQ/3GunEMDjljY/s1600/bp00.jpg",
@@ -130,7 +180,7 @@ export const momentsServices = {
   },
   {
    "ubication": "New York",
-   "user": "eric_puig",
+   "userName": "eric_puig",
    "userImg": "https://media-exp2.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_400_400/0/1587477510501?e=1661385600&v=beta&t=lxPzlDjTbmYs0vSz-B7ef95gRfs-T5Dxj_RTLrcSO8Y",
    "title": "Day in the beach",
    "imgUrl": "https://img.freepik.com/foto-gratis/playa-tropical_74190-188.jpg?w=2000",
