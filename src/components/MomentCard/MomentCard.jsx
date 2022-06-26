@@ -29,6 +29,7 @@ import {
 
 export const MomentCard = (props) => {
   const [moment, setMoment] = useState(props.moment);
+
   const setLike = (moment) => {
     props.setLike(moment);
   };

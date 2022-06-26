@@ -42,12 +42,14 @@ export const momentsServices = {
     return moments;
   },
 
+  
+
   /*
   getSearch(data) {
     const search = axios.get(`${baseURL}/moments`).then(res => {
-        return res.data.filter(movie => {
+        return res.data.filter(moment => {
             let cut = data.length;
-            return movie.name.slice(0, cut) === data;
+            return moment.title.slice(0, cut) === data;
         })
     })
     return search;

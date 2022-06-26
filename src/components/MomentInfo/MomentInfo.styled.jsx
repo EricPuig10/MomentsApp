@@ -78,3 +78,7 @@ export const DescriptionOfMoment = styled.p`
     margin-top: -8%;
   }
 `;
+
+export const Comments = styled.div`
+
+`

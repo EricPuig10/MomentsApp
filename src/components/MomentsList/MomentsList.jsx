@@ -18,11 +18,20 @@ export const MomentsList = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [likeList, setLikeList] = useState([]);
+  //const [search, setSearch] = useState("");
+
 
   useEffect(() => {
     getAllMoments();
     showLikeList();
+    //getSearch();
   }, []);
+
+  /*const getSearch = () =>{
+    momentsServices.getSearch().then((res) =>{
+      setSearch(res);
+    })
+  }*/
 
   const getAllMoments = () => {
     setIsLoading(true);
