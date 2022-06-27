@@ -26,7 +26,7 @@ export const MomentInfoCont = styled.div`
     width: 100%;
     margin-left: 0%;
     padding-top: 4%;
-    padding:4%;
+    padding: 4%;
   }
 `;
 
@@ -50,7 +50,7 @@ export const ImageCont = styled.div`
 
 export const ImageOfMoment = styled.img`
   width: 100%;
-  height:100%;
+  height: 100%;
   border-radius: 2vw;
   box-shadow: 0 0 15px grey;
   @media (max-width: 450px) {
@@ -63,11 +63,10 @@ export const TitleOfMoment = styled.h1`
   color: black;
   margin-bottom: 0%;
   margin-top: 0%;
-  @media (max-width:450px){
+  @media (max-width: 450px) {
     margin-bottom: 6%;
     margin-top: 5%;
   }
- 
 `;
 
 export const DescriptionOfMoment = styled.p`
@@ -79,6 +78,4 @@ export const DescriptionOfMoment = styled.p`
   }
 `;
 
-export const Comments = styled.div`
-
-`
+export const Comments = styled.div``;

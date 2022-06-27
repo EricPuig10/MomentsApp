@@ -23,7 +23,7 @@ export const MomentsLikedList = (props) => {
       <NavBar />
       <ContainerMoments>
         {likeList.map((moment, key) => (
-          <MomentCard key={key} moment={moment}/>
+          <MomentCard key={key} moment={moment} />
         ))}
       </ContainerMoments>
       <NavBarDownMbl />

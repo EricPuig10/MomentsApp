@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import {
-
-  ImgMoment,
   ImgMomentCont,
+  ImgMomentMbl,
   MomentCardDivMbl,
   MomentDescription,
   TextCont,
@@ -27,18 +26,20 @@ export const MomentCardWithoutFunctions = (props) => {
 
   return (
     <MomentCardDivMbl>
-      {props.isPreview ? (<ImgMomentCont style={{height:300}}>
-        <ImgMoment src={props.newMoment.imgUrl} />
-      </ImgMomentCont>):(<ImgMomentCont style={{height:300}}>
-        
-      </ImgMomentCont>)}
-
+      {props.isPreview ? (
+        <ImgMomentCont style={{ height: 300 }}>
+          <ImgMomentMbl src={props.newMoment.imgUrl} />
+        </ImgMomentCont>
+      ) : (
+        <ImgMomentCont style={{ height: 300 }}></ImgMomentCont>
+      )}
 
       <TextMomentCont>
-        
         <TextCont>
           <TitleMoment>{props.newMoment.title}</TitleMoment>
-          <MomentDescription>{ellipse(props.newMoment.description)}</MomentDescription>
+          <MomentDescription>
+            {ellipse(props.newMoment.description)}
+          </MomentDescription>
         </TextCont>
       </TextMomentCont>
     </MomentCardDivMbl>

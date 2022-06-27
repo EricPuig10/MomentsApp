@@ -6,7 +6,7 @@ export const NavBarDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-left: 1%;
-  height: 80px;
+  height: 70px;
   width: 80%;
   padding-left: 10%;
   padding-right: 10%;
@@ -14,8 +14,8 @@ export const NavBarDiv = styled.div`
   position: fixed;
   top: 0%;
   border: 1px solid #dedede;
-  @media (max-width:450px){
-    height:70px;
+  @media (max-width: 450px) {
+    height: 70px;
   }
 `;
 
@@ -51,7 +51,7 @@ export const BtnNavHome = styled.button`
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 60%;
+  margin-top: 53%;
   margin-bottom: 2%;
   font-size: 1em;
   width: 10%;
@@ -73,7 +73,7 @@ export const BtnNavSend = styled.button`
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 1%;
+  margin-top: 2%;
   margin-bottom: 2%;
   font-size: 1em;
   width: 10%;
@@ -96,7 +96,7 @@ export const BtnNavHeart = styled.button`
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 65%;
+  margin-top: 57%;
   margin-bottom: 2%;
   margin-left: 4%;
   font-size: 1em;
@@ -108,7 +108,7 @@ export const BtnNavHeart = styled.button`
   }
   @media (max-width: 450px) {
     margin-left: 50%;
-    margin-top: 50%;
+    margin-top: 56%;
   }
 `;
 
@@ -117,7 +117,7 @@ export const BtnNavSearch = styled.button`
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 2%;
+  margin-top: 0%;
   margin-bottom: 2%;
   margin-right: 4%;
   font-size: 1em;
@@ -142,7 +142,7 @@ export const BtnNavAdd = styled.button`
   font-weight: bold;
   margin-top: 2%;
   margin-bottom: 2%;
-  font-size: 1em;
+  font-size: 1.1em;
   width: 10%;
   cursor: pointer;
   &:active,
@@ -163,9 +163,9 @@ export const LogInBtn = styled.button`
   border: 3px solid black;
   color: black;
   font-weight: bold;
-  margin-top: 40%;
+  margin-top: 36%;
   margin-right: 2%;
-  font-size: 1em;
+  font-size: 0.8em;
   padding-top: 22%;
   padding-bottom: 22%;
   cursor: pointer;

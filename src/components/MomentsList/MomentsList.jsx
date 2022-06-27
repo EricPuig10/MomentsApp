@@ -22,19 +22,16 @@ export const MomentsList = () => {
   //const [search, setSearch] = useState("");
 
   useEffect(() => {
-    
     getAllMoments();
     showLikeList();
     //getSearch();
   }, []);
-
 
   const getAllMoments = () => {
     setIsLoading(true);
     momentsServices.getAllMoments().then((res) => {
       setMoments(res);
       setIsLoading(false);
-
     });
   };
   const showForm = () => {
@@ -44,9 +41,6 @@ export const MomentsList = () => {
     setIsEditMode(false);
     setIsPreview(false);
   };
-
-
-
 
   const addNewMoment = (data) => {
     momentsServices.addMoment(data).then((res) => {
@@ -76,7 +70,6 @@ export const MomentsList = () => {
     setMomentToEdit(momentToEdit);
     setIsEditMode(true);
     setIsPreview(true);
-    
   };
 
   const updateMoment = (newMoment) => {

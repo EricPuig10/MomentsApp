@@ -1,11 +1,6 @@
 import { NavBar } from "../../components/NavBar/NavBar";
 
-import {
-  BtnLogIn,
-  Container,
-  InputsLogIn,
-  Label,
-} from "./SignUpForm.styled";
+import { BtnLogIn, Container, InputsLogIn, Label } from "./SignUpForm.styled";
 import { NavBarDownMbl } from "../NavBarDownMbl/NavBarDownMbl";
 
 export const SignUpForm = () => {

@@ -8,9 +8,9 @@ export const momentsServices = {
   },
 
   deleteMoment(id) {
-    const moment = axios
-      .delete(baseURL + "/moments/" + id)
-      .then((res) => {return res.data;})
+    const moment = axios.delete(baseURL + "/moments/" + id).then((res) => {
+      return res.data;
+    });
     return moment;
   },
 
@@ -24,7 +24,9 @@ export const momentsServices = {
   updateMoment(id, moment) {
     const updatedMoment = axios
       .put(baseURL + "/moments/" + id, moment)
-      .then((res) =>{return res.data});
+      .then((res) => {
+        return res.data;
+      });
     return updatedMoment;
   },
 
@@ -41,12 +43,9 @@ export const momentsServices = {
     });
     return moments;
   },
+};
 
-}
-
-  
-
-
+//Mockapi 
 
 // import axios from "axios";
 // const baseURL = "https://62863528f0e8f0bb7c1250fb.mockapi.io";
@@ -92,9 +91,6 @@ export const momentsServices = {
 //     return moments;
 //   },
 //   };
-
-  
-
 
 /*
 [

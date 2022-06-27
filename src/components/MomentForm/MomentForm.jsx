@@ -71,7 +71,10 @@ export const MomentForm = (props) => {
       <div>
         <form onSubmit={onSubmitHandler}>
           <FormCont>
-            <MomentCardWithoutFunctions newMoment={newMoment} isPreview={isPreview} />
+            <MomentCardWithoutFunctions
+              newMoment={newMoment}
+              isPreview={isPreview}
+            />
             <InputsCont>
               <Input
                 onChange={onInputChange}

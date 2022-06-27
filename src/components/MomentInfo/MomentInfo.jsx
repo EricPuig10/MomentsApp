@@ -12,10 +12,10 @@ import {
   TextCont,
   TitleOfMoment,
 } from "./MomentInfo.styled";
-import commentsData from "../../services/commentsServices.json"
+//import commentsData from "../../services/commentsServices.json";
 
 export const MomentInfo = () => {
-  const [comments, setComments] = useState(commentsData);
+  //const [comments, setComments] = useState(commentsData);
   const [moment, setMoment] = useState([]);
   const { id } = useParams();
 
@@ -37,23 +37,22 @@ export const MomentInfo = () => {
 
   return (
     <div>
-    <Container>
-      <MomentInfoCont>
-        <TextCont>
-          <TitleOfMoment>{moment.title}</TitleOfMoment>
-          <DescriptionOfMoment>{moment.description}</DescriptionOfMoment>
-        </TextCont>
+      <Container>
+        <MomentInfoCont>
+          <TextCont>
+            <TitleOfMoment>{moment.title}</TitleOfMoment>
+            <DescriptionOfMoment>{moment.description}</DescriptionOfMoment>
+          </TextCont>
 
-        <ImageCont>
-          <ImageOfMoment src={moment.imgUrl} alt="momentfoto" />
-        </ImageCont>
-      </MomentInfoCont>
-    </Container>
+          <ImageCont>
+            <ImageOfMoment src={moment.imgUrl} alt="momentfoto" />
+          </ImageCont>
+        </MomentInfoCont>
+      </Container>
 
-    <Container>
-      <Comments/>
-    </Container>
-
+      <Container>
+        <Comments />
+      </Container>
     </div>
   );
 };

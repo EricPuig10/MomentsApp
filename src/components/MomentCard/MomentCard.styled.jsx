@@ -4,12 +4,13 @@ export const MomentCardDiv = styled.div`
   border-color: #dedede;
   border-style: solid;
   display: flex;
-  width: 20%;
+  width: 26%;
   flex-direction: column;
   margin: 1%;
-  margin-left: 3%;
+  margin-left: 5%;
   margin-bottom: 2%;
   position: relative;
+  border-radius: 1.5vw;
   @media (max-width: 1020px) {
     width: 25%;
     border-color: white;
@@ -25,10 +26,8 @@ export const MomentCardDiv = styled.div`
   @media (max-width: 450px) {
     width: 100%;
     border-color: white;
-    margin:0;
-    margin-left: -0.45%;
+    margin: 0;
     margin-bottom: 0%;
-    
   }
 `;
 
@@ -42,6 +41,7 @@ export const MomentCardDivMbl = styled.div`
   margin-left: 3%;
   margin-bottom: 2%;
   position: relative;
+  border-radius: 1.5vw;
   @media (max-width: 1020px) {
     width: 25%;
     border-color: white;
@@ -57,58 +57,54 @@ export const MomentCardDivMbl = styled.div`
   @media (max-width: 450px) {
     width: 95%;
     border-color: white;
-    margin:0;
+    margin: 0;
     margin-bottom: 0%;
-    top:10%;
-    left:2%;
+    top: 10%;
+    left: 2%;
   }
 `;
 
-
-
 export const UserMomentDiv = styled.div`
-display: flex;
-justify-content: flex-start;
-align-items: center;
-height: 7.7%;
-margin:1%;
-@media (max-width: 450px){
-  height:8.3%;
-} 
-`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 7.7%;
+  margin: 1%;
+  @media (max-width: 450px) {
+    height: 8.3%;
+  }
+`;
 
 export const NameUser = styled.p`
-font-size: 1.15em;
-font-weight: bold;
-margin: 0;
-margin-bottom: -4%;
-`
+  font-size: 1.15em;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: -4%;
+`;
 export const UbiMoment = styled.p`
-font-size: 1em;
-color: black;
-margin: 0;
-`
+  font-size: 1em;
+  color: black;
+  margin: 0;
+`;
 
 export const ImageUserDiv = styled.div`
-width:14%;
-margin: 1%;
-height: 100%;
-border-radius: 50%;
-
-`
+  width: 14%;
+  margin: 1%;
+  height: 100%;
+  border-radius: 50%;
+`;
 
 export const ImageUser = styled.img`
-width:100%;
-height: 100%;
-border-radius: 50%;
-`
-export const NameUserDiv = styled.div `
-margin-left:2%;
-margin-top: 1%;
-display: flex;
-flex-direction: column;
-
-`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+`;
+export const NameUserDiv = styled.div`
+  margin-left: 2%;
+  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const ImgMomentCont = styled.div`
   border: none;
@@ -123,6 +119,13 @@ export const ImgMoment = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`;
+
+export const ImgMomentMbl = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.3vw;
 `;
 
 export const TextMomentCont = styled.div`
@@ -211,26 +214,25 @@ export const MomentDescription = styled.p`
 `;
 
 export const ComentsDiv = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
-border-top: 2px solid #dedede;
-border-bottom: 2px solid #dedede;
-height:45px;
-width:100%;
-position: absolute;
-top:91.5%;
-@media (max-width:450px) {
-  
-}
-`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #dedede;
+  height: 45px;
+  width: 100%;
+  position: absolute;
+  top: 91.5%;
+  @media (max-width: 450px) {
+    border-bottom: 2px solid #dedede;
+  }
+`;
 
 export const Emote = styled.div`
-margin-left:4%;
-`
+  margin-left: 4%;
+`;
 
 export const AddCommentInput = styled.input`
- background-color: #ffffff;
+  background-color: #ffffff;
   width: 50%;
   height: 60%;
   padding-left: 2%;
@@ -239,18 +241,16 @@ export const AddCommentInput = styled.input`
   &:focus {
     outline: none;
   }
-`
+`;
 
 export const Publish = styled.button`
-width:20%;
-margin-right: 5%;
-height: 90%;
-color:#1385ff;
-font-size: 0.95em;
-font-weight: bold;
-background-color: transparent;
-border: none;
-text-decoration: none;
-
-
-`
+  width: 20%;
+  margin-right: 5%;
+  height: 90%;
+  color: #1385ff;
+  font-size: 0.95em;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+`;

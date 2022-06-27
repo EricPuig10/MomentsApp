@@ -12,11 +12,12 @@ export const ContainerMoments = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding-top: 6%;
-  width: 99.8%;
+  margin-left: 10%;
+  width: 80%;
   @media (max-width: 450px) {
     padding-top: 20%;
     padding-bottom: 25%;
     margin: 0;
-    
+    width:100%;
   }
 `;

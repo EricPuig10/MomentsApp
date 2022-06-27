@@ -41,7 +41,6 @@ export const BtnNavMbl = styled.button`
   :hover {
     color: grey;
     cursor: pointer;
-
   }
 `;
 export const BtnNavHomeMbl = styled.button`
@@ -60,7 +59,6 @@ export const BtnNavHomeMbl = styled.button`
     color: grey;
     cursor: pointer;
   }
-
 `;
 
 export const BtnNavAddMbl = styled.button`
