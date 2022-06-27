@@ -19,12 +19,20 @@ export const FormCont = styled.div`
   border-radius: 2vw;
   justify-content: center;
   position: fixed;
-  top: 30%;
+  top: 12%;
   left: 8%;
   background-color: white;
   z-index: 300;
+
   @media (max-width: 450px) {
-    height: 300px;
+    width: 90%;
+    left: 2%;
+    top: 1%;
+    z-index: 10000;
+    height: 70vh;
+    padding-bottom: 30%;
+    padding-top: 10%;
+    flex-direction: column;
   }
 `;
 
@@ -35,13 +43,13 @@ export const InputsCont = styled.div`
   display: flex;
   z-index: 4;
   @media (max-width: 450px) {
-    width: 100%;
+    width: 95%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-left: 8%;
     display: flex;
     z-index: 4;
+    margin-top: 5%;
   }
 `;
 
@@ -57,8 +65,8 @@ export const Input = styled.input`
   color: black;
   margin-bottom: 2%;
   @media (max-width: 450px) {
-    padding: 5%;
-    margin-bottom: 5%;
+    padding: 3%;
+    margin-bottom: 2%;
     width: 90%;
     font-size: 1.2em;
   }
@@ -85,18 +93,19 @@ export const TextArea = styled.textarea`
 export const SubmitBtnForm = styled.button`
   background-color: transparent;
   color: black;
-  width: 5%;
+  width: 10%;
+  font-size: 1.3em;
   border: none;
   border-radius: 50%;
   position: absolute;
-  top: 80%;
-  left: 95%;
+  top: 90%;
+  left: 92%;
   &:hover {
     color: grey;
   }
   @media (max-width: 450px) {
     position: absolute;
-    top: 85%;
+    top: 95%;
     left: 45%;
     font-size: 1.2em;
   }
@@ -105,6 +114,12 @@ export const SubmitBtnForm = styled.button`
 export const CloseCont = styled.div`
   position: relative;
   width: 10%;
+  @media (max-width: 450px) {
+    position: absolute;
+    padding-top: 10%;
+    top: 0.5%;
+    left: 90%;
+  }
 `;
 
 export const CloseBtn = styled.button`
@@ -119,14 +134,16 @@ export const CloseBtn = styled.button`
   padding-right: 1%;
   border-radius: 1.2vw;
   position: absolute;
-  top: -5%;
+  top: -2%;
   left: 90%;
   &:hover {
     color: grey;
   }
   @media (max-width: 450px) {
     position: absolute;
+    padding-top: 10%;
     top: 1%;
     left: 44%;
+    background-color: transparent;
   }
 `;

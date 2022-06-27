@@ -4,7 +4,7 @@ import { MomentCard } from "../MomentCard/MomentCard";
 import { MomentForm } from "../MomentForm/MomentForm";
 import { NavBar } from "../NavBar/NavBar";
 import { NavBarDownMbl } from "../NavBarDownMbl/NavBarDownMbl";
-import { ContainerMomentsFilm } from "./MomentsList.styled";
+import { ContainerMoments } from "./MomentsList.styled";
 
 export const MomentsList = () => {
   const [moments, setMoments] = useState([]);
@@ -18,35 +18,35 @@ export const MomentsList = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [likeList, setLikeList] = useState([]);
+  const [isPreview, setIsPreview] = useState(false);
   //const [search, setSearch] = useState("");
 
-
   useEffect(() => {
+    
     getAllMoments();
     showLikeList();
     //getSearch();
   }, []);
 
-  /*const getSearch = () =>{
-    momentsServices.getSearch().then((res) =>{
-      setSearch(res);
-    })
-  }*/
 
   const getAllMoments = () => {
     setIsLoading(true);
     momentsServices.getAllMoments().then((res) => {
       setMoments(res);
       setIsLoading(false);
+
     });
   };
-
   const showForm = () => {
     if (isShowForm) setIsShowForm(false);
     else setIsShowForm(true);
     resetInputsForm();
     setIsEditMode(false);
+    setIsPreview(false);
   };
+
+
+
 
   const addNewMoment = (data) => {
     momentsServices.addMoment(data).then((res) => {
@@ -66,6 +66,7 @@ export const MomentsList = () => {
 
     momentsServices.deleteMoment(parseInt(id)).then((res) => {
       if (res.id === id) setMoments(filterMoments);
+      setMoments(filterMoments);
     });
   };
 
@@ -74,6 +75,8 @@ export const MomentsList = () => {
     let momentToEdit = moments.find((moment) => moment.id === id);
     setMomentToEdit(momentToEdit);
     setIsEditMode(true);
+    setIsPreview(true);
+    
   };
 
   const updateMoment = (newMoment) => {
@@ -81,9 +84,9 @@ export const MomentsList = () => {
       let momentToEdit = moments.map((moment) =>
         moment.id === newMoment.id ? newMoment : moment
       );
+
       setMoments(momentToEdit);
     });
-
     showForm();
   };
 
@@ -93,17 +96,18 @@ export const MomentsList = () => {
       id: "",
       imgUrl: "",
       description: "",
+      ubication: "",
     });
   };
 
   const setLike = (newMoment) => {
     let moment = newMoment;
 
-    if (moment.isLiked === false) moment.isLiked = true;
-    else moment.isLiked = false;
+    if (moment.liked === false) moment.liked = true;
+    else moment.liked = false;
 
     momentsServices.updateMoment(moment.id, moment).then((res) => {
-      if (res) getAllMoments();
+      return getAllMoments();
     });
 
     addToLikeList(moment);
@@ -112,7 +116,7 @@ export const MomentsList = () => {
   const addToLikeList = (newMoment) => {
     let moment = newMoment;
 
-    if (moment.isLiked === true) {
+    if (moment.liked === true) {
       likeList.push(moment);
       showLikeList();
     } else {
@@ -131,11 +135,8 @@ export const MomentsList = () => {
       setIsLoading(false);
     });
   };
-   
-
   return (
     <section>
-
       <NavBar showForm={showForm} setLike={setLike} />
 
       {isShowForm ? (
@@ -146,6 +147,7 @@ export const MomentsList = () => {
           isEditMode={isEditMode}
           isShowForm={isShowForm}
           showForm={showForm}
+          isPreview={isPreview}
         />
       ) : (
         ""
@@ -153,7 +155,7 @@ export const MomentsList = () => {
       {isLoading ? (
         ""
       ) : (
-        <ContainerMomentsFilm>
+        <ContainerMoments>
           {moments.map((moment, key) => (
             <MomentCard
               moment={moment}
@@ -163,7 +165,7 @@ export const MomentsList = () => {
               setLike={setLike}
             />
           ))}
-        </ContainerMomentsFilm>
+        </ContainerMoments>
       )}
 
       <NavBarDownMbl showForm={showForm} />

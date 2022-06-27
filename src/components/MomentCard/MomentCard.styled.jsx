@@ -32,6 +32,40 @@ export const MomentCardDiv = styled.div`
   }
 `;
 
+export const MomentCardDivMbl = styled.div`
+  border-color: #dedede;
+  border-style: solid;
+  display: flex;
+  width: 20%;
+  flex-direction: column;
+  margin: 1%;
+  margin-left: 3%;
+  margin-bottom: 2%;
+  position: relative;
+  @media (max-width: 1020px) {
+    width: 25%;
+    border-color: white;
+  }
+  @media (max-width: 790px) {
+    width: 30%;
+    border-color: white;
+  }
+  @media (max-width: 650px) {
+    width: 80%;
+    border-color: white;
+  }
+  @media (max-width: 450px) {
+    width: 95%;
+    border-color: white;
+    margin:0;
+    margin-bottom: 0%;
+    top:10%;
+    left:2%;
+  }
+`;
+
+
+
 export const UserMomentDiv = styled.div`
 display: flex;
 justify-content: flex-start;

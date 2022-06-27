@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { MomentCardWithoutFunctions } from "../MomentCard/MomentCardWithoutFunctions";
 import {
   BackGroundForm,
   CloseBtn,
@@ -13,7 +14,7 @@ import {
 export const MomentForm = (props) => {
   const [newMoment, setNewMoment] = useState(props.momentToEdit);
   const [isEditMode] = useState(props.isEditMode);
-  //   const [isPreview, setIsPreview] = useState(props.isPreview);
+  const [isPreview, setIsPreview] = useState(props.isPreview);
   //   console.log(isPreview);
 
   const onSubmitHandler = (e) => {
@@ -25,7 +26,7 @@ export const MomentForm = (props) => {
         : props.updateMoment(newMoment);
     }
 
-    resetInputsForm(e);
+    resetInputsForm();
   };
 
   //Extract to method
@@ -42,7 +43,7 @@ export const MomentForm = (props) => {
   };
 
   const onInputChange = (e) => {
-    // setIsPreview(true);
+    setIsPreview(true);
     const name = e.target.name;
     const value = e.target.value;
     setNewMoment({ ...newMoment, [name]: value });
@@ -70,6 +71,7 @@ export const MomentForm = (props) => {
       <div>
         <form onSubmit={onSubmitHandler}>
           <FormCont>
+            <MomentCardWithoutFunctions newMoment={newMoment} isPreview={isPreview} />
             <InputsCont>
               <Input
                 onChange={onInputChange}

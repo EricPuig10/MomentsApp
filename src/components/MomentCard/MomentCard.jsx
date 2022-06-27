@@ -30,14 +30,9 @@ import {
 export const MomentCard = (props) => {
   const [moment, setMoment] = useState(props.moment);
 
-  const setLike = (moment) => {
-    props.setLike(moment);
-  };
-
   useEffect(() => {
     setMoment(props.moment);
-    props.moment.description = ellipse(props.moment.description);
-  }, [props.moment, props.moment.description]);
+  }, [props.moment]);
 
   const ellipse = (element) => {
     if (element.length > 100) {
@@ -64,18 +59,18 @@ export const MomentCard = (props) => {
       <TextMomentCont>
         <BtnCardCont>
           <BtnCardContLeft>
-            {moment.isLiked ? (
-              <BtnCardLiked onClick={() => setLike(moment)}>
+            {moment.liked ? (
+              <BtnCardLiked onClick={() => props.setLike(moment)}>
                 <i className="fa-solid fa-heart fa-2xl"></i>
               </BtnCardLiked>
             ) : (
-              <BtnCardUnLiked onClick={() => setLike(moment)}>
+              <BtnCardUnLiked onClick={() => props.setLike(moment)}>
                 <i className="fa-regular fa-heart fa-2xl"></i>
               </BtnCardUnLiked>
             )}
 
             <BtnCardComment>
-              <i class="fa-regular fa-comment-dots fa-2xl"></i>
+              <i className="fa-regular fa-comment-dots fa-2xl"></i>
             </BtnCardComment>
 
             <Link to={`/moment-info/${moment.id}`}>
@@ -96,13 +91,13 @@ export const MomentCard = (props) => {
         </BtnCardCont>
         <TextCont>
           <TitleMoment>{moment.title}</TitleMoment>
-          <MomentDescription>{moment.description}</MomentDescription>
+          <MomentDescription>{ellipse(moment.description)}</MomentDescription>
         </TextCont>
       </TextMomentCont>
 
       <ComentsDiv>
         <Emote>
-          <i class="fa-regular fa-face-grin fa-xl"></i>
+          <i className="fa-regular fa-face-grin fa-xl"></i>
         </Emote>
         <AddCommentInput placeholder="Add a comment..." />
         <Publish>Publish</Publish>
