@@ -117,9 +117,9 @@ export const BtnNavSearch = styled.button`
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 0%;
+
   margin-bottom: 2%;
-  margin-right: 4%;
+  margin-top:55%;
   font-size: 1em;
   width: 10%;
   cursor: pointer;
@@ -182,38 +182,6 @@ export const LogInBtn = styled.button`
   }
 `;
 
-export const InputDiv = styled.div`
-  background-color: #dedede;
-  width: 40%;
-  height: 55%;
-  border: none;
-  border-radius: 1vw;
-  display: flex;
-  align-items: center;
-  margin-left: 5%;
-  @media (max-width: 790px) {
-    display: none;
-  }
-  @media (max-width: 450px) {
-    display: none;
-  }
-`;
-export const Lupa = styled.div`
-  display: flex;
-  width: 10%;
-  margin-left: 4%;
-  color: #838383;
-`;
 
-export const SearchInput = styled.input`
-  background-color: #dedede;
-  width: 120%;
-  height: 95%;
-  padding-left: 2%;
-  border: transparent;
-  border-radius: 1vw;
-  font-size: 1.2em;
-  &:focus {
-    outline: none;
-  }
-`;
+
+

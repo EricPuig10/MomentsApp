@@ -19,11 +19,10 @@ export const MomentsList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [likeList, setLikeList] = useState([]);
   const [isPreview, setIsPreview] = useState(false);
-  //const [search, setSearch] = useState("");
 
   useEffect(() => {
     getAllMoments();
-    showLikeList();
+    // showLikeList();
     //getSearch();
   }, []);
 
@@ -93,44 +92,53 @@ export const MomentsList = () => {
     });
   };
 
-  const setLike = (newMoment) => {
-    let moment = newMoment;
+  // const setLike = (newMoment) => {
+  //   let moment = newMoment;
 
-    if (moment.liked === false) moment.liked = true;
-    else moment.liked = false;
+  //   if (moment.liked === false) moment.liked = true;
+  //   else moment.liked = false;
 
-    momentsServices.updateMoment(moment.id, moment).then((res) => {
-      return getAllMoments();
-    });
+  //   momentsServices.updateMoment(moment.id, moment).then((res) => {
+  //     return getAllMoments();
+  //   });
 
-    addToLikeList(moment);
-  };
+  //   addToLikeList(moment);
+  // };
 
-  const addToLikeList = (newMoment) => {
-    let moment = newMoment;
-
-    if (moment.liked === true) {
-      likeList.push(moment);
-      showLikeList();
-    } else {
-      let likeIndex = likeList.findIndex(
-        (moment) => moment.id === newMoment.id
-      );
-      likeList.splice(likeIndex, 1);
-      showLikeList();
-    }
-  };
-
-  const showLikeList = () => {
-    setIsLoading(true);
-    momentsServices.getLikedMoments().then((res) => {
-      setLikeList(res);
-      setIsLoading(false);
+  const like = (moment) => {
+    momentsServices.likeMoment(moment, moment.id).then((res) => {
+      if (res) {
+        getAllMoments();
+      }
     });
   };
+
+  // const addToLikeList = (newMoment) => {
+  //   let moment = newMoment;
+
+  //   if (moment.liked === true) {
+  //     likeList.push(moment);
+  //     showLikeList();
+  //   } else {
+  //     let likeIndex = likeList.findIndex(
+  //       (moment) => moment.id === newMoment.id
+  //     );
+  //     likeList.splice(likeIndex, 1);
+  //     showLikeList();
+  //   }
+  // };
+
+  // const showLikeList = () => {
+  //   setIsLoading(true);
+  //   momentsServices.likeMoment().then((res) => {
+  //     setLikeList(res);
+  //     setIsLoading(false);
+  //   });
+  // };
+
   return (
     <section>
-      <NavBar showForm={showForm} setLike={setLike} />
+      <NavBar showForm={showForm} />
 
       {isShowForm ? (
         <MomentForm
@@ -145,21 +153,17 @@ export const MomentsList = () => {
       ) : (
         ""
       )}
-      {isLoading ? (
-        ""
-      ) : (
-        <ContainerMoments>
-          {moments.map((moment, key) => (
-            <MomentCard
-              moment={moment}
-              key={key}
-              deleteMoment={deleteMoment}
-              editMoment={editMoment}
-              setLike={setLike}
-            />
-          ))}
-        </ContainerMoments>
-      )}
+      <ContainerMoments>
+        {moments.map((moment, key) => (
+          <MomentCard
+            moment={moment}
+            key={key}
+            deleteMoment={deleteMoment}
+            editMoment={editMoment}
+            like={like}
+          />
+        ))}
+      </ContainerMoments>
 
       <NavBarDownMbl showForm={showForm} />
     </section>
