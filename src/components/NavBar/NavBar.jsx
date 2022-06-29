@@ -11,8 +11,8 @@ import {
   BtnNavHeart,
   BtnNavAdd,
   BtnNavSearch,
+  BtnNavNotification,
 } from "./NavBar.styled";
-
 
 export const NavBar = (props) => {
   return (
@@ -21,21 +21,24 @@ export const NavBar = (props) => {
         <Title>
           <H1>InstaKg</H1>
         </Title>
-        
+
         <BtnDiv>
+          <BtnNavNotification>
+            <i className="fa-solid fa-bell fa-2xl"></i>
+          </BtnNavNotification>
           <Link to="/">
             <BtnNavHome>
-              <i className="fa-solid fa-house fa-2xl"></i>
+            <i className="fa-solid fa-house-chimney fa-2xl"></i>
             </BtnNavHome>
           </Link>
           <Link to="/searcher">
-          <BtnNavSearch>
-            <i className="fa-solid fa-magnifying-glass fa-2xl"></i>
-          </BtnNavSearch>
+            <BtnNavSearch>
+              <i className="fa-solid fa-magnifying-glass fa-2xl"></i>
+            </BtnNavSearch>
           </Link>
-          <BtnNavSend>
+          {/* <BtnNavSend>
             <i className="fa-regular fa-paper-plane fa-2xl"></i>
-          </BtnNavSend>
+          </BtnNavSend> */}
           <BtnNavAdd onClick={props.showForm}>
             <i className="fa-solid fa-plus fa-2xl"></i>
           </BtnNavAdd>

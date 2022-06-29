@@ -61,17 +61,17 @@ export const MomentCard = (props) => {
       <TextMomentCont>
         <BtnCardCont>
           <BtnCardContLeft>
-            {moment.isLiked ? (
-              <BtnCardLiked onClick={props.like ? ()=>console.log("adsdwd") : ()=>console.log('still not implemented')}>
+            {moment.liked ? (
+              <BtnCardLiked onClick={()=>props.setLike(moment)}>
                 <i className="fa-solid fa-heart fa-2xl"></i>
               </BtnCardLiked>
             ) : (
-              <BtnCardUnLiked onClick={props.like ? ()=>console.log("working") : ()=>console.log('still not implemented')}>
+              <BtnCardUnLiked onClick={()=>props.setLike(moment)}>
                 <i className="fa-regular fa-heart fa-2xl"></i>
               </BtnCardUnLiked>
             )}
 
-            <BtnCardComment>
+            <BtnCardComment onClick={()=> console.log(moment.liked)}>
               <i className="fa-regular fa-comment-dots fa-2xl"></i>
             </BtnCardComment>
 

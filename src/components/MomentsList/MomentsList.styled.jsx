@@ -8,7 +8,7 @@ export const MainDiv = styled.div`
 
 export const ContainerMoments = styled.div`
   background-color: #ffffff;
-  border: 1px solid #dedede;
+  /* border: 1px solid #dedede; */
   display: flex;
   flex-wrap: wrap;
   padding-top: 6%;

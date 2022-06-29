@@ -23,7 +23,7 @@ export const MomentInfoCont = styled.div`
     flex-direction: column;
     align-items: center;
     margin-bottom: 25%;
-    width: 100%;
+    width: 89%;
     margin-left: 0%;
     padding-top: 4%;
     padding: 4%;
@@ -53,6 +53,7 @@ export const ImageOfMoment = styled.img`
   height: 100%;
   border-radius: 2vw;
   box-shadow: 0 0 15px grey;
+  object-fit: cover;
   @media (max-width: 450px) {
     width: 100%;
     height: 100%;

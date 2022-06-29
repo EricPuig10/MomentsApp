@@ -1,13 +1,11 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { momentsServices } from "../../services/momentsServices";
-import { ImgMomentCont, MomentCardDiv } from "../MomentCard/MomentCard.styled";
-import { ImageCont, ImageOfMoment } from "../MomentInfo/MomentInfo.styled";
-import { ContainerMoments } from "../MomentsList/MomentsList.styled";
 import {
   ButtonSubmit,
+  CancelBtn,
   ContainerMomentsSearcher,
-  ContainerSearchedMoments,
   DivWithoutSearchingResults,
   FormContSearcher,
   ImgMomentContSearched,
@@ -21,6 +19,17 @@ import {
 export const Searcher = (props) => {
   const [suggestions, setSuggestions] = useState([]);
   const [search, setSearch] = useState("");
+  const [moments, setMoments] = useState([]);
+
+  useEffect(() => {
+    getAllMoments();
+  }, []);
+
+  const getAllMoments = () => {
+    momentsServices.getAllMoments().then((res) => {
+      setMoments(res);
+    });
+  };
 
   const searchMoment = (data) => {
     momentsServices.searchMoment(data).then((res) => {
@@ -30,27 +39,27 @@ export const Searcher = (props) => {
     });
   };
 
-  //   const cancelSearch = () => {
-  //     console.log("search canceled");
-  //     setSuggestions();
-  //     setSearch();
-  //   };
+  const cancelSearch = () => {
+    console.log("search canceled");
+    setSuggestions([]);
+    setSearch("");
+  };
 
   const handleChange = (e) => {
-    console.log(search);
     setSearch(e.target.value);
+    searchMoment(search);
+    console.log(search);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(search);
     searchMoment(search);
   };
 
   //   const cancel = () => {
   //     props.cancelSearch();
   //   };
-  console.log(suggestions);
+console.log(suggestions)
   return (
     <>
       <MainSearcher>
@@ -65,18 +74,16 @@ export const Searcher = (props) => {
             placeholder="Search"
             value={search}
           />
+          <CancelBtn onClick={cancelSearch}><i className="fa-solid fa-x fa-s"></i></CancelBtn>
           <Lupa>
             <ButtonSubmit onClick={handleSubmit}>Search</ButtonSubmit>
           </Lupa>
         </FormContSearcher>
+        
         <ContainerMomentsSearcher>
-          {suggestions.length < 1 ? (
-            <DivWithoutSearchingResults>
-              Sorry, we did not found "{search}"
-            </DivWithoutSearchingResults>
-          ) : (
+          {search === "" ? (
             <>
-              {suggestions.map((moment, key) => (
+              {moments.map((moment, key) => (
                 <MomentCardDivSearched>
                   <ImgMomentContSearched>
                     <Link key={key} to={`/moment-info/${moment.id}`}>
@@ -85,6 +92,26 @@ export const Searcher = (props) => {
                   </ImgMomentContSearched>
                 </MomentCardDivSearched>
               ))}
+            </>
+          ) : (
+            <>
+              {suggestions.length < 1 ? (
+                <DivWithoutSearchingResults>
+                  Sorry, we did not found "{search}"
+                </DivWithoutSearchingResults>
+              ) : (
+                <>
+                  {suggestions.map((moment, key) => (
+                    <MomentCardDivSearched>
+                      <ImgMomentContSearched>
+                        <Link key={key} to={`/moment-info/${moment.id}`}>
+                          <ImgMomentSearched key={key} src={moment.imgUrl} />
+                        </Link>
+                      </ImgMomentContSearched>
+                    </MomentCardDivSearched>
+                  ))}
+                </>
+              )}
             </>
           )}
         </ContainerMomentsSearcher>

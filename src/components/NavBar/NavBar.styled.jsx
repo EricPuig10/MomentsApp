@@ -39,11 +39,12 @@ export const H1 = styled.h1`
 `;
 
 export const BtnDiv = styled.div`
-  width: 30%;
+  width: 40%;
   height: 100%;
   background-color: rgb(255, 255, 255);
   display: flex;
   justify-content: space-around;
+  align-items: center;
 `;
 
 export const BtnNavHome = styled.button`
@@ -51,8 +52,6 @@ export const BtnNavHome = styled.button`
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 53%;
-  margin-bottom: 2%;
   font-size: 1em;
   width: 10%;
   cursor: pointer;
@@ -67,14 +66,28 @@ export const BtnNavHome = styled.button`
     display: none;
   }
 `;
+export const BtnNavNotification = styled.button`
+  background-color: rgb(255, 255, 255);
+  border: none;
+  color: black;
+  font-weight: bold;
+  font-size: 1em;
+  width: 10%;
+  cursor: pointer;
+  &:active,
+  :hover {
+    color: grey;
+  }
+  @media (max-width: 450px) {
+    margin-left: 60%;
+  }
+`;
 
 export const BtnNavSend = styled.button`
   background-color: rgb(255, 255, 255);
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 2%;
-  margin-bottom: 2%;
   font-size: 1em;
   width: 10%;
   cursor: pointer;
@@ -95,10 +108,6 @@ export const BtnNavHeart = styled.button`
   background-color: rgb(255, 255, 255);
   border: none;
   color: black;
-  font-weight: bold;
-  margin-top: 57%;
-  margin-bottom: 2%;
-  margin-left: 4%;
   font-size: 1em;
   width: 10%;
   cursor: pointer;
@@ -107,8 +116,7 @@ export const BtnNavHeart = styled.button`
     color: #5b5b5b;
   }
   @media (max-width: 450px) {
-    margin-left: 50%;
-    margin-top: 56%;
+    display: none;
   }
 `;
 
@@ -116,10 +124,6 @@ export const BtnNavSearch = styled.button`
   background-color: rgb(255, 255, 255);
   border: none;
   color: black;
-  font-weight: bold;
-
-  margin-bottom: 2%;
-  margin-top:55%;
   font-size: 1em;
   width: 10%;
   cursor: pointer;
@@ -140,9 +144,7 @@ export const BtnNavAdd = styled.button`
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  font-size: 1.1em;
+  font-size: 1em;
   width: 10%;
   cursor: pointer;
   &:active,
@@ -163,7 +165,6 @@ export const LogInBtn = styled.button`
   border: 3px solid black;
   color: black;
   font-weight: bold;
-  margin-top: 36%;
   margin-right: 2%;
   font-size: 0.8em;
   padding-top: 22%;

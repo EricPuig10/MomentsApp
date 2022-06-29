@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NavBarDivMbl = styled.div`
   display: none;
   @media (max-width: 790px) {
-    background-color: #d05f5f;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -19,11 +19,13 @@ export const NavBarDivMbl = styled.div`
 export const BtnDivMbl = styled.div`
   display: none;
   @media (max-width: 790px) {
-    width: 100%;
+    width: 90%;
     height: 100%;
     background-color: rgb(255, 255, 255);
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: -5%;
   }
 `;
 export const BtnNavMbl = styled.button`
@@ -31,12 +33,30 @@ export const BtnNavMbl = styled.button`
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 2%;
+  /* margin-top: 2%;
   margin-bottom: 2%;
-  margin-left: 4%;
+  margin-left: 4%; */
   font-size: 1.2em;
   width: 10%;
-  margin-right: 7%;
+  /* margin-right: 7%; */
+  &:active,
+  :hover {
+    color: grey;
+    cursor: pointer;
+  }
+`;
+
+export const BtnSearcherMbl = styled.button`
+  background-color: rgb(255, 255, 255);
+  border: none;
+  color: black;
+  font-weight: bold;
+  /* margin-top: 52%;
+  margin-bottom: 2%;
+  margin-left: -20%; */
+  font-size: 1.2em;
+  width: 10%;
+  /* margin-right: 7%; */
   &:active,
   :hover {
     color: grey;
@@ -48,10 +68,10 @@ export const BtnNavHomeMbl = styled.button`
   border: none;
   color: black;
   font-weight: bold;
-  margin-top: 52%;
+  /* margin-top: 52%;
   margin-bottom: 2%;
-  margin-left: -5%;
-  margin-right: 5%;
+  margin-left: -50%;
+  margin-right: 5%; */
   font-size: 1.1em;
   width: 10%;
   &:active,
@@ -64,15 +84,15 @@ export const BtnNavHomeMbl = styled.button`
 export const BtnNavAddMbl = styled.button`
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
-  border: 3px solid grey;
+  border: 3px solid black;
   color: black;
   font-weight: bold;
-  margin-top: 3%;
+  /* margin-top: 3%; */
   font-size: 1em;
-  margin-left: 0%;
-  margin-right: 1%;
-  width: 14%;
-  height: 65%;
+  /* margin-left: 0%;
+  margin-right: 1%; */
+  width: 15%;
+  height: 70%;
   &:active,
   :hover {
     color: grey;
@@ -87,12 +107,13 @@ export const LogInBtnMbl = styled.button`
     border: 3px solid black;
     color: black;
     font-weight: bold;
-    margin-top: 30%;
+    /* margin-top: 30%;
     margin-bottom: 2%;
-    margin-left: 20%;
+    margin-left: 20%; */
+    padding-top: 30%;
+    padding-bottom: 30%;
+    width:122%;
     font-size: 1em;
-    height: 60%;
-    width: 110%;
     &:active,
     :hover {
       color: grey;

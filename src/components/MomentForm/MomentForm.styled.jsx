@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+export const moveDivUpToDown = keyframes`
+from {
+    transform: translateY(-60%)
+  }
+  to {
+    transform: translateY(0%);
+  }
+`;
 
 export const BackGroundForm = styled.div`
   width: 100%;
@@ -19,10 +28,14 @@ export const FormCont = styled.div`
   border-radius: 2vw;
   justify-content: center;
   position: fixed;
-  top: 12%;
   left: 8%;
+  top:12%;
   background-color: white;
   z-index: 300;
+  animation: ${moveDivUpToDown} 2s;
+
+
+
 
   @media (max-width: 450px) {
     width: 90%;

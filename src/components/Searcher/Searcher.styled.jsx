@@ -8,16 +8,17 @@ align-items: center;
 
 export const ContainerMomentsSearcher = styled.div`
   background-color: #ffffff;
-  border: 1px solid #dedede;
+  padding-left: 8%;
   display: flex;
   flex-wrap: wrap;
-  padding-top: 6%;
+  padding-top: 2%;
   width: 80%;
   @media (max-width: 450px) {
-    padding-top: 20%;
+    padding-top: 8%;
     padding-bottom: 25%;
     margin: 0;
     width:100%;
+    margin-right: 4%;
   }
 `;
 
@@ -32,39 +33,43 @@ export const FormContSearcher = styled.div`
   background-color: white;
   margin-top: 6%;
   position:relative;
-  margin-bottom: 2%;
-
-  @media (max-width: 450px) {
+  @media (max-width: 1100px) {
+    margin-top: 10%;
     width: 90%;
-    left: 2%;
-    top: 1%;
-    z-index: 10000;
-    height: 70vh;
-    padding-bottom: 30%;
-    padding-top: 10%;
-    flex-direction: column;
+    border-radius: 10vw;
+  }
+  @media (max-width: 450px) {
+    margin-top: 25%;
+    width: 90%;
+    border-radius: 10vw;
   }
 `;
 
 export const Lupa = styled.div`
   display: flex;
   width: 10%;
-  margin-top: 3.5%;
-  margin-left: 4%;
+  align-items: center;
+    margin-left: 4%;
   color: #838383;
 `;
 
 export const SearchInput = styled.input`
   background-color: #dedede;
-  width: 120%;
+  width: 110%;
   height: 95%;
   padding-left: 2%;
   border: transparent;
   border-radius: 1vw;
   font-size: 1.2em;
- 
+  border-radius: 2vw;
+  z-index: 2;
   &:focus {
     outline: none;
+  }
+  @media (max-width: 450px) {
+    width:70%;
+    margin-left: -2%;
+    border-radius: 10vw;
   }
 `;
 
@@ -81,21 +86,24 @@ left:85%;
 height: 100%;
 align-items: center;
 font-size:1em;
-padding-left: 4%;
+padding-left: 6%;
+cursor: pointer;
+@media (max-width: 450px) {
+    border-top-right-radius:10vw;
+    border-bottom-right-radius:10vw;
+    padding-left: 2%;
+    width:20%;
+    left:80%;
+    padding-left: 5%;
+  }
 
 `
 
-export const ContainerSearchedMoments = styled.div`
-border: 1px solid grey;
-display: flex;
-justify-content: center;
-width:100%;
-margin-top:2%;
-`
 
 export const DivWithoutSearchingResults = styled.div`
 display: flex;
 justify-content: center;
+width: 90%;
 
 `
 
@@ -122,10 +130,11 @@ export const MomentCardDivSearched = styled.div`
     border-color: white;
   }
   @media (max-width: 450px) {
-    width: 100%;
+    width: 20%;
     border-color: white;
     margin: 0;
     margin-bottom: 0%;
+    margin-left:2%;
   }
 `;
 
@@ -134,8 +143,9 @@ export const ImgMomentContSearched = styled.div`
   height: 150px;
   position: relative;
   
+  
   @media (max-width: 450px) {
-    height: 400px;
+    height: 100px;
   }
 `;
 
@@ -145,3 +155,22 @@ export const ImgMomentSearched = styled.img`
   border-radius: 1.5vw; 
   object-fit: cover;
 `;
+
+export const CancelBtn = styled.button`
+  margin-top: 1%;
+  background: transparent;
+  padding: 0.5%;
+  width:5%;
+  position: absolute;
+  top:0%;
+  z-index: 4;
+  left:83%;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  @media (max-width:450px){
+    top:20%;
+    left:75%;
+  }
+
+`

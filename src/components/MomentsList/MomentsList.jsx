@@ -22,8 +22,7 @@ export const MomentsList = () => {
 
   useEffect(() => {
     getAllMoments();
-    // showLikeList();
-    //getSearch();
+    showLikeList();
   }, []);
 
   const getAllMoments = () => {
@@ -92,49 +91,47 @@ export const MomentsList = () => {
     });
   };
 
-  // const setLike = (newMoment) => {
-  //   let moment = newMoment;
+  const setLike = (newMoment) => {
+    let moment = newMoment;
 
-  //   if (moment.liked === false) moment.liked = true;
-  //   else moment.liked = false;
+    if (moment.liked === false) moment.liked = true;
+    else moment.liked = false;
 
-  //   momentsServices.updateMoment(moment.id, moment).then((res) => {
-  //     return getAllMoments();
-  //   });
-
-  //   addToLikeList(moment);
-  // };
-
-  const like = (moment) => {
-    momentsServices.likeMoment(moment, moment.id).then((res) => {
-      if (res) {
-        getAllMoments();
-      }
+    momentsServices.updateMoment(moment.id, moment).then((res) => {
+      return getAllMoments();
     });
+
+    addToLikeList(moment);
   };
 
-  // const addToLikeList = (newMoment) => {
-  //   let moment = newMoment;
-
-  //   if (moment.liked === true) {
-  //     likeList.push(moment);
-  //     showLikeList();
-  //   } else {
-  //     let likeIndex = likeList.findIndex(
-  //       (moment) => moment.id === newMoment.id
-  //     );
-  //     likeList.splice(likeIndex, 1);
-  //     showLikeList();
-  //   }
-  // };
-
-  // const showLikeList = () => {
-  //   setIsLoading(true);
-  //   momentsServices.likeMoment().then((res) => {
-  //     setLikeList(res);
-  //     setIsLoading(false);
+  // const like = (moment) => {
+  //   momentsServices.likeMoment(moment, moment.id).then((res) => {
+  //     if (res) {
+  //       getAllMoments();
+  //     }
   //   });
   // };
+
+  const addToLikeList = (newMoment) => {
+    let moment = newMoment;
+
+    if (moment.liked === true) {
+      likeList.push(moment);
+      showLikeList();
+    } else {
+      let likeIndex = likeList.findIndex(
+        (moment) => moment.id === newMoment.id
+      );
+      likeList.splice(likeIndex, 1);
+      showLikeList();
+    }
+  };
+
+  const showLikeList = () => {
+    momentsServices.getLikedMoments().then((res) => {
+      setLikeList(res);
+    });
+  };
 
   return (
     <section>
@@ -155,13 +152,16 @@ export const MomentsList = () => {
       )}
       <ContainerMoments>
         {moments.map((moment, key) => (
+          
           <MomentCard
+          
             moment={moment}
             key={key}
             deleteMoment={deleteMoment}
             editMoment={editMoment}
-            like={like}
+            setLike={setLike}
           />
+          
         ))}
       </ContainerMoments>
 

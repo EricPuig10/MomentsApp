@@ -37,22 +37,22 @@ export const momentsServices = {
     return moments;
   },
 
-  // getLikedMoments() {
-  //   const moments = axios.get(baseURL + "/moments").then((res) => {
-  //     return res.data.filter((newMoment) => newMoment.liked === true);
-  //   });
-  //   return moments;
-  // },
-
-  likeMoment(moment, id) {
-    let likedMoment = { ...moment, isLiked: !moment.isLiked };
-    const updatedMoment = axios
-      .put(`${baseURL}/moments/${id}`, likedMoment)
-      .then((res) => {
-        return res.data;
-      });
-    return updatedMoment;
+  getLikedMoments() {
+    const moments = axios.get(baseURL + "/moments").then((res) => {
+      return res.data.filter((newMoment) => newMoment.liked === true);
+    });
+    return moments;
   },
+
+  // likeMoment(moment, id) {
+  //   let likedMoment = { ...moment, liked: !moment.liked };
+  //   const updatedMoment = axios
+  //     .put(`${baseURL}/moments/${id}`, likedMoment)
+  //     .then((res) => {
+  //       return res.data;
+  //     });
+  //   return updatedMoment;
+  // },
 
   searchMoment(search) {
     const moments = axios.get(`${baseURL}/moments?search=${search}`).then((res) => {
