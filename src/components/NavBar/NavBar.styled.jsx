@@ -6,16 +6,17 @@ export const NavBarDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-left: 1%;
-  height: 70px;
+  height: 9vh;
   width: 80%;
   padding-left: 10%;
   padding-right: 10%;
   z-index: 10000;
   position: fixed;
   top: 0%;
+  left:0%;
   border: 1px solid #dedede;
   @media (max-width: 450px) {
-    height: 70px;
+    height: 8vh;
   }
 `;
 

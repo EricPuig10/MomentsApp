@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { momentsServices } from "../../services/momentsServices";
 import {
+  BtnDiv,
   ButtonSubmit,
   CancelBtn,
   ContainerMomentsSearcher,
@@ -10,7 +11,6 @@ import {
   FormContSearcher,
   ImgMomentContSearched,
   ImgMomentSearched,
-  Lupa,
   MainSearcher,
   MomentCardDivSearched,
   SearchInput,
@@ -48,7 +48,7 @@ export const Searcher = (props) => {
   const handleChange = (e) => {
     setSearch(e.target.value);
     searchMoment(search);
-    console.log(search);
+    
   };
 
   const handleSubmit = (e) => {
@@ -56,17 +56,14 @@ export const Searcher = (props) => {
     searchMoment(search);
   };
 
-  //   const cancel = () => {
-  //     props.cancelSearch();
-  //   };
-console.log(suggestions)
+  console.log(search);
   return (
     <>
       <MainSearcher>
         <FormContSearcher>
-          <Lupa>
+          <BtnDiv>
             <i className="fa-solid fa-magnifying-glass fa-xl"></i>
-          </Lupa>
+          </BtnDiv>
           <SearchInput
             onChange={handleChange}
             typeof="search"
@@ -75,9 +72,9 @@ console.log(suggestions)
             value={search}
           />
           <CancelBtn onClick={cancelSearch}><i className="fa-solid fa-x fa-s"></i></CancelBtn>
-          <Lupa>
+          <BtnDiv>
             <ButtonSubmit onClick={handleSubmit}>Search</ButtonSubmit>
-          </Lupa>
+          </BtnDiv>
         </FormContSearcher>
         
         <ContainerMomentsSearcher>

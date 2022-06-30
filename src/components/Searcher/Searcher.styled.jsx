@@ -45,7 +45,7 @@ export const FormContSearcher = styled.div`
   }
 `;
 
-export const Lupa = styled.div`
+export const BtnDiv = styled.div`
   display: flex;
   width: 10%;
   align-items: center;

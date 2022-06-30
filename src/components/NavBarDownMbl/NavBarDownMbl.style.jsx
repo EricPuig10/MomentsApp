@@ -7,13 +7,12 @@ export const NavBarDivMbl = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 80px;
+    height: 9vh;
     width: 100%;
     z-index: 10000;
     position: fixed;
-    top: 90.94%;
+    bottom:0%;
     border: 1px solid #dedede;
-    margin-bottom: 3%;
   }
 `;
 export const BtnDivMbl = styled.div`
