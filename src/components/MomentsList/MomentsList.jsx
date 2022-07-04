@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { commentsServices } from "../../services/commentsServices";
 import { momentsServices } from "../../services/momentsServices";
 import { MomentCard } from "../MomentCard/MomentCard";
 import { MomentForm } from "../MomentForm/MomentForm";
@@ -19,6 +20,7 @@ export const MomentsList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [likeList, setLikeList] = useState([]);
   const [isPreview, setIsPreview] = useState(false);
+  const [comments, setComments]  = useState(moments.comments)
 
   useEffect(() => {
     getAllMoments();
@@ -32,6 +34,8 @@ export const MomentsList = () => {
       setIsLoading(false);
     });
   };
+
+  
   const showForm = () => {
     if (isShowForm) setIsShowForm(false);
     else setIsShowForm(true);
@@ -39,6 +43,12 @@ export const MomentsList = () => {
     setIsEditMode(false);
     setIsPreview(false);
   };
+
+  const addNewComment = (data) =>{
+    commentsServices.addComment(data).then((res) =>{
+      setComments([...comments, res]);
+    })
+  }
 
   const addNewMoment = (data) => {
     momentsServices.addMoment(data).then((res) => {
@@ -133,6 +143,8 @@ export const MomentsList = () => {
     });
   };
 
+
+
   return (
     <section>
       <NavBar showForm={showForm} />
@@ -160,6 +172,7 @@ export const MomentsList = () => {
             deleteMoment={deleteMoment}
             editMoment={editMoment}
             setLike={setLike}
+            addNewComment={addNewComment}
           />
           
         ))}

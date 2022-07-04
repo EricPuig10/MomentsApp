@@ -3,7 +3,12 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { momentsServices } from "../../services/momentsServices";
 import {
-  Comments,
+  Comment,
+  CommentImageUser,
+  CommentImageUserDiv,
+  CommentNameUser,
+  CommentNameUserDiv,
+  CommentsDiv,
   Container,
   ContainerCol,
   ContainerRow,
@@ -16,31 +21,29 @@ import {
   TitleOfMoment,
 } from "./MomentInfo.styled";
 import { commentsServices } from "../../services/commentsServices";
-//import commentsData from "../../services/commentsServices.json";
 
 export const MomentInfo = () => {
-  const [moment, setMoment] = useState({});
-  // const [comments, setComments] = useState([]);
+  const [moment, setMoment] = useState({ comments: [] });
+
+
   const { id } = useParams();
 
   useEffect(
     () => {
       getMomentById(id);
-      // getComments();
     }, // eslint-disable-next-line
     []
   );
 
   const getMomentById = (id) => {
-    //setIsLoading(true);
     momentsServices.getMomentById(id).then((res) => {
       setMoment(res);
-      
-      console.log(res);
-      console.log(moment.comments);
-      //setIsLoading(false);
     });
   };
+
+
+
+
 
   // const getComments = () => {
   //   commentsServices.getAllComments().then((res)=> {
@@ -48,7 +51,6 @@ export const MomentInfo = () => {
   //   })
   // }
 
-  console.log(moment.comments); 
   return (
     <div>
       <Container>
@@ -64,17 +66,17 @@ export const MomentInfo = () => {
             </ImageCont>
           </ContainerRow>
           <ContainerCol>
-            <Comments>
-              <TextComment>Comment: Hola</TextComment>
-              <TextComment>
-                Comment2: Hola2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa
-              </TextComment>
-              {/* <p>{moment.comments}</p> */}
-              {/* {moment.comments.map((comment, key) => {
-                return <TextComment key={key}>{comment}</TextComment>;
-              })} */}
-            </Comments>
+            <CommentsDiv>
+              {moment.comments.map((comment, key) => {
+                return (
+                  <Comment>
+                    <CommentImageUser src={moment.userImg} />
+                    <CommentNameUser>{moment.userName}</CommentNameUser>
+                    <TextComment key={key}>{comment.comment}</TextComment>
+                  </Comment>
+                );
+              })}
+            </CommentsDiv>
           </ContainerCol>
         </MomentInfoCont>
       </Container>

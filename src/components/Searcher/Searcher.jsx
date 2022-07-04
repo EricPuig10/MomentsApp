@@ -81,10 +81,10 @@ export const Searcher = (props) => {
           {search === "" ? (
             <>
               {moments.map((moment, key) => (
-                <MomentCardDivSearched>
+                <MomentCardDivSearched key={key}>
                   <ImgMomentContSearched>
-                    <Link key={key} to={`/moment-info/${moment.id}`}>
-                      <ImgMomentSearched key={key} src={moment.imgUrl} />
+                    <Link to={`/moment-info/${moment.id}`}>
+                      <ImgMomentSearched  src={moment.imgUrl} />
                     </Link>
                   </ImgMomentContSearched>
                 </MomentCardDivSearched>
@@ -99,10 +99,10 @@ export const Searcher = (props) => {
               ) : (
                 <>
                   {suggestions.map((moment, key) => (
-                    <MomentCardDivSearched>
+                    <MomentCardDivSearched key={key}>
                       <ImgMomentContSearched>
-                        <Link key={key} to={`/moment-info/${moment.id}`}>
-                          <ImgMomentSearched key={key} src={moment.imgUrl} />
+                        <Link to={`/moment-info/${moment.id}`}>
+                          <ImgMomentSearched  src={moment.imgUrl} />
                         </Link>
                       </ImgMomentContSearched>
                     </MomentCardDivSearched>

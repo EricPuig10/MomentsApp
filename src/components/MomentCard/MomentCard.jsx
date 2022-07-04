@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { commentsServices } from "../../services/commentsServices";
+import { Comment, TextComment } from "../MomentInfo/MomentInfo.styled";
 import {
   AddCommentInput,
   BtnCard,
@@ -10,6 +12,8 @@ import {
   BtnCardLiked,
   BtnCardUnLiked,
   ComentsDiv,
+  CommentsCount,
+  CommentsCountDiv,
   Emote,
   ImageUser,
   ImageUserDiv,
@@ -29,6 +33,8 @@ import {
 
 export const MomentCard = (props) => {
   const [moment, setMoment] = useState(props.moment);
+  const [newComment, setNewComment] = useState(moment.comments.comment)
+  const [momentComments, setMomentComments] = useState (moment.comments)
 
   useEffect(() => {
     setMoment(props.moment);
@@ -41,8 +47,22 @@ export const MomentCard = (props) => {
     } else return element;
   };
 
-  
 
+  
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    props.addNewComment(newComment)
+    }
+
+
+
+  const onInputChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setNewComment({ ...newComment, [name]: value });
+  };
+
+  console.log(newComment)
   return (
     <MomentCardDiv>
       <UserMomentDiv>
@@ -62,16 +82,16 @@ export const MomentCard = (props) => {
         <BtnCardCont>
           <BtnCardContLeft>
             {moment.liked ? (
-              <BtnCardLiked onClick={()=>props.setLike(moment)}>
+              <BtnCardLiked onClick={() => props.setLike(moment)}>
                 <i className="fa-solid fa-heart fa-2xl"></i>
               </BtnCardLiked>
             ) : (
-              <BtnCardUnLiked onClick={()=>props.setLike(moment)}>
+              <BtnCardUnLiked onClick={() => props.setLike(moment)}>
                 <i className="fa-regular fa-heart fa-2xl"></i>
               </BtnCardUnLiked>
             )}
 
-            <BtnCardComment onClick={()=> console.log(moment.liked)}>
+            <BtnCardComment onClick={() => console.log(moment.liked)}>
               <i className="fa-regular fa-comment-dots fa-2xl"></i>
             </BtnCardComment>
 
@@ -92,6 +112,18 @@ export const MomentCard = (props) => {
           </BtnCardContRight>
         </BtnCardCont>
         <TextCont>
+          {momentComments.length > 0 ? (
+            <Link to={`/moment-info/${moment.id}`} style={{ textDecoration: 'none' }}>
+              <CommentsCountDiv>
+                <CommentsCount>
+                  {" "}
+                  Show {momentComments.length} comments
+                </CommentsCount>
+              </CommentsCountDiv>
+            </Link>
+          ) : (
+            <CommentsCount>No comments yet</CommentsCount>
+          )}
           <TitleMoment>{moment.title}</TitleMoment>
           <MomentDescription>{ellipse(moment.description)}</MomentDescription>
         </TextCont>
@@ -101,9 +133,10 @@ export const MomentCard = (props) => {
         <Emote>
           <i className="fa-regular fa-face-grin fa-xl"></i>
         </Emote>
-        <AddCommentInput placeholder="Add a comment..." />
-        <Publish>Publish</Publish>
+        <AddCommentInput onChange={onInputChange} value={newComment} name="comments" placeholder="Add a comment..." />
+        <Publish onClick={onSubmitHandler}>Publish</Publish>
       </ComentsDiv>
     </MomentCardDiv>
   );
 };
+

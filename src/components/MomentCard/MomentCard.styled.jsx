@@ -213,7 +213,7 @@ export const MomentDescription = styled.p`
   margin-top: -3%;
 `;
 
-export const ComentsDiv = styled.div`
+export const ComentsDiv = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -253,4 +253,17 @@ export const Publish = styled.button`
   background-color: transparent;
   border: none;
   text-decoration: none;
+`;
+
+export const CommentsCountDiv  = styled.div`
+width:60%;
+`
+
+export const CommentsCount = styled.p`
+  margin-left: 2%;
+  margin-bottom: 0%;
+  &:link {
+    text-decoration: none;
+  }
+  
 `;

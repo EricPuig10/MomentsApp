@@ -101,14 +101,48 @@ export const DescriptionOfMoment = styled.p`
   }
 `;
 
-export const Comments = styled.div`
+export const CommentsDiv = styled.div`
 display: flex;
 flex-direction: column;
 align-items: flex-start;
+width:100%;
+height: 300px;
+overflow-y: scroll;
 
 
 `;
 
 export const TextComment = styled.p`
 color: black;
+margin-top:1%;
 `
+
+export const Comment = styled.div`
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+width: 100%;
+margin-bottom: 0.5%;
+
+`
+
+export const CommentNameUser = styled.p`
+  font-size: 1.15em;
+  font-weight: bold;
+  margin: 0;
+  margin-right: 2%;
+  margin-top: 0.6%;
+`;
+
+
+export const CommentImageUser = styled.img`
+  width: 4%;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 1%;
+  @media (max-width:450px){
+  width:12%;
+  height:50px;
+  margin-right: 2.5%;
+}
+`;
