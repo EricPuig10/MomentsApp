@@ -108,6 +108,18 @@ align-items: flex-start;
 width:100%;
 height: 300px;
 overflow-y: scroll;
+::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+&::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);        /* color of the tracking area */
+}
+&::-webkit-scrollbar-thumb {
+  background-color: rgb(138, 138, 138);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid rgb(255, 255, 255);  /* creates padding around scroll thumb */
+}
+
 
 
 `;
@@ -115,6 +127,9 @@ overflow-y: scroll;
 export const TextComment = styled.p`
 color: black;
 margin-top:1%;
+@media (max-width:450px){
+margin-top: 2%;
+}
 `
 
 export const Comment = styled.div`
@@ -142,7 +157,7 @@ export const CommentImageUser = styled.img`
   margin-right: 1%;
   @media (max-width:450px){
   width:12%;
-  height:50px;
+  height:40px;
   margin-right: 2.5%;
 }
 `;

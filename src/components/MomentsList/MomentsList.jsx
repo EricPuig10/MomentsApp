@@ -20,7 +20,7 @@ export const MomentsList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [likeList, setLikeList] = useState([]);
   const [isPreview, setIsPreview] = useState(false);
-  const [comments, setComments]  = useState(moments.comments)
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getAllMoments();
@@ -35,7 +35,6 @@ export const MomentsList = () => {
     });
   };
 
-  
   const showForm = () => {
     if (isShowForm) setIsShowForm(false);
     else setIsShowForm(true);
@@ -44,11 +43,16 @@ export const MomentsList = () => {
     setIsPreview(false);
   };
 
-  const addNewComment = (data) =>{
-    commentsServices.addComment(data).then((res) =>{
+  const addNewComment = (data) => {
+    commentsServices.createComment(data).then((res) => {
       setComments([...comments, res]);
-    })
-  }
+    });
+    
+  };
+
+ 
+
+  
 
   const addNewMoment = (data) => {
     momentsServices.addMoment(data).then((res) => {
@@ -143,8 +147,6 @@ export const MomentsList = () => {
     });
   };
 
-
-
   return (
     <section>
       <NavBar showForm={showForm} />
@@ -164,9 +166,7 @@ export const MomentsList = () => {
       )}
       <ContainerMoments>
         {moments.map((moment, key) => (
-          
           <MomentCard
-          
             moment={moment}
             key={key}
             deleteMoment={deleteMoment}
@@ -174,7 +174,6 @@ export const MomentsList = () => {
             setLike={setLike}
             addNewComment={addNewComment}
           />
-          
         ))}
       </ContainerMoments>
 

@@ -222,26 +222,33 @@ export const ComentsDiv = styled.form`
   width: 100%;
   position: absolute;
   top: 91.5%;
+  padding-top: 0.5%;
   @media (max-width: 450px) {
     border-bottom: 2px solid #dedede;
   }
 `;
 
-export const Emote = styled.div`
-  margin-left: 4%;
-`;
+// export const Emote = styled.div`
+//   z-index: 2000;
+//   position: absolute;
+//   top:105%;
+//   left:6%;
+// `;
+// export const EmoteOnly = styled.div`
+//   margin-left: 4%;
+// `;
 
-export const AddCommentInput = styled.input`
-  background-color: #ffffff;
-  width: 50%;
-  height: 60%;
-  padding-left: 2%;
-  border: transparent;
-  font-size: 1em;
-  &:focus {
-    outline: none;
-  }
-`;
+// export const AddCommentInput = styled.input`
+//   background-color: #ffffff;
+//   width: 50%;
+//   height: 60%;
+//   padding-left: 2%;
+//   border: transparent;
+//   font-size: 1em;
+//   &:focus {
+//     outline: none;
+//   }
+// `;
 
 export const Publish = styled.button`
   width: 20%;
@@ -255,9 +262,9 @@ export const Publish = styled.button`
   text-decoration: none;
 `;
 
-export const CommentsCountDiv  = styled.div`
-width:60%;
-`
+export const CommentsCountDiv = styled.div`
+  width: 60%;
+`;
 
 export const CommentsCount = styled.p`
   margin-left: 2%;
@@ -265,5 +272,4 @@ export const CommentsCount = styled.p`
   &:link {
     text-decoration: none;
   }
-  
 `;

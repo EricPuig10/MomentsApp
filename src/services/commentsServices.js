@@ -7,6 +7,12 @@ export const commentsServices = {
     return comments;
   },
 
+  createComment(data){
+    const comment = axios.post(baseURL + "/comments", data).then((res)=> res.data);
+    return comment;
+  }
+
+  /*
   deleteComment(id) {
     const comment = axios.delete(baseURL + "/comments/" + id).then((res) => {
       return res.data;
@@ -52,4 +58,5 @@ export const commentsServices = {
     });
     return comments;
   },
+  */
 };

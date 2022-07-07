@@ -12,6 +12,8 @@ import {
   BtnNavAdd,
   BtnNavSearch,
   BtnNavNotification,
+  UserImg,
+  DivUserImg,
 } from "./NavBar.styled";
 
 export const NavBar = (props) => {
@@ -28,7 +30,7 @@ export const NavBar = (props) => {
           </BtnNavNotification>
           <Link to="/">
             <BtnNavHome>
-            <i className="fa-solid fa-house-chimney fa-2xl"></i>
+              <i className="fa-solid fa-house-chimney fa-2xl"></i>
             </BtnNavHome>
           </Link>
           <Link to="/searcher">
@@ -53,6 +55,9 @@ export const NavBar = (props) => {
             <LogInBtn>
               <i className="fa-regular fa-user fa-2xl"></i>
             </LogInBtn>
+            {/* <DivUserImg>
+              <UserImg src='https://media-exp2.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_400_400/0/1587477510501?e=1661385600&v=beta&t=lxPzlDjTbmYs0vSz-B7ef95gRfs-T5Dxj_RTLrcSO8Y'/>
+            </DivUserImg> */}
           </Link>
         </BtnDiv>
       </NavBarDiv>

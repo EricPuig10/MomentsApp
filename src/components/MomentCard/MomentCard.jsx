@@ -1,9 +1,9 @@
+import EmojiPicker from "emoji-picker-react";
 import { useEffect, useState } from "react";
+import InputEmojiWithRef from "react-input-emoji";
 import { Link } from "react-router-dom";
-import { commentsServices } from "../../services/commentsServices";
-import { Comment, TextComment } from "../MomentInfo/MomentInfo.styled";
 import {
-  AddCommentInput,
+
   BtnCard,
   BtnCardComment,
   BtnCardCont,
@@ -14,7 +14,6 @@ import {
   ComentsDiv,
   CommentsCount,
   CommentsCountDiv,
-  Emote,
   ImageUser,
   ImageUserDiv,
   ImgMoment,
@@ -33,8 +32,10 @@ import {
 
 export const MomentCard = (props) => {
   const [moment, setMoment] = useState(props.moment);
-  const [newComment, setNewComment] = useState(moment.comments.comment)
-  const [momentComments, setMomentComments] = useState (moment.comments)
+  const [momentComments, setMomentComments] = useState(moment.commentsCount);
+  const [comment, setComment] = useState("");
+  const [showEmojis, setShowEmojis] = useState(false);
+
 
   useEffect(() => {
     setMoment(props.moment);
@@ -47,30 +48,42 @@ export const MomentCard = (props) => {
     } else return element;
   };
 
-
-  
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    props.addNewComment(newComment)
-    }
-
-
-
-  const onInputChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setNewComment({ ...newComment, [name]: value });
+  const resetInput = () => {
+    setComment("");
   };
 
-  console.log(newComment)
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    let newComment = { comment: comment, momentId: moment.id };
+    if (newComment.comment.length > 0) {
+      props.addNewComment(newComment);
+      resetInput();
+      setMomentComments(moment.commentsCount++);
+    } else return;
+  };
+
+  // const onInputChange = (e) => {
+  //   setComment(e.target.value);
+  // };
+
+  // const myCallback = (code) => {
+  //   const emoji = String.fromCodePoint(`0x${code}`);
+  //   comment.value += ` ${emoji}`;
+  // };
+
+  // const showEmote = () => {
+  //   setShowEmojis(!showEmojis);
+  // };
+
+  console.log(comment);
   return (
     <MomentCardDiv>
       <UserMomentDiv>
         <ImageUserDiv>
-          <ImageUser src={moment.userImg} />
+          <ImageUser src={moment.creator.userImg} />
         </ImageUserDiv>
         <NameUserDiv>
-          <NameUser>{moment.userName}</NameUser>
+          <NameUser>{moment.creator.userName}</NameUser>
           <UbiMoment>{moment.ubication}</UbiMoment>
         </NameUserDiv>
       </UserMomentDiv>
@@ -112,12 +125,15 @@ export const MomentCard = (props) => {
           </BtnCardContRight>
         </BtnCardCont>
         <TextCont>
-          {momentComments.length > 0 ? (
-            <Link to={`/moment-info/${moment.id}`} style={{ textDecoration: 'none' }}>
+          {moment.commentsCount > 0 ? (
+            <Link
+              to={`/moment-info/${moment.id}`}
+              style={{ textDecoration: "none" }}
+            >
               <CommentsCountDiv>
                 <CommentsCount>
                   {" "}
-                  Show {momentComments.length} comments
+                  Show {moment.commentsCount} comments
                 </CommentsCount>
               </CommentsCountDiv>
             </Link>
@@ -129,14 +145,34 @@ export const MomentCard = (props) => {
         </TextCont>
       </TextMomentCont>
 
-      <ComentsDiv>
-        <Emote>
-          <i className="fa-regular fa-face-grin fa-xl"></i>
-        </Emote>
-        <AddCommentInput onChange={onInputChange} value={newComment} name="comments" placeholder="Add a comment..." />
-        <Publish onClick={onSubmitHandler}>Publish</Publish>
+      <ComentsDiv onSubmit={onSubmitHandler}>
+        {/* {showEmojis ? (
+          <>
+            <EmoteOnly onClick={showEmote}>
+              <i className="fa-regular fa-face-grin fa-xl"></i>
+            </EmoteOnly>
+            <Emote>
+              <EmojiPicker onEmojiClick={myCallback} />
+            </Emote>
+          </>
+        ) : (
+          <EmoteOnly onClick={showEmote}>
+            <i className="fa-regular fa-face-grin fa-xl"></i>
+          </EmoteOnly>
+        )} */}
+        {/* <AddCommentInput
+          onChange={onInputChange}
+          value={comment}
+          name="comment"
+          placeholder="Add a comment..."
+        /> */}
+        <InputEmojiWithRef
+          value={comment}
+          onChange={setComment}
+          placeholder="Type a message"
+        />
+        <Publish type="submit">Publish</Publish>
       </ComentsDiv>
     </MomentCardDiv>
   );
 };
-

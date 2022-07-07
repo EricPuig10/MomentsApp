@@ -33,7 +33,7 @@ export const MomentForm = (props) => {
 
   const resetInputsForm = (e) => {
     setNewMoment({
-      newMovie: {
+      moment: {
         title: "",
         id: "",
         imgUrl: "",

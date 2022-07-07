@@ -69,10 +69,10 @@ export const MomentInfo = () => {
             <CommentsDiv>
               {moment.comments.map((comment, key) => {
                 return (
-                  <Comment>
-                    <CommentImageUser src={moment.userImg} />
-                    <CommentNameUser>{moment.userName}</CommentNameUser>
-                    <TextComment key={key}>{comment.comment}</TextComment>
+                  <Comment key={key}>
+                    <CommentImageUser src={moment.creator.userImg} />
+                    <CommentNameUser>{moment.creator.userName}</CommentNameUser>
+                    <TextComment>{comment.comment}</TextComment>
                   </Comment>
                 );
               })}
