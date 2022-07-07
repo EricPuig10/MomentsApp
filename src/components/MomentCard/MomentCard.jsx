@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import InputEmojiWithRef from "react-input-emoji";
 import { Link } from "react-router-dom";
 import {
-
   BtnCard,
   BtnCardComment,
   BtnCardCont,
@@ -34,9 +33,17 @@ export const MomentCard = (props) => {
   const [moment, setMoment] = useState(props.moment);
   const [momentComments, setMomentComments] = useState(moment.commentsCount);
   const [comment, setComment] = useState("");
-  const [showEmojis, setShowEmojis] = useState(false);
 
+  const handleChange = (e) => {
+    setComment(comment)
+    
+    let charRemain = 40 - e.target.length;
+    console.log(charRemain)
 
+    
+  };
+
+ 
   useEffect(() => {
     setMoment(props.moment);
   }, [props.moment]);
@@ -74,6 +81,8 @@ export const MomentCard = (props) => {
   // const showEmote = () => {
   //   setShowEmojis(!showEmojis);
   // };
+
+
 
   console.log(comment);
   return (
@@ -168,8 +177,10 @@ export const MomentCard = (props) => {
         /> */}
         <InputEmojiWithRef
           value={comment}
+          type="text"
+          maxLength="60"
           onChange={setComment}
-          placeholder="Type a message"
+          placeholder="Type a comment..."
         />
         <Publish type="submit">Publish</Publish>
       </ComentsDiv>

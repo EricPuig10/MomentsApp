@@ -90,7 +90,7 @@ export const UbiMoment = styled.p`
 export const ImageUserDiv = styled.div`
   width: 14%;
   margin: 1%;
-  height: 100%;
+  height: 90%;
   border-radius: 50%;
 `;
 
@@ -198,6 +198,9 @@ export const TextCont = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 10%;
+  @media (max-width:450){
+    margin-bottom: 10%;
+  }
 `;
 export const TitleMoment = styled.h2`
   font-size: 1.2em;
@@ -207,10 +210,11 @@ export const TitleMoment = styled.h2`
 `;
 
 export const MomentDescription = styled.p`
-  font-size: 1em;
+  font-size: 1.1em;
   margin-left: 2%;
   color: black;
   margin-top: -3%;
+
 `;
 
 export const ComentsDiv = styled.form`
@@ -224,8 +228,10 @@ export const ComentsDiv = styled.form`
   top: 91.5%;
   padding-top: 0.5%;
   @media (max-width: 450px) {
+    margin-top: 2%;
     border-bottom: 2px solid #dedede;
   }
+  
 `;
 
 // export const Emote = styled.div`

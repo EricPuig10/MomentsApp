@@ -7,13 +7,10 @@ import {
   BtnDiv,
   LogInBtn,
   BtnNavHome,
-  BtnNavSend,
   BtnNavHeart,
   BtnNavAdd,
   BtnNavSearch,
   BtnNavNotification,
-  UserImg,
-  DivUserImg,
 } from "./NavBar.styled";
 
 export const NavBar = (props) => {

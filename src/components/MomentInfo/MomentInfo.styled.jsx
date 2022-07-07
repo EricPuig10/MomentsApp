@@ -94,7 +94,7 @@ export const TitleOfMoment = styled.h1`
 
 export const DescriptionOfMoment = styled.p`
   color: black;
-  font-size: 1.1em;
+  font-size: 1.2em;
   margin-top: 0%;
   @media (max-width: 450px) {
     margin-top: -8%;
@@ -109,7 +109,7 @@ width:100%;
 height: 300px;
 overflow-y: scroll;
 ::-webkit-scrollbar {
-  width: 12px;               /* width of the entire scrollbar */
+  width: 12px;          /* width of the entire scrollbar */
 }
 &::-webkit-scrollbar-track {
   background: rgb(255, 255, 255);        /* color of the tracking area */
@@ -120,15 +120,14 @@ overflow-y: scroll;
   border: 3px solid rgb(255, 255, 255);  /* creates padding around scroll thumb */
 }
 
-
-
 `;
 
 export const TextComment = styled.p`
 color: black;
-margin-top:1%;
+margin-top: 0.6%;
+font-size: 1.2em;
 @media (max-width:450px){
-margin-top: 2%;
+margin-top: 0.9%;
 }
 `
 
@@ -145,8 +144,11 @@ export const CommentNameUser = styled.p`
   font-size: 1.15em;
   font-weight: bold;
   margin: 0;
-  margin-right: 2%;
+  margin-right: 1.2%;
   margin-top: 0.6%;
+  @media (max-width:450px){
+
+}
 `;
 
 

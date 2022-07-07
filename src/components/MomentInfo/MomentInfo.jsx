@@ -24,7 +24,7 @@ import { commentsServices } from "../../services/commentsServices";
 
 export const MomentInfo = () => {
   const [moment, setMoment] = useState({ comments: [] });
-
+  const [isShorter, setIsShorter] = useState(false);
 
   const { id } = useParams();
 
@@ -41,9 +41,16 @@ export const MomentInfo = () => {
     });
   };
 
+  const ellipse = (element, n) => {
+    if (element.length > n) {
+      element = element.substr(0, n) + "...";
+      return element;
+    } else return element;
+  };
 
-
-
+  const toggleExpand = () => {
+    setIsShorter(!isShorter);
+  };
 
   // const getComments = () => {
   //   commentsServices.getAllComments().then((res)=> {
@@ -69,9 +76,12 @@ export const MomentInfo = () => {
             <CommentsDiv>
               {moment.comments.map((comment, key) => {
                 return (
-                  <Comment key={key}>
+                  <Comment key={key} onClick={toggleExpand}>
                     <CommentImageUser src={moment.creator.userImg} />
-                    <CommentNameUser>{moment.creator.userName}</CommentNameUser>
+                    <CommentNameUser>
+                      {moment.creator.userName}:
+                    </CommentNameUser>
+
                     <TextComment>{comment.comment}</TextComment>
                   </Comment>
                 );
