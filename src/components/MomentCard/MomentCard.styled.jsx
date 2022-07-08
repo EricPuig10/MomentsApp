@@ -11,6 +11,9 @@ export const MomentCardDiv = styled.div`
   margin-bottom: 2%;
   position: relative;
   border-radius: 1.5vw;
+  &:hover{
+  box-shadow: 0 0 10px grey; 
+  }
   @media (max-width: 1020px) {
     width: 25%;
     border-color: white;

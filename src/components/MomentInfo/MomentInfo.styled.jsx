@@ -192,3 +192,27 @@ export const BtnCommentUnLiked = styled.button`
     margin-top: 3%;
   }
 `;
+
+export const CommentsDivInfo = styled.form`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+  width: 100%;
+  margin-bottom: 2%;
+  @media (max-width: 450px) {
+    margin-top: 2%;
+  }
+  
+`;
+
+export const PublishInfo = styled.button`
+  width: 20%;
+  height: 90%;
+  color: #1385ff;
+  font-size: 0.95em;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+`;
