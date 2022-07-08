@@ -10,7 +10,16 @@ export const commentsServices = {
   createComment(data){
     const comment = axios.post(baseURL + "/comments", data).then((res)=> res.data);
     return comment;
-  }
+  },
+
+  updateComment(id, comment) {
+    const updatedComment = axios
+      .put(baseURL + "/comments/" + id, comment)
+      .then((res) => {
+        return res.data;
+      });
+    return updatedComment;
+  },
 
   /*
   deleteComment(id) {

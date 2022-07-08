@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { momentsServices } from "../../services/momentsServices";
 import {
+  BtnCommentLiked,
+  BtnCommentUnLiked,
   Comment,
   CommentImageUser,
-  CommentImageUserDiv,
   CommentNameUser,
-  CommentNameUserDiv,
   CommentsDiv,
   Container,
   ContainerCol,
@@ -22,9 +22,11 @@ import {
 } from "./MomentInfo.styled";
 import { commentsServices } from "../../services/commentsServices";
 
+
 export const MomentInfo = () => {
   const [moment, setMoment] = useState({ comments: [] });
   const [isShorter, setIsShorter] = useState(false);
+  const [comment, setComment] = useState(moment.comment);
 
   const { id } = useParams();
 
@@ -41,22 +43,29 @@ export const MomentInfo = () => {
     });
   };
 
-  const ellipse = (element, n) => {
-    if (element.length > n) {
-      element = element.substr(0, n) + "...";
-      return element;
-    } else return element;
-  };
+  // const ellipse = (element, n) => {
+  //   if (element.length > n) {
+  //     element = element.substr(0, n) + "...";
+  //     return element;
+  //   } else return element;
+  // };
 
   const toggleExpand = () => {
     setIsShorter(!isShorter);
   };
 
-  // const getComments = () => {
-  //   commentsServices.getAllComments().then((res)=> {
-  //     setComments(res);
-  //   })
-  // }
+  const setLike = (newComment) => {
+    let comment = newComment;
+
+    if (comment.liked === false) comment.liked = true;
+    else comment.liked = false;
+
+    commentsServices.updateComment(comment.id, comment).then((res) => {
+      return getMomentById(id);
+    });
+
+  
+  };
 
   return (
     <div>
@@ -83,6 +92,15 @@ export const MomentInfo = () => {
                     </CommentNameUser>
 
                     <TextComment>{comment.comment}</TextComment>
+                    {comment.liked ? (
+                      <BtnCommentLiked onClick={setLike}>
+                        <i className="fa-solid fa-heart fa-lg"></i>
+                      </BtnCommentLiked>
+                    ) : (
+                      <BtnCommentUnLiked onClick={setLike}>
+                        <i className="fa-regular fa-heart fa-lg"></i>
+                      </BtnCommentUnLiked>
+                    )}
                   </Comment>
                 );
               })}

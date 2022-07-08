@@ -34,15 +34,13 @@ export const FormCont = styled.div`
   z-index: 300;
   animation: ${moveDivUpToDown} 2s;
 
-
-
-
   @media (max-width: 450px) {
-    width: 90%;
-    left: 2%;
-    top: 1%;
+    width: 94%;
+    left: 0%;
+    top: 0%;
     z-index: 10000;
-    height: 70vh;
+    height: 81vh;
+    z-index: 20000;
     padding-bottom: 30%;
     padding-top: 10%;
     flex-direction: column;
@@ -82,6 +80,7 @@ export const Input = styled.input`
     margin-bottom: 2%;
     width: 90%;
     font-size: 1.2em;
+    border-radius: 2vw;
   }
 `;
 

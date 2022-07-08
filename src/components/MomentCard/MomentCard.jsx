@@ -1,4 +1,4 @@
-import EmojiPicker from "emoji-picker-react";
+
 import { useEffect, useState } from "react";
 import InputEmojiWithRef from "react-input-emoji";
 import { Link } from "react-router-dom";
@@ -31,17 +31,17 @@ import {
 
 export const MomentCard = (props) => {
   const [moment, setMoment] = useState(props.moment);
-  const [momentComments, setMomentComments] = useState(moment.commentsCount);
+  const [setMomentComments] = useState(moment.commentsCount);
   const [comment, setComment] = useState("");
 
-  const handleChange = (e) => {
-    setComment(comment)
+  // const handleChange = (e) => {
+  //   setComment(comment)
     
-    let charRemain = 40 - e.target.length;
-    console.log(charRemain)
+  //   let charRemain = 40 - e.target.length;
+  //   console.log(charRemain)
 
     
-  };
+  // };
 
  
   useEffect(() => {
@@ -83,8 +83,6 @@ export const MomentCard = (props) => {
   // };
 
 
-
-  console.log(comment);
   return (
     <MomentCardDiv>
       <UserMomentDiv>

@@ -137,7 +137,7 @@ justify-content: flex-start;
 align-items: flex-start;
 width: 100%;
 margin-bottom: 0.5%;
-
+position: relative;
 `
 
 export const CommentNameUser = styled.p`
@@ -162,4 +162,33 @@ export const CommentImageUser = styled.img`
   height:40px;
   margin-right: 2.5%;
 }
+`;
+
+
+export const BtnCommentLiked = styled.button`
+  color: red;
+  background-color: transparent;
+  border: none;
+  margin-top:1%;
+  cursor: pointer;
+  &:hover {
+    color: grey;
+  }
+  @media (max-width:450px){
+    margin-top: 3%;
+  }
+`;
+
+export const BtnCommentUnLiked = styled.button`
+  color: black;
+  background-color: transparent;
+  border: none;
+  margin-top:1.2%;
+  cursor: pointer;
+  &:hover {
+    color: grey;
+  }
+  @media (max-width:450px){
+    margin-top: 3%;
+  }
 `;
