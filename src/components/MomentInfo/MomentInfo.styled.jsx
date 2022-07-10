@@ -21,7 +21,8 @@ export const ContainerCol = styled.div`
 display: flex;
 padding: 1%;
 margin: 0%;
-width:98%;
+margin-left: 3.5%;
+width:97%;
 border-radius: 2vw;
 flex-direction: column;
 align-items: flex-start;
@@ -32,14 +33,14 @@ margin-top:3%;
 export const MomentInfoCont = styled.div`
   padding-top: 25%;
   margin-top: 2%;
-  border-style: solid;
-  border-color: grey;
+  /* border-style: solid;
+  border-color: grey; */
   border-radius: 2vw;
   margin: 2%;
   padding: 2%;
   width: 70%;
   margin-left: 12%;
-  box-shadow: 0 0 15px grey;
+  /* box-shadow: 0 0 15px grey; */
   @media (max-width: 450px) {
     display: flex;
     flex-direction: column;
@@ -65,6 +66,7 @@ export const ImageCont = styled.div`
   width: 50%;
   height: 60vh;
   border-radius: 2vw;
+  margin-left:2%;
   @media (max-width: 450px) {
     width: 100%;
   }
