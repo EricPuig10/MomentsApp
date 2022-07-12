@@ -17,6 +17,7 @@ export const MomentsList = () => {
     description: "",
   });
   const [isEditMode, setIsEditMode] = useState(false);
+  // eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
   const [likeList, setLikeList] = useState([]);
   const [isPreview, setIsPreview] = useState(false);
@@ -47,12 +48,7 @@ export const MomentsList = () => {
     commentsServices.createComment(data).then((res) => {
       setComments([...comments, res]);
     });
-    
   };
-
- 
-
-  
 
   const addNewMoment = (data) => {
     momentsServices.addMoment(data).then((res) => {
@@ -111,20 +107,12 @@ export const MomentsList = () => {
     if (moment.liked === false) moment.liked = true;
     else moment.liked = false;
 
-    momentsServices.updateMoment(moment.id, moment).then((res) => {
+    momentsServices.likeMoment(moment.id, moment).then((res) => {
       return getAllMoments();
     });
 
     addToLikeList(moment);
   };
-
-  // const like = (moment) => {
-  //   momentsServices.likeMoment(moment, moment.id).then((res) => {
-  //     if (res) {
-  //       getAllMoments();
-  //     }
-  //   });
-  // };
 
   const addToLikeList = (newMoment) => {
     let moment = newMoment;

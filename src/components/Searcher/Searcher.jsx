@@ -48,7 +48,6 @@ export const Searcher = (props) => {
   const handleChange = (e) => {
     setSearch(e.target.value);
     searchMoment(search);
-    
   };
 
   const handleSubmit = (e) => {
@@ -71,12 +70,14 @@ export const Searcher = (props) => {
             placeholder="Search"
             value={search}
           />
-          <CancelBtn onClick={cancelSearch}><i className="fa-solid fa-x fa-s"></i></CancelBtn>
+          <CancelBtn onClick={cancelSearch}>
+            <i className="fa-solid fa-x fa-s"></i>
+          </CancelBtn>
           <BtnDiv>
             <ButtonSubmit onClick={handleSubmit}>Search</ButtonSubmit>
           </BtnDiv>
         </FormContSearcher>
-        
+
         <ContainerMomentsSearcher>
           {search === "" ? (
             <>
@@ -84,7 +85,7 @@ export const Searcher = (props) => {
                 <MomentCardDivSearched key={key}>
                   <ImgMomentContSearched>
                     <Link to={`/moment-info/${moment.id}`}>
-                      <ImgMomentSearched  src={moment.imgUrl} />
+                      <ImgMomentSearched src={moment.imgUrl} />
                     </Link>
                   </ImgMomentContSearched>
                 </MomentCardDivSearched>
@@ -102,7 +103,7 @@ export const Searcher = (props) => {
                     <MomentCardDivSearched key={key}>
                       <ImgMomentContSearched>
                         <Link to={`/moment-info/${moment.id}`}>
-                          <ImgMomentSearched  src={moment.imgUrl} />
+                          <ImgMomentSearched src={moment.imgUrl} />
                         </Link>
                       </ImgMomentContSearched>
                     </MomentCardDivSearched>

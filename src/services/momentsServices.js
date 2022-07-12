@@ -30,6 +30,15 @@ export const momentsServices = {
     return updatedMoment;
   },
 
+  likeMoment(id, moment) {
+    const momentToLike = axios
+      .patch(baseURL + "/moments/" + id + "/like", moment)
+      .then((res) => {
+        return res.data;
+      });
+    return momentToLike;
+  },
+
   getMomentById(id) {
     const moments = axios
       .get(baseURL + "/moments/" + id)
@@ -44,20 +53,12 @@ export const momentsServices = {
     return moments;
   },
 
-  // likeMoment(moment, id) {
-  //   let likedMoment = { ...moment, liked: !moment.liked };
-  //   const updatedMoment = axios
-  //     .put(`${baseURL}/moments/${id}`, likedMoment)
-  //     .then((res) => {
-  //       return res.data;
-  //     });
-  //   return updatedMoment;
-  // },
-
   searchMoment(search) {
-    const moments = axios.get(`${baseURL}/moments?search=${search}`).then((res) => {
-      return res.data;
-    });
+    const moments = axios
+      .get(`${baseURL}/moments?search=${search}`)
+      .then((res) => {
+        return res.data;
+      });
     return moments;
   },
 };

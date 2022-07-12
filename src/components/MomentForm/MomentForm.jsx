@@ -15,7 +15,6 @@ export const MomentForm = (props) => {
   const [newMoment, setNewMoment] = useState(props.momentToEdit);
   const [isEditMode] = useState(props.isEditMode);
   const [isPreview, setIsPreview] = useState(props.isPreview);
-  //   console.log(isPreview);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -28,8 +27,6 @@ export const MomentForm = (props) => {
 
     resetInputsForm();
   };
-
-  //Extract to method
 
   const resetInputsForm = (e) => {
     setNewMoment({

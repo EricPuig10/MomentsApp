@@ -17,21 +17,21 @@ export const NavBarDownMbl = (props) => {
         <BtnDivMbl>
           <Link to="/">
             <BtnNavHomeMbl>
-            <i className="fa-solid fa-house-chimney fa-2xl"></i>
+              <i className="fa-solid fa-house-chimney fa-2xl"></i>
             </BtnNavHomeMbl>
           </Link>
           <Link to="/searcher">
-          <BtnSearcherMbl>
-            <i className="fa-solid fa-magnifying-glass fa-2xl"></i>
-          </BtnSearcherMbl>
+            <BtnSearcherMbl>
+              <i className="fa-solid fa-magnifying-glass fa-2xl"></i>
+            </BtnSearcherMbl>
           </Link>
           <BtnNavAddMbl onClick={props.showForm}>
             <i className="fa-solid fa-plus fa-2xl"></i>
           </BtnNavAddMbl>
           <Link to="/liked-moments">
-          <BtnNavMbl>
-            <i className="fa-solid fa-heart fa-2xl"></i>
-          </BtnNavMbl>
+            <BtnNavMbl>
+              <i className="fa-solid fa-heart fa-2xl"></i>
+            </BtnNavMbl>
           </Link>
           <Link to="/log-in">
             <LogInBtnMbl>

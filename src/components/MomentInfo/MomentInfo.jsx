@@ -27,10 +27,9 @@ import InputEmojiWithRef from "react-input-emoji";
 
 export const MomentInfo = () => {
   const [moment, setMoment] = useState({ comments: [] });
-  const [isShorter, setIsShorter] = useState(false);
-  const [comment, setComment] = useState(moment.comment);
+  // eslint-disable-next-line
+  const [comment, setComment] = useState();
   const [text, setText] = useState("");
-  const [momentComments, setMomentComments] = useState(moment.commentsCount);
   const [comments, setComments] = useState([]);
 
   const { id } = useParams();
@@ -38,6 +37,7 @@ export const MomentInfo = () => {
   useEffect(
     () => {
       getMomentById(id);
+      getCommentsByMoment(id);
     }, // eslint-disable-next-line
     []
   );
@@ -50,27 +50,23 @@ export const MomentInfo = () => {
     });
   };
 
-  // const ellipse = (element, n) => {
-  //   if (element.length > n) {
-  //     element = element.substr(0, n) + "...";
-  //     return element;
-  //   } else return element;
-  // };
-
-  // const toggleExpand = () => {
-  //   setIsShorter(!isShorter);
-  // };
-
-  const setLike = (newComment) => {
-    let comment = newComment;
-
-    if (comment.liked === false) comment.liked = true;
-    else comment.liked = false;
-
-    commentsServices.updateComment(comment.id, comment).then((res) => {
-      return getMomentById(id);
+  const getCommentsByMoment = (id) => {
+    commentsServices.getCommentsByMoment(id).then((res) => {
+      setComments(res);
     });
   };
+
+  // const setLike = (newComment) => {
+  //   let com = newComment;
+
+  //   if (com.liked === false) com.liked = true;
+  //   else com.liked = false;
+
+  //   commentsServices.likeComment(com.id, com).then((res) => {
+  //     return getMomentById(id);
+  //   });
+
+  // };
 
   const addNewComment = (data) => {
     commentsServices.createComment(data).then((res) => {
@@ -85,12 +81,13 @@ export const MomentInfo = () => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     let newComment = { comment: text, momentId: moment.id };
-    if (newComment.comment.length > 0) {
-      addNewComment(newComment);
-      getMomentById(id);
-      resetInput();
-      setMomentComments(moment.commentsCount++);
-    } else getMomentById(id);
+    if (text.length < 1) {
+      return;
+    }
+    addNewComment(newComment);
+    getCommentsByMoment(id);
+    resetInput();
+    moment.commentsCount = moment.commentsCount++;
   };
 
   return (
@@ -119,7 +116,7 @@ export const MomentInfo = () => {
               <PublishInfo onClick={onSubmitHandler}>Publish</PublishInfo>
             </CommentsDivInfo>
             <CommentsDiv>
-              {moment.comments.reverse().map((comment, key) => {
+              {comments.map((comment, key) => {
                 return (
                   <Comment key={key}>
                     <CommentImageUser src={moment.creator.userImg} />
@@ -129,11 +126,11 @@ export const MomentInfo = () => {
 
                     <TextComment>{comment.comment}</TextComment>
                     {comment.liked ? (
-                      <BtnCommentLiked onClick={setLike}>
+                      <BtnCommentLiked /*onClick={()=>setLike(comment)}*/>
                         <i className="fa-solid fa-heart fa-lg"></i>
                       </BtnCommentLiked>
                     ) : (
-                      <BtnCommentUnLiked onClick={setLike}>
+                      <BtnCommentUnLiked /*onClick={()=>setLike(comment)}*/>
                         <i className="fa-regular fa-heart fa-lg"></i>
                       </BtnCommentUnLiked>
                     )}

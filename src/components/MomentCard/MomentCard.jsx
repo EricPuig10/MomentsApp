@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import InputEmojiWithRef from "react-input-emoji";
 import { Link } from "react-router-dom";
@@ -31,19 +30,18 @@ import {
 
 export const MomentCard = (props) => {
   const [moment, setMoment] = useState(props.moment);
-  const [setMomentComments] = useState(moment.commentsCount);
+  // eslint-disable-next-line
+  const [momentComments, setMomentComments] = useState(moment.commentsCount);
   const [comment, setComment] = useState("");
 
   // const handleChange = (e) => {
   //   setComment(comment)
-    
+
   //   let charRemain = 40 - e.target.length;
   //   console.log(charRemain)
 
-    
   // };
 
- 
   useEffect(() => {
     setMoment(props.moment);
   }, [props.moment]);
@@ -68,20 +66,6 @@ export const MomentCard = (props) => {
       setMomentComments(moment.commentsCount++);
     } else return;
   };
-
-  // const onInputChange = (e) => {
-  //   setComment(e.target.value);
-  // };
-
-  // const myCallback = (code) => {
-  //   const emoji = String.fromCodePoint(`0x${code}`);
-  //   comment.value += ` ${emoji}`;
-  // };
-
-  // const showEmote = () => {
-  //   setShowEmojis(!showEmojis);
-  // };
-
 
   return (
     <MomentCardDiv>
@@ -153,26 +137,6 @@ export const MomentCard = (props) => {
       </TextMomentCont>
 
       <ComentsDiv onSubmit={onSubmitHandler}>
-        {/* {showEmojis ? (
-          <>
-            <EmoteOnly onClick={showEmote}>
-              <i className="fa-regular fa-face-grin fa-xl"></i>
-            </EmoteOnly>
-            <Emote>
-              <EmojiPicker onEmojiClick={myCallback} />
-            </Emote>
-          </>
-        ) : (
-          <EmoteOnly onClick={showEmote}>
-            <i className="fa-regular fa-face-grin fa-xl"></i>
-          </EmoteOnly>
-        )} */}
-        {/* <AddCommentInput
-          onChange={onInputChange}
-          value={comment}
-          name="comment"
-          placeholder="Add a comment..."
-        /> */}
         <InputEmojiWithRef
           value={comment}
           type="text"
