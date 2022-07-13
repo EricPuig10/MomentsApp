@@ -71,8 +71,11 @@ export const MomentCard = (props) => {
     <MomentCardDiv>
       <UserMomentDiv>
         <ImageUserDiv>
-          <ImageUser src={moment.creator.userImg} />
+          <Link to={`/users/${moment.creator.id}`}>
+            <ImageUser src={moment.creator.userImg} />
+          </Link>
         </ImageUserDiv>
+
         <NameUserDiv>
           <NameUser>{moment.creator.userName}</NameUser>
           <UbiMoment>{moment.ubication}</UbiMoment>

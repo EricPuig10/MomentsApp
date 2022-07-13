@@ -14,8 +14,9 @@ export const ContainerMoments = styled.div`
   padding-top: 6%;
   margin-left: 10%;
   width: 80%;
+  justify-content: center;
   @media (max-width: 450px) {
-    padding-top: 20%;
+    padding-top: 18%;
     padding-bottom: 25%;
     margin: 0;
     width:100%;

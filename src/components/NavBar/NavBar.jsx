@@ -25,6 +25,7 @@ export const NavBar = (props) => {
           <BtnNavNotification>
             <i className="fa-solid fa-bell fa-2xl"></i>
           </BtnNavNotification>
+
           <Link to="/">
             <BtnNavHome>
               <i className="fa-solid fa-house-chimney fa-2xl"></i>

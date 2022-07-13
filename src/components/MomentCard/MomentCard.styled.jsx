@@ -14,12 +14,12 @@ export const MomentCardDiv = styled.div`
   &:hover{
   box-shadow: 0 0 10px grey; 
   }
-  @media (max-width: 1020px) {
-    width: 25%;
+  @media (max-width: 1000px) {
+    width: 40%;
     border-color: white;
   }
-  @media (max-width: 790px) {
-    width: 30%;
+  @media (max-width: 820px) {
+    width: 80%;
     border-color: white;
   }
   @media (max-width: 650px) {

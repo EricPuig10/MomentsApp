@@ -76,6 +76,7 @@ export const MomentForm = (props) => {
               <Input
                 onChange={onInputChange}
                 value={newMoment.imgUrl}
+                aria-label="imgUrl"
                 name="imgUrl"
                 type="url"
                 placeholder="Paste img url here..."
@@ -83,6 +84,7 @@ export const MomentForm = (props) => {
               <Input
                 onChange={onInputChange}
                 value={newMoment.ubication}
+                aria-label="ubication"
                 name="ubication"
                 type="text"
                 placeholder="Ubication..."
@@ -90,6 +92,7 @@ export const MomentForm = (props) => {
               <Input
                 onChange={onInputChange}
                 value={newMoment.title}
+                aria-label="title"
                 name="title"
                 type="text"
                 placeholder="Title..."
@@ -98,23 +101,26 @@ export const MomentForm = (props) => {
                 rows="5"
                 cols="10"
                 onChange={onInputChange}
+                aria-label="description"
                 value={newMoment.description}
                 name="description"
                 placeholder="Add description..."
               ></TextArea>
               {isEditMode ? (
                 <SubmitBtnForm type="submit" className="submitBtn">
-                  <i className="fa-solid fa-pen-to-square fa-xl"></i>
+                  {/* <i className="fa-solid fa-pen-to-square fa-xl"></i> */}
+                  Add
                 </SubmitBtnForm>
               ) : (
-                <SubmitBtnForm type="submit" className="submitBtn">
-                  <i className="fa-solid fa-plus fa-xl"></i>
+                <SubmitBtnForm  type="submit" className="submitBtn">
+                  {/* <i className="fa-solid fa-plus fa-xl"></i> */}
+                  Add
                 </SubmitBtnForm>
               )}
             </InputsCont>
 
             <CloseCont>
-              <CloseBtn onClick={() => props.showForm()}>
+              <CloseBtn  onClick={() => props.showForm()}>
                 <i className="fa-solid fa-xmark fa-xl"></i>
               </CloseBtn>
             </CloseCont>
