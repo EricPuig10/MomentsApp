@@ -61,6 +61,15 @@ export const momentsServices = {
       });
     return moments;
   },
+
+  getMomentsByUser(id) {
+    const moments = axios
+      .get(baseURL + "/moments/" + id + "/users")
+      .then((res) => {
+        return res.data;
+      });
+    return moments;
+  },
 };
 
 //Mockapi

@@ -17,12 +17,5 @@ export const userServices = {
     return user;
   },
 
-  getMomentsByUser(id) {
-    const moments = axios
-      .get(baseURL + "/moments/" + id + "/users")
-      .then((res) => {
-        return res.data;
-      });
-    return moments;
-  },
+
 };

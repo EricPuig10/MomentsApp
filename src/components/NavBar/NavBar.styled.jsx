@@ -13,10 +13,12 @@ export const NavBarDiv = styled.div`
   z-index: 10000;
   position: fixed;
   top: 0%;
-  left:0%;
+  left: 0%;
   border: 1px solid #dedede;
   @media (max-width: 450px) {
     height: 8vh;
+    padding-left: 10%;
+    padding-right: 10%;
   }
 `;
 
@@ -184,20 +186,14 @@ export const LogInBtn = styled.button`
   }
 `;
 export const DivUserImg = styled.button`
-width:20%;
-background-color: transparent;
-border: none;
-
-`
+  width: 20%;
+  background-color: transparent;
+  border: none;
+`;
 
 export const UserImg = styled.img`
-width: 100%;
-height: 100%;
-object-fit: cover;
-border-radius: 50%;
-
-`
-
-
-
-
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+`;

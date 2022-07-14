@@ -20,13 +20,13 @@ import {
   TextInfo,
   TextInfoTitle,
   TopDiv,
-  UserChooseDiv,
-  UserName,
 } from "./Profile.styled";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { NavBarDownMbl } from "../NavBarDownMbl/NavBarDownMbl";
+import { NavBar } from "../NavBar/NavBar";
 import { userServices } from "../../services/userServices";
 import { useEffect, useState } from "react";
+import { momentsServices } from "../../services/momentsServices";
 
 export const Profile = () => {
   const [user, setUser] = useState({});
@@ -34,10 +34,10 @@ export const Profile = () => {
 
   const { id } = useParams();
 
-  useEffect(()=>{
+  useEffect(() => {
     getUser(id);
-    getMomentsByUser(id)
-  },[])
+    getMomentsByUser(id);
+  }, [id]);
 
   const getUser = (id) => {
     userServices.getUsersById(id).then((res) => {
@@ -46,20 +46,19 @@ export const Profile = () => {
   };
 
   const getMomentsByUser = (id) => {
-    userServices.getMomentsByUser(id).then((res) => {
+    momentsServices.getMomentsByUser(id).then((res) => {
       setMoments(res);
     });
   };
 
 
-
-
   return (
     <>
+      <NavBar />
       <MainDiv>
-        <UserChooseDiv>
+        {/* <UserChooseDiv>
           <UserName>{user.userName}</UserName>
-        </UserChooseDiv>
+        </UserChooseDiv> */}
         <TopDiv>
           <ProfileImgDiv>
             <ProfileImg src={user.userImg} />
@@ -118,11 +117,13 @@ export const Profile = () => {
         </ContentTypeDiv>
       </MainDiv>
       <Feed>
-        {moments.map((moment, key)=>{
-            <FeedImgDiv key={key}>
-            <FeedImg src={moment.imgUrl}/>
+        {moments.map((moment, key) => (
+          <FeedImgDiv key={key}>
+            <Link to={`/moment-info/${moment.id}`}>
+              <FeedImg src={moment.imgUrl} />
+            </Link>
           </FeedImgDiv>
-        })}
+        ))}
         {/* <FeedImgDiv>
           <FeedImg src="https://cdn.pixabay.com/photo/2020/02/13/22/36/landscape-4847020_960_720.jpg"/>
         </FeedImgDiv>
