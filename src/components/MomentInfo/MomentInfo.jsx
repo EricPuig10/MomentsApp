@@ -14,6 +14,7 @@ import {
   ContainerCol,
   ContainerRow,
   DescriptionOfMoment,
+  DivHideEmoji,
   ImageCont,
   ImageOfMoment,
   MomentInfoCont,
@@ -24,6 +25,7 @@ import {
 } from "./MomentInfo.styled";
 import { commentsServices } from "../../services/commentsServices";
 import InputEmojiWithRef from "react-input-emoji";
+
 
 export const MomentInfo = () => {
   const [moment, setMoment] = useState({ comments: [] });
@@ -113,6 +115,8 @@ export const MomentInfo = () => {
                 onChange={setText}
                 placeholder="Type a comment..."
               />
+              <DivHideEmoji></DivHideEmoji>
+
               <PublishInfo onClick={onSubmitHandler}>Publish</PublishInfo>
             </CommentsDivInfo>
             <CommentsDiv>

@@ -11,8 +11,8 @@ export const MomentCardDiv = styled.div`
   margin-bottom: 2%;
   position: relative;
   border-radius: 1.5vw;
-  &:hover{
-  box-shadow: 0 0 10px grey; 
+  &:hover {
+    box-shadow: 0 0 10px grey;
   }
   @media (max-width: 1000px) {
     width: 40%;
@@ -186,6 +186,11 @@ export const BtnCardUnLiked = styled.button`
   }
 `;
 
+export const DivLikes = styled.div`
+  margin-left: 4%;
+  margin-right: 2%;
+`;
+
 export const BtnCardComment = styled.button`
   color: #000000;
   background-color: transparent;
@@ -201,7 +206,7 @@ export const TextCont = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 10%;
-  @media (max-width:450){
+  @media (max-width: 450) {
     margin-bottom: 10%;
   }
 `;
@@ -217,7 +222,6 @@ export const MomentDescription = styled.p`
   margin-left: 2%;
   color: black;
   margin-top: -3%;
-
 `;
 
 export const ComentsDiv = styled.form`
@@ -232,9 +236,11 @@ export const ComentsDiv = styled.form`
   padding-top: 0.5%;
   @media (max-width: 450px) {
     margin-top: 2%;
+    border-top: none;
     border-bottom: 2px solid #dedede;
+    padding-top: 0%;
+    padding-bottom: 1%;
   }
-  
 `;
 
 // export const Emote = styled.div`
@@ -247,17 +253,20 @@ export const ComentsDiv = styled.form`
 //   margin-left: 4%;
 // `;
 
-// export const AddCommentInput = styled.input`
-//   background-color: #ffffff;
-//   width: 50%;
-//   height: 60%;
-//   padding-left: 2%;
-//   border: transparent;
-//   font-size: 1em;
-//   &:focus {
-//     outline: none;
-//   }
-// `;
+export const AddCommentInput = styled.input`
+  display: none;
+  @media (max-width: 450px) {
+    display: flex;
+    background-color: #ffffff;
+    width: 50%;
+    padding-left: 2%;
+    border: 2px solid grey;
+    font-size: 1em;
+    &:focus {
+      outline: none;
+    }
+  }
+`;
 
 export const Publish = styled.button`
   width: 20%;

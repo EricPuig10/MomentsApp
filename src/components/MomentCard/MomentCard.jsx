@@ -1,6 +1,8 @@
+
 import { useEffect, useState } from "react";
 import InputEmojiWithRef from "react-input-emoji";
 import { Link } from "react-router-dom";
+import { DivHideEmoji } from "../MomentInfo/MomentInfo.styled";
 import {
   BtnCard,
   BtnCardComment,
@@ -10,8 +12,7 @@ import {
   BtnCardLiked,
   BtnCardUnLiked,
   ComentsDiv,
-  CommentsCount,
-  CommentsCountDiv,
+  DivLikes,
   ImageUser,
   ImageUserDiv,
   ImgMoment,
@@ -67,8 +68,11 @@ export const MomentCard = (props) => {
     } else return;
   };
 
+
+
   return (
     <MomentCardDiv>
+      
       <UserMomentDiv>
         <ImageUserDiv>
           <Link to={`/users/${moment.creator.id}`}>
@@ -82,31 +86,45 @@ export const MomentCard = (props) => {
         </NameUserDiv>
       </UserMomentDiv>
       <ImgMomentCont>
-        <ImgMoment src={moment.imgUrl} />
+        <Link to={`/moment-info/${moment.id}`}>
+          <ImgMoment src={moment.imgUrl} />
+        </Link>
       </ImgMomentCont>
 
       <TextMomentCont>
         <BtnCardCont>
           <BtnCardContLeft>
             {moment.liked ? (
-              <BtnCardLiked onClick={() => props.setLike(moment)}>
-                <i className="fa-solid fa-heart fa-2xl"></i>
-              </BtnCardLiked>
+              <>
+                <DivLikes>{moment.likes}</DivLikes>
+                <BtnCardLiked onClick={() => props.setLike(moment)}>
+                  <i className="fa-solid fa-heart fa-2xl"></i>
+                </BtnCardLiked>
+              </>
             ) : (
-              <BtnCardUnLiked onClick={() => props.setLike(moment)}>
-                <i className="fa-regular fa-heart fa-2xl"></i>
-              </BtnCardUnLiked>
+              <>
+                <DivLikes>{moment.likes}</DivLikes>
+                <BtnCardUnLiked onClick={() => props.setLike(moment)}>
+                  <i className="fa-regular fa-heart fa-2xl"></i>
+                </BtnCardUnLiked>
+              </>
             )}
 
-            <BtnCardComment onClick={() => console.log(moment.liked)}>
-              <i className="fa-regular fa-comment-dots fa-2xl"></i>
-            </BtnCardComment>
+            <DivLikes>{moment.commentsCount}</DivLikes>
+            <Link
+              to={`/moment-info/${moment.id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <BtnCardComment onClick={() => console.log(moment.liked)}>
+                <i className="fa-regular fa-comment-dots fa-2xl"></i>
+              </BtnCardComment>
+            </Link>
 
-            <Link to={`/moment-info/${moment.id}`}>
+            {/* <Link to={`/moment-info/${moment.id}`}>
               <BtnCard>
                 <i className="fa-regular fa-eye fa-2xl"></i>
               </BtnCard>
-            </Link>
+            </Link> */}
           </BtnCardContLeft>
 
           <BtnCardContRight>
@@ -119,21 +137,11 @@ export const MomentCard = (props) => {
           </BtnCardContRight>
         </BtnCardCont>
         <TextCont>
-          {moment.commentsCount > 0 ? (
-            <Link
-              to={`/moment-info/${moment.id}`}
-              style={{ textDecoration: "none" }}
-            >
-              <CommentsCountDiv>
-                <CommentsCount>
-                  {" "}
-                  Show {moment.commentsCount} comments
-                </CommentsCount>
-              </CommentsCountDiv>
-            </Link>
-          ) : (
-            <CommentsCount>No comments yet</CommentsCount>
-          )}
+          <Link
+            to={`/moment-info/${moment.id}`}
+            style={{ textDecoration: "none" }}
+          ></Link>
+
           <TitleMoment>{moment.title}</TitleMoment>
           <MomentDescription>{ellipse(moment.description)}</MomentDescription>
         </TextCont>
@@ -141,12 +149,14 @@ export const MomentCard = (props) => {
 
       <ComentsDiv onSubmit={onSubmitHandler}>
         <InputEmojiWithRef
+
           value={comment}
           type="text"
           maxLength="60"
           onChange={setComment}
           placeholder="Type a comment..."
         />
+        <DivHideEmoji></DivHideEmoji>
         <Publish type="submit">Publish</Publish>
       </ComentsDiv>
     </MomentCardDiv>

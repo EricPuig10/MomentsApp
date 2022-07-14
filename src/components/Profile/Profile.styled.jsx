@@ -337,7 +337,7 @@ export const Feed = styled.div`
 
 export const FeedImgDiv = styled.div`
   /* background-color: yellow; */
-  height: 200px;
+  height: 300px;
   width: 32.9%;
   margin: 0.2%;
   @media (max-width: 450px) {

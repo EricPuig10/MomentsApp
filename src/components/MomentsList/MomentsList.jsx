@@ -104,8 +104,13 @@ export const MomentsList = () => {
   const setLike = (newMoment) => {
     let moment = newMoment;
 
-    if (moment.liked === false) moment.liked = true;
-    else moment.liked = false;
+    if (moment.liked === false) {
+      moment.liked = true;
+      moment.likes = moment.likes++;
+    } else {
+      moment.liked = false;
+      moment.likes = moment.likes--;
+    }
 
     momentsServices.likeMoment(moment.id, moment).then((res) => {
       return getAllMoments();

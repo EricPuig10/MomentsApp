@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding-top: 5%;
   @media (max-width: 450px) {
-    padding-top: 22%;
+    padding-top: 20%;
   }
 `;
 
@@ -11,24 +11,23 @@ export const ContainerRow = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  
+
   @media (max-width: 450px) {
     flex-direction: column;
   }
 `;
 
 export const ContainerCol = styled.div`
-display: flex;
-padding: 1%;
-margin: 0%;
-margin-left: 3.5%;
-width:97%;
-border-radius: 2vw;
-flex-direction: column;
-align-items: flex-start;
-border: 2px solid grey;
-margin-top:3%;
-`
+  display: flex;
+  padding: 1%;
+  margin: 0%;
+  width: 97%;
+  border-radius: 2vw;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 2px solid grey;
+  margin-top: 3%;
+`;
 
 export const MomentInfoCont = styled.div`
   padding-top: 25%;
@@ -66,9 +65,10 @@ export const ImageCont = styled.div`
   width: 50%;
   height: 60vh;
   border-radius: 2vw;
-  margin-left:2%;
+  margin-left: 2%;
   @media (max-width: 450px) {
     width: 100%;
+    margin-left: 0%;
   }
 `;
 
@@ -104,43 +104,42 @@ export const DescriptionOfMoment = styled.p`
 `;
 
 export const CommentsDiv = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-width:100%;
-height: 300px;
-overflow-y: scroll;
-::-webkit-scrollbar {
-  width: 12px;          /* width of the entire scrollbar */
-}
-&::-webkit-scrollbar-track {
-  background: rgb(255, 255, 255);        /* color of the tracking area */
-}
-&::-webkit-scrollbar-thumb {
-  background-color: rgb(138, 138, 138);    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid rgb(255, 255, 255);  /* creates padding around scroll thumb */
-}
-
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 300px;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 12px; /* width of the entire scrollbar */
+  }
+  &::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255); /* color of the tracking area */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(138, 138, 138); /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid rgb(255, 255, 255); /* creates padding around scroll thumb */
+  }
 `;
 
 export const TextComment = styled.p`
-color: black;
-margin-top: 0.6%;
-font-size: 1.2em;
-@media (max-width:450px){
-margin-top: 0.9%;
-}
-`
+  color: black;
+  margin-top: 0.6%;
+  font-size: 1.2em;
+  @media (max-width: 450px) {
+    margin-top: 0.9%;
+  }
+`;
 
 export const Comment = styled.div`
-display: flex;
-justify-content: flex-start;
-align-items: flex-start;
-width: 100%;
-margin-bottom: 0.5%;
-position: relative;
-`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 0.5%;
+  position: relative;
+`;
 
 export const CommentNameUser = styled.p`
   font-size: 1.15em;
@@ -148,35 +147,32 @@ export const CommentNameUser = styled.p`
   margin: 0;
   margin-right: 1.2%;
   margin-top: 0.6%;
-  @media (max-width:450px){
-
-}
+  @media (max-width: 450px) {
+  }
 `;
-
 
 export const CommentImageUser = styled.img`
   width: 4%;
   height: 45px;
   border-radius: 50%;
   margin-right: 1%;
-  @media (max-width:450px){
-  width:12%;
-  height:40px;
-  margin-right: 2.5%;
-}
+  @media (max-width: 450px) {
+    width: 12%;
+    height: 40px;
+    margin-right: 2.5%;
+  }
 `;
-
 
 export const BtnCommentLiked = styled.button`
   color: red;
   background-color: transparent;
   border: none;
-  margin-top:1%;
+  margin-top: 1%;
   cursor: pointer;
   &:hover {
     color: grey;
   }
-  @media (max-width:450px){
+  @media (max-width: 450px) {
     margin-top: 3%;
   }
 `;
@@ -185,12 +181,12 @@ export const BtnCommentUnLiked = styled.button`
   color: black;
   background-color: transparent;
   border: none;
-  margin-top:1.2%;
+  margin-top: 1.2%;
   cursor: pointer;
   &:hover {
     color: grey;
   }
-  @media (max-width:450px){
+  @media (max-width: 450px) {
     margin-top: 3%;
   }
 `;
@@ -204,8 +200,20 @@ export const CommentsDivInfo = styled.form`
   margin-bottom: 2%;
   @media (max-width: 450px) {
     margin-top: 2%;
+    position: relative;
   }
-  
+`;
+
+export const DivHideEmoji = styled.div`
+  display: none;
+  @media (max-width: 450px) {
+    background-color: #ffffff;
+    display: flex;
+    width: 35px;
+    height: 50px;
+    position: absolute;
+    left: 70%;
+  }
 `;
 
 export const PublishInfo = styled.button`
