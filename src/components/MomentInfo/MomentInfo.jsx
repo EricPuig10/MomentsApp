@@ -44,6 +44,8 @@ export const MomentInfo = () => {
     []
   );
 
+
+
   console.log(text);
 
   const getMomentById = (id) => {
@@ -87,6 +89,7 @@ export const MomentInfo = () => {
       return;
     }
     addNewComment(newComment);
+    getMomentById(id)
     getCommentsByMoment(id);
     resetInput();
     moment.commentsCount = moment.commentsCount++;

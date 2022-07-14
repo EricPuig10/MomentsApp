@@ -108,13 +108,11 @@ export const MomentForm = (props) => {
               ></TextArea>
               {isEditMode ? (
                 <SubmitBtnForm type="submit" className="submitBtn">
-                  {/* <i className="fa-solid fa-pen-to-square fa-xl"></i> */}
-                  Add
+                  <i className="fa-solid fa-pen-to-square fa-xl"></i>
                 </SubmitBtnForm>
               ) : (
                 <SubmitBtnForm  type="submit" className="submitBtn">
-                  {/* <i className="fa-solid fa-plus fa-xl"></i> */}
-                  Add
+                  <i className="fa-solid fa-plus fa-xl"></i>
                 </SubmitBtnForm>
               )}
             </InputsCont>

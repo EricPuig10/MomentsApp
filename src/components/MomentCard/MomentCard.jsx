@@ -149,7 +149,6 @@ export const MomentCard = (props) => {
 
       <ComentsDiv onSubmit={onSubmitHandler}>
         <InputEmojiWithRef
-
           value={comment}
           type="text"
           maxLength="60"

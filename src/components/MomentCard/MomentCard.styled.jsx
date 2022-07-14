@@ -233,7 +233,6 @@ export const ComentsDiv = styled.form`
   width: 100%;
   position: absolute;
   top: 91.5%;
-  padding-top: 0.5%;
   @media (max-width: 450px) {
     margin-top: 2%;
     border-top: none;
