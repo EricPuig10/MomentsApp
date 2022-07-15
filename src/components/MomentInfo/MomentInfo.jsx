@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { momentsServices } from "../../services/momentsServices";
 import {
@@ -126,7 +126,9 @@ export const MomentInfo = () => {
               {comments.map((comment, key) => {
                 return (
                   <Comment key={key}>
+                    <Link to={`/users/${moment.creator.id}`}>
                     <CommentImageUser src={moment.creator.userImg} />
+                    </Link>
                     <CommentNameUser>
                       {moment.creator.userName}:
                     </CommentNameUser>

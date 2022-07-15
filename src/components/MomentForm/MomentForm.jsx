@@ -32,7 +32,7 @@ export const MomentForm = (props) => {
     setNewMoment({
       moment: {
         title: "",
-        id: "",
+        // id: "",
         imgUrl: "",
         description: "",
       },

@@ -147,17 +147,19 @@ export const CommentNameUser = styled.p`
   margin: 0;
   margin-right: 1.2%;
   margin-top: 0.6%;
+  margin-left: 1%;
   @media (max-width: 450px) {
+    margin-left: 3%;
   }
 `;
 
 export const CommentImageUser = styled.img`
-  width: 4%;
-  height: 45px;
+  width: 95%;
+  height: 40px;
   border-radius: 50%;
   margin-right: 1%;
   @media (max-width: 450px) {
-    width: 12%;
+    width: 50px;
     height: 40px;
     margin-right: 2.5%;
   }
