@@ -17,5 +17,10 @@ export const userServices = {
     return user;
   },
 
+  logUser(req) {
+    const logged = axios.put(`${baseURL}/users/log`, req).then(res => res.data);
+    return logged;
+}
+
 
 };

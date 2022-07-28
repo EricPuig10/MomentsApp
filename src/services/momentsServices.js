@@ -8,15 +8,17 @@ export const momentsServices = {
   },
 
   deleteMoment(id) {
-    const moment = axios.delete(baseURL + "/moments/" + id).then((res) => {
-      return res.data;
-    });
+    const moment = axios
+      .delete(baseURL + "/moments/" + id, { data: { id: "1" } })
+      .then((res) => {
+        return res.data;
+      });
     return moment;
   },
 
   addMoment(data) {
     const moments = axios
-      .post(baseURL + "/moments", data)
+      .post(baseURL + "/moments", { ...data, userId: 1 })
       .then((res) => res.data);
     return moments;
   },
@@ -30,6 +32,7 @@ export const momentsServices = {
     return updatedMoment;
   },
 
+  /*
   likeMoment(id, moment) {
     const momentToLike = axios
       .patch(baseURL + "/moments/" + id + "/like", moment)
@@ -37,7 +40,7 @@ export const momentsServices = {
         return res.data;
       });
     return momentToLike;
-  },
+  },*/
 
   getMomentById(id) {
     const moments = axios
@@ -48,7 +51,7 @@ export const momentsServices = {
 
   getLikedMoments() {
     const moments = axios.get(baseURL + "/moments").then((res) => {
-      return res.data.filter((newMoment) => newMoment.liked === true);
+      return res.data.filter((newMoment) => newMoment.faved === true);
     });
     return moments;
   },
@@ -68,6 +71,14 @@ export const momentsServices = {
       .then((res) => {
         return res.data;
       });
+    return moments;
+  },
+
+  getUserLikes() {
+    const moments = axios.get(`${baseURL}/fav-moments`).then((res) => {
+      return res.data;
+    });
+
     return moments;
   },
 };

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MomentCardDiv = styled.div`
   border-color: #dedede;
   border-style: solid;
-  display: flex;
+  display: flex;  
   width: 26%;
   flex-direction: column;
   margin: 1%;

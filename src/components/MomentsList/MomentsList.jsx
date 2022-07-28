@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { commentsServices } from "../../services/commentsServices";
+import { favServices } from "../../services/favServices";
 import { momentsServices } from "../../services/momentsServices";
 import { MomentCard } from "../MomentCard/MomentCard";
 import { MomentForm } from "../MomentForm/MomentForm";
@@ -22,10 +23,11 @@ export const MomentsList = () => {
   const [likeList, setLikeList] = useState([]);
   const [isPreview, setIsPreview] = useState(false);
   const [comments, setComments] = useState([]);
+  const [favs, setFavs] = useState([]);
 
   useEffect(() => {
     getAllMoments();
-    showLikeList();
+    //showLikeList();
   }, []);
 
   const getAllMoments = () => {
@@ -101,44 +103,15 @@ export const MomentsList = () => {
     });
   };
 
-  const setLike = (newMoment) => {
-    let moment = newMoment;
-
-    if (moment.liked === false) {
-      moment.liked = true;
-      moment.likes = moment.likes++;
-    } else {
-      moment.liked = false;
-      moment.likes = moment.likes--;
-    }
-
-    momentsServices.likeMoment(moment.id, moment).then((res) => {
-      return getAllMoments();
+  const fav = (data) => {
+    favServices.fav(data.id).then((res) => {
+      if (!res) return;
+      getAllMoments();
     });
-
-    addToLikeList(moment);
+    getAllMoments();
   };
 
-  const addToLikeList = (newMoment) => {
-    let moment = newMoment;
 
-    if (moment.liked === true) {
-      likeList.push(moment);
-      showLikeList();
-    } else {
-      let likeIndex = likeList.findIndex(
-        (moment) => moment.id === newMoment.id
-      );
-      likeList.splice(likeIndex, 1);
-      showLikeList();
-    }
-  };
-
-  const showLikeList = () => {
-    momentsServices.getLikedMoments().then((res) => {
-      setLikeList(res);
-    });
-  };
 
   return (
     <section>
@@ -164,7 +137,7 @@ export const MomentsList = () => {
             key={key}
             deleteMoment={deleteMoment}
             editMoment={editMoment}
-            setLike={setLike}
+            fav={fav}
             addNewComment={addNewComment}
           />
         ))}

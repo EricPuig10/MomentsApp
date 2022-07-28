@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ContainerMoments } from "../MomentsList/MomentsList.styled";
 import { momentsServices } from "../../services/momentsServices";
 import { MomentCard } from "../MomentCard/MomentCard";
+import { favServices } from "../../services/favServices";
 
 export const MomentsLikedList = (props) => {
   const [likeList, setLikeList] = useState([]);
@@ -11,56 +12,26 @@ export const MomentsLikedList = (props) => {
   }, []);
 
   const getAllLikedMoments = () => {
-    momentsServices.getLikedMoments().then((res) => {
+    momentsServices.getUserLikes().then((res) => {
       setLikeList(res);
     });
   };
 
-  const setLike = (newMoment) => {
-    let moment = newMoment;
-
-    if (moment.liked === false) {
-      moment.liked = true;
-      moment.likes = moment.likes++;
-    } else {
-      moment.liked = false;
-      moment.likes = moment.likes--;
-    }
-
-    momentsServices.likeMoment(moment.id, moment).then((res) => {
-      return getAllLikedMoments();
+  const fav = (data) => {
+    favServices.fav(data.id).then((res) => {
+      if (!res) getAllLikedMoments();
+      getAllLikedMoments();
     });
-
-    addToLikeList(moment);
-  };
-
-  const addToLikeList = (newMoment) => {
-    let moment = newMoment;
-
-    if (moment.liked === true) {
-      likeList.push(moment);
-      showLikeList();
-    } else {
-      let likeIndex = likeList.findIndex(
-        (moment) => moment.id === newMoment.id
-      );
-      likeList.splice(likeIndex, 1);
-      showLikeList();
-    }
+    getAllLikedMoments();
   };
 
   
-  const showLikeList = () => {
-    momentsServices.getLikedMoments().then((res) => {
-      setLikeList(res);
-    });
-  };
 
   return (
     <>
       <ContainerMoments>
         {likeList.map((moment, key) => (
-          <MomentCard key={key} moment={moment} setLike={setLike} />
+          <MomentCard key={key} moment={moment} fav={fav}/>
         ))}
       </ContainerMoments>
     </>

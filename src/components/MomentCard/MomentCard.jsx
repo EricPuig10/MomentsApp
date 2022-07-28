@@ -68,8 +68,9 @@ export const MomentCard = (props) => {
     } else return;
   };
 
+ 
 
-
+  
   return (
     <MomentCardDiv>
       
@@ -94,17 +95,18 @@ export const MomentCard = (props) => {
       <TextMomentCont>
         <BtnCardCont>
           <BtnCardContLeft>
-            {moment.liked ? (
+            {moment.faved ? (
               <>
-                <DivLikes>{moment.likes}</DivLikes>
-                <BtnCardLiked onClick={() => props.setLike(moment)}>
+                <DivLikes>{moment.favsCount}</DivLikes>
+          
+                <BtnCardLiked onClick={() => props.fav(moment)}>
                   <i className="fa-solid fa-heart fa-2xl"></i>
                 </BtnCardLiked>
               </>
             ) : (
               <>
-                <DivLikes>{moment.likes}</DivLikes>
-                <BtnCardUnLiked onClick={() => props.setLike(moment)}>
+                <DivLikes>{moment.favsCount}</DivLikes>
+                <BtnCardUnLiked onClick={() => props.fav(moment)}>
                   <i className="fa-regular fa-heart fa-2xl"></i>
                 </BtnCardUnLiked>
               </>
@@ -115,7 +117,7 @@ export const MomentCard = (props) => {
               to={`/moment-info/${moment.id}`}
               style={{ textDecoration: "none" }}
             >
-              <BtnCardComment onClick={() => console.log(moment.liked)}>
+              <BtnCardComment>
                 <i className="fa-regular fa-comment-dots fa-2xl"></i>
               </BtnCardComment>
             </Link>

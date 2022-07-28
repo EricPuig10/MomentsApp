@@ -25,6 +25,7 @@ import {
 } from "./MomentInfo.styled";
 import { commentsServices } from "../../services/commentsServices";
 import InputEmojiWithRef from "react-input-emoji";
+import { favServices } from "../../services/favServices";
 
 
 export const MomentInfo = () => {
@@ -60,17 +61,13 @@ export const MomentInfo = () => {
     });
   };
 
-  // const setLike = (newComment) => {
-  //   let com = newComment;
-
-  //   if (com.liked === false) com.liked = true;
-  //   else com.liked = false;
-
-  //   commentsServices.likeComment(com.id, com).then((res) => {
-  //     return getMomentById(id);
-  //   });
-
-  // };
+  const favComment = (comment) => {
+    favServices.favComment(comment.id).then((res) => {
+      if (!res) return;
+      getCommentsByMoment(id);
+    });
+    getCommentsByMoment(id);
+  };
 
   const addNewComment = (data) => {
     commentsServices.createComment(data).then((res) => {
@@ -126,20 +123,20 @@ export const MomentInfo = () => {
               {comments.map((comment, key) => {
                 return (
                   <Comment key={key}>
-                    <Link to={`/users/${moment.creator.id}`}>
-                    <CommentImageUser src={moment.creator.userImg} />
+                    <Link to={`/users/${comment.creator.id}`}>
+                    <CommentImageUser src={comment.creator.userImg} />
                     </Link>
                     <CommentNameUser>
-                      {moment.creator.userName}:
+                      {comment.creator.userName}:
                     </CommentNameUser>
 
                     <TextComment>{comment.comment}</TextComment>
-                    {comment.liked ? (
-                      <BtnCommentLiked /*onClick={()=>setLike(comment)}*/>
+                    {comment.faved ? (
+                      <BtnCommentLiked onClick={()=>favComment(comment)}>
                         <i className="fa-solid fa-heart fa-lg"></i>
                       </BtnCommentLiked>
                     ) : (
-                      <BtnCommentUnLiked /*onClick={()=>setLike(comment)}*/>
+                      <BtnCommentUnLiked onClick={()=>favComment(comment)}>
                         <i className="fa-regular fa-heart fa-lg"></i>
                       </BtnCommentUnLiked>
                     )}
