@@ -49,7 +49,7 @@ export const NavBar = (props) => {
             </BtnNavHeart>
           </Link>
 
-          <Link to="/log-in">
+          <Link to="/auth/signin">
             <LogInBtn>
               <i className="fa-regular fa-user fa-2xl"></i>
             </LogInBtn>

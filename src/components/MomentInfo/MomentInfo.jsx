@@ -61,8 +61,8 @@ export const MomentInfo = () => {
     });
   };
 
-  const favComment = (comment) => {
-    favServices.favComment(comment.id).then((res) => {
+  const favComment = (data) => {
+    favServices.favComment(data.id).then((res) => {
       if (!res) return;
       getCommentsByMoment(id);
     });

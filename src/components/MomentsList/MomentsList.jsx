@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { commentsServices } from "../../services/commentsServices";
 import { favServices } from "../../services/favServices";
 import { momentsServices } from "../../services/momentsServices";
+import { UserContext } from "../../UserContext";
+import { Modal } from "../Modals/Modal";
 import { MomentCard } from "../MomentCard/MomentCard";
 import { MomentForm } from "../MomentForm/MomentForm";
 import { NavBar } from "../NavBar/NavBar";
@@ -20,10 +22,11 @@ export const MomentsList = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   // eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
-  const [likeList, setLikeList] = useState([]);
   const [isPreview, setIsPreview] = useState(false);
   const [comments, setComments] = useState([]);
-  const [favs, setFavs] = useState([]);
+  const [msg, setMsg] = useState();
+
+  const missatge = useContext(UserContext)
 
   useEffect(() => {
     getAllMoments();
@@ -36,6 +39,14 @@ export const MomentsList = () => {
       setMoments(res);
       setIsLoading(false);
     });
+  };
+
+  const openModal = (msg) => {
+    setMsg(msg);
+  };
+
+  const closeModal = () => {
+    setMsg();
   };
 
   const showForm = () => {
@@ -69,7 +80,12 @@ export const MomentsList = () => {
     console.log(filterMoments);
 
     momentsServices.deleteMoment(parseInt(id)).then((res) => {
-      if (res.id === id) setMoments(filterMoments);
+      if (!res) return;
+      if (res.error) {
+        openModal(res.error);
+
+        return;
+      }
       setMoments(filterMoments);
     });
   };
@@ -83,14 +99,16 @@ export const MomentsList = () => {
   };
 
   const updateMoment = (newMoment) => {
-    momentsServices.updateMoment(newMoment.id, newMoment).then((res) => {
-      let momentToEdit = moments.map((moment) =>
-        moment.id === newMoment.id ? newMoment : moment
-      );
-
-      setMoments(momentToEdit);
+    momentsServices.updateMoment(newMoment).then((res) => {
+      // let momentToEdit = moments.map((moment) =>
+      //   moment.id === newMoment.id ? newMoment : moment
+      // );
+      if (!res) return;
+      setMomentToEdit();
+      getAllMoments();
     });
     showForm();
+    getAllMoments();
   };
 
   const resetInputsForm = (e) => {
@@ -111,12 +129,10 @@ export const MomentsList = () => {
     getAllMoments();
   };
 
-
-
   return (
     <section>
       <NavBar showForm={showForm} />
-
+      {missatge}
       {isShowForm ? (
         <MomentForm
           addNewMoment={addNewMoment}
@@ -142,6 +158,7 @@ export const MomentsList = () => {
           />
         ))}
       </ContainerMoments>
+      {msg !== undefined ? <Modal msg={msg} closeModal={closeModal} /> : null}
 
       <NavBarDownMbl showForm={showForm} />
     </section>

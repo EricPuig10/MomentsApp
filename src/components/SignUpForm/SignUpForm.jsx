@@ -2,63 +2,91 @@ import { NavBar } from "../../components/NavBar/NavBar";
 
 import { BtnLogIn, Container, InputsLogIn, Label } from "./SignUpForm.styled";
 import { NavBarDownMbl } from "../NavBarDownMbl/NavBarDownMbl";
-import { userServices } from "../../services/userServices";
 import { useState } from "react";
+import { loginServices } from "../../services/loginServices";
+import { Modal } from "../Modals/Modal";
 
 export const SignUpForm = () => {
-  const [users, setUsers] = useState([]);
-  const [newUser, setNewUser] = useState({
-    name: "",
-    userName: "",
-    password: "",
-    email: "",
-  });
+  const [errorMessage, setErrorMessage] = useState();
+  const [user, setUser] = useState({ username: "", password: "", email:"" });
+  const [isLogged, setIsLogged] = useState(false);
+  
+  const closeModal = () => {
+    setErrorMessage(undefined);
+  };
 
-  const addNewUser = (data) => {
-    userServices.addUser(data).then((res) => {
-      setUsers([...users, res]);
+  const openModal = () =>{
+    setErrorMessage(errorMessage);
+  }
+
+  const register = () => {
+    loginServices.register(user).then((res) => {
+      console.log(res);
+      if (res.error) {
+        openModal(res.error);
+
+      }
+    });
+    resetInputs();
+  };
+
+
+
+  //form
+
+  const onInputChange = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(user);
+    register();
+    setIsLogged(true);
+
+  };
+
+  const resetInputs = () => {
+    setUser({
+      username: "",
+      password: "",
+      email:""
     });
   };
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    addNewUser();
-  };
-
-  const onInputChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setNewUser({ ...newUser, [name]: value });
-  };
-
-  console.log(newUser);
+  console.log(user);
 
   return (
     <div>
       <NavBar />
+      {errorMessage !== undefined ? (
+        <Modal msg={errorMessage} closeModal={closeModal} />
+      ) : null}
       <div className="border">
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={handleSubmit}>
           <Container>
-            <Label>
+            {/* <Label>
               <b>Name</b>
             </Label>
             <InputsLogIn
               onChange={onInputChange}
-              value={newUser.name}
+              value={user.name}
               type="text"
               placeholder="Enter name"
               name="name"
               required
-            />
+            /> */}
             <Label>
               <b>Username</b>
             </Label>
             <InputsLogIn
               onChange={onInputChange}
-              value={newUser.userName}
+              value={user.username}
               type="text"
               placeholder="Enter Username"
-              name="userName"
+              name="username"
               required
             />
 
@@ -67,7 +95,7 @@ export const SignUpForm = () => {
             </Label>
             <InputsLogIn
               onChange={onInputChange}
-              value={newUser.email}
+              value={user.email}
               type="text"
               placeholder="Enter E-mail"
               name="email"
@@ -78,13 +106,13 @@ export const SignUpForm = () => {
             </Label>
             <InputsLogIn
               onChange={onInputChange}
-              value={newUser.password}
+              value={user.password}
               type="password"
               placeholder="Enter Password"
               name="password"
               required
             />
-            <Label>
+            {/* <Label>
               <b>Confirm password</b>
             </Label>
 
@@ -95,7 +123,7 @@ export const SignUpForm = () => {
               placeholder="Confirm Password"
               name="password"
               required
-            />
+            /> */}
             <BtnLogIn type="submit">Create Account </BtnLogIn>
           </Container>
         </form>

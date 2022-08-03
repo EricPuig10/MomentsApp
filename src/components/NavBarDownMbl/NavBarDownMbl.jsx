@@ -33,7 +33,7 @@ export const NavBarDownMbl = (props) => {
               <i className="fa-solid fa-heart fa-2xl"></i>
             </BtnNavMbl>
           </Link>
-          <Link to="/log-in">
+          <Link to="/auth/signin">
             <LogInBtnMbl>
               <i className="fa-solid fa-user fa-2xl"></i>
             </LogInBtnMbl>

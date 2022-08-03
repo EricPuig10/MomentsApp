@@ -123,3 +123,30 @@ export const BtnSignUp = styled.button`
     font-size: 1.2em;
   }
 `;
+
+
+export const BtnLogOut = styled.button`
+  background-color: #000000;
+  color: #ffffff;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 90%;
+  margin-left: 5%;
+  font-size: 1.2em;
+  position: fixed;
+  top:40%;
+  @media (max-width: 450px) {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10%;
+    font-size: 1.2em;
+  }
+`;

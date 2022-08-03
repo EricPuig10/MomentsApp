@@ -9,9 +9,12 @@ export const momentsServices = {
 
   deleteMoment(id) {
     const moment = axios
-      .delete(baseURL + "/moments/" + id, { data: { id: "1" } })
+      .delete(baseURL + "/moments/" + id)
       .then((res) => {
         return res.data;
+      })
+      .catch((err) => {
+        return { error: err.response.data.message };
       });
     return moment;
   },
@@ -23,11 +26,14 @@ export const momentsServices = {
     return moments;
   },
 
-  updateMoment(id, moment) {
+  updateMoment(moment) {
     const updatedMoment = axios
-      .put(baseURL + "/moments/" + id, moment)
+      .put(baseURL + "/moments/" + moment.id, moment)
       .then((res) => {
         return res.data;
+      })
+      .catch((err) => {
+        window.alert("Cant edit this moment");
       });
     return updatedMoment;
   },

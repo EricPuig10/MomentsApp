@@ -1,5 +1,6 @@
 import axios from "axios";
 const baseURL = "http://localhost:8080";
+const urlLogin = "http://localhost:8080/auth/login";
 
 export const userServices = {
   getAllUsers() {
@@ -17,10 +18,18 @@ export const userServices = {
     return user;
   },
 
-  logUser(req) {
-    const logged = axios.put(`${baseURL}/users/log`, req).then(res => res.data);
+  // logUser(data) {
+  //   const logged = axios
+  //     .post(`${urlLogin}`, data)
+  //     .then((data) =>{
+  //       axios.defaults.headers.common["Authorization"] = "Bearer" + data;
+  //       Router.push("/")
+  //     });
+  //   return logged;
+  // },
+
+  logUser(data) {
+    const logged = axios.post(`${urlLogin}`, data).then((res) => res.data);
     return logged;
-}
-
-
+  },
 };

@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Searcher } from "../components/Searcher/Searcher";
 import { Home } from "../pages/Home";
 import { InfoMoment } from "../pages/InfoMoment";
 import { LikedMomentsPage } from "../pages/LikedMomentsPage";
@@ -15,11 +14,11 @@ export default function Router(props) {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/moment-info/:id" element={<InfoMoment />} />
-        <Route path="/log-in" element={<LogInPage />} />
+        <Route path="/auth/signin" element={<LogInPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/liked-moments" element={<LikedMomentsPage />} />
         <Route path="/searcher" element={<SearchPage />} />
-        <Route path="/users/:id" element={<ProfilePage/>} />
+        <Route path="/users/:id" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );
