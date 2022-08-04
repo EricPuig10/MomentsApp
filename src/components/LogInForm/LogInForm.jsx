@@ -39,6 +39,7 @@ export const LogInForm = () => {
 
       }
       console.log(res);
+      setIsLogged(true)
     });
     resetInputs();
     openModal();
@@ -56,7 +57,6 @@ export const LogInForm = () => {
     e.preventDefault();
     console.log(user);
     login();
-    setIsLogged(true);
   };
 
   const resetInputs = () => {
