@@ -1,5 +1,5 @@
 import { NavBar } from "../../components/NavBar/NavBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginServices } from "../../services/loginServices";
 import {
   BtnLogIn,
@@ -17,56 +17,66 @@ import {
 import { NavBarDownMbl } from "../NavBarDownMbl/NavBarDownMbl";
 import { useState } from "react";
 import { Modal } from "../Modals/Modal";
+import axios from "axios";
+import { AuthService } from "../../services/AuthService";
+
+const initialLogin = {
+  username: "",
+  password: "",
+  error_list: [],
+};
 
 export const LogInForm = () => {
   const [errorMessage, setErrorMessage] = useState();
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [login, setLogin] = useState(initialLogin);
   const [isLogged, setIsLogged] = useState(false);
 
   const closeModal = () => {
     setErrorMessage();
   };
 
-  const openModal = () =>{
+  const openModal = () => {
     setErrorMessage(errorMessage);
-  }
-
-
-  const login = () => {
-    loginServices.login(user).then((res) => {
-      if (res.error) {
-        openModal(res.error);
-
-      }
-      console.log(res);
-      setIsLogged(true)
-    });
-    resetInputs();
-    openModal();
   };
+
+
 
   //form
 
-  const onInputChange = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
-    setUser({ ...user, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(user);
-    login();
-  };
-
-  const resetInputs = () => {
-    setUser({
-      username: "",
-      password: "",
+  const handleInput = (e) => {
+    e.persist();
+    setLogin({
+      ...login,
+      [e.target.name]: e.target.value,
     });
   };
 
-  console.log(user);
+  const loginSubmit = (e) => {
+    e.preventDefault();
+
+    const data = {
+      username: login.username,
+      password: login.password,
+    };
+
+    axios.post("/auth/signin", data).then((res)=> {
+      console.log(res);
+      if(!res) openModal(errorMessage)
+      const authUser = {
+        token: res.data.accessToken,
+        username: res.data.username,
+        id: res.data.id,
+      };
+      localStorage.setItem("auth_token", res.data.accessToken);
+      localStorage.setItem("auth_user", res.data.username);
+      localStorage.setItem("auth_id", res.data.id);
+
+      AuthService.saveAuthUser(authUser);
+      window.location = "/"
+    })
+  };
+
+  console.log(login);
   return (
     <div>
       <NavBar />
@@ -75,10 +85,10 @@ export const LogInForm = () => {
         <Modal msg={errorMessage} closeModal={closeModal} />
       ) : null}
       {isLogged ? (
-        <BtnLogOut onClick={()=>setIsLogged(false)}>LogOut</BtnLogOut>
+        <BtnLogOut onClick={() => setIsLogged(false)}>LogOut</BtnLogOut>
       ) : (
         <div className="border">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={loginSubmit}>
             <ImgContainer>
               <ButtonImg>
                 <i className="fa-solid fa-user text-red"></i>
@@ -92,8 +102,8 @@ export const LogInForm = () => {
               <InputsLogIn
                 type="text"
                 placeholder="Enter Username"
-                value={user.username}
-                onChange={onInputChange}
+                value={login.username}
+                onChange={handleInput}
                 name="username"
                 required
               />
@@ -105,8 +115,8 @@ export const LogInForm = () => {
                 type="password"
                 placeholder="Enter Password"
                 name="password"
-                onChange={onInputChange}
-                value={user.password}
+                onChange={handleInput}
+                value={login.password}
                 required
               />
               <SpanPsw>Forgot password?</SpanPsw>
@@ -117,7 +127,7 @@ export const LogInForm = () => {
               <BtnLogIn type="submit">Login </BtnLogIn>
             </Container>
             <SpanPsw>Don't you have an account?</SpanPsw>
-            <Link to="/sign-up">
+            <Link to="/auth/signup">
               <BtnSignUp>SignUp</BtnSignUp>
             </Link>
           </form>

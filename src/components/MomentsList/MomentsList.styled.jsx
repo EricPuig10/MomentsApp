@@ -21,3 +21,14 @@ export const ContainerMoments = styled.div`
     width:100%;
   }
 `;
+
+export const LogOutButton = styled.button `
+position: fixed;
+top:40%;
+left:90%;
+width:10%;
+background-color: green;
+z-index:1000000;
+
+
+`

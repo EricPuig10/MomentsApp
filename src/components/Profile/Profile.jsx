@@ -61,7 +61,7 @@ export const Profile = () => {
         </UserChooseDiv> */}
         <TopDiv>
           <ProfileImgDiv>
-            <ProfileImg src={user.userImg} />
+            <ProfileImg src={user.img} />
           </ProfileImgDiv>
           <ActivityInfoDiv>
             <ActivityDiv>
@@ -81,9 +81,10 @@ export const Profile = () => {
           </ActivityInfoDiv>
         </TopDiv>
         <ProfileInfoDiv>
-          <TextInfoTitle>{user.name}</TextInfoTitle>
+          <TextInfoTitle>{user.username}</TextInfoTitle>
           <TextInfo>{user.dateOfBirth}</TextInfo>
           <TextInfo>{user.ubication}</TextInfo>
+          <TextInfo>{user.description}</TextInfo>
           <EditProfileBtn>Edit profile</EditProfileBtn>
         </ProfileInfoDiv>
         <StorysDiv>

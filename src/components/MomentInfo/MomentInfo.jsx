@@ -124,10 +124,10 @@ export const MomentInfo = () => {
                 return (
                   <Comment key={key}>
                     <Link to={`/users/${comment.creator.id}`}>
-                    <CommentImageUser src={comment.creator.userImg} />
+                    <CommentImageUser src={comment.creator.img} />
                     </Link>
                     <CommentNameUser>
-                      {comment.creator.userName}:
+                      {comment.creator.username}:
                     </CommentNameUser>
 
                     <TextComment>{comment.comment}</TextComment>

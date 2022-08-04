@@ -1,7 +1,7 @@
-
 import { useEffect, useState } from "react";
 import InputEmojiWithRef from "react-input-emoji";
 import { Link } from "react-router-dom";
+import { AuthService } from "../../services/AuthService";
 import { DivHideEmoji } from "../MomentInfo/MomentInfo.styled";
 import {
   BtnCard,
@@ -31,10 +31,12 @@ import {
 
 export const MomentCard = (props) => {
   const [moment, setMoment] = useState(props.moment);
+
   // eslint-disable-next-line
   const [momentComments, setMomentComments] = useState(moment.commentsCount);
   const [comment, setComment] = useState("");
-
+  const [user, setUser] = useState();
+  const [userId, setUserId] = useState("");
   // const handleChange = (e) => {
   //   setComment(comment)
 
@@ -45,7 +47,11 @@ export const MomentCard = (props) => {
 
   useEffect(() => {
     setMoment(props.moment);
+    setUser(props.moment.creator);
+    setUserId(props.moment.creator.id);
   }, [props.moment]);
+
+
 
   const ellipse = (element) => {
     if (element.length > 100) {
@@ -68,21 +74,18 @@ export const MomentCard = (props) => {
     } else return;
   };
 
- 
 
-  
   return (
     <MomentCardDiv>
-      
       <UserMomentDiv>
         <ImageUserDiv>
           <Link to={`/users/${moment.creator.id}`}>
-            <ImageUser src={moment.creator.userImg} />
+            <ImageUser src={moment.creator.img} />
           </Link>
         </ImageUserDiv>
 
         <NameUserDiv>
-          <NameUser>{moment.creator.userName}</NameUser>
+          <NameUser>{moment.creator.username}</NameUser>
           <UbiMoment>{moment.ubication}</UbiMoment>
         </NameUserDiv>
       </UserMomentDiv>
@@ -98,7 +101,7 @@ export const MomentCard = (props) => {
             {moment.faved ? (
               <>
                 <DivLikes>{moment.favsCount}</DivLikes>
-          
+
                 <BtnCardLiked onClick={() => props.fav(moment)}>
                   <i className="fa-solid fa-heart fa-2xl"></i>
                 </BtnCardLiked>
@@ -128,15 +131,16 @@ export const MomentCard = (props) => {
               </BtnCard>
             </Link> */}
           </BtnCardContLeft>
-
-          <BtnCardContRight>
-            <BtnCard onClick={() => props.deleteMoment(moment.id)}>
-              <i className="fa-regular fa-trash-can fa-2xl"></i>
-            </BtnCard>
-            <BtnCard onClick={() => props.editMoment(moment.id)}>
-              <i className="fa-regular fa-pen-to-square fa-2xl"></i>
-            </BtnCard>
-          </BtnCardContRight>
+          {!AuthService.isAuthor(userId) ? (
+            <BtnCardContRight>
+              <BtnCard onClick={() => props.deleteMoment(moment.id)}>
+                <i className="fa-regular fa-trash-can fa-2xl"></i>
+              </BtnCard>
+              <BtnCard onClick={() => props.editMoment(moment.id)}>
+                <i className="fa-regular fa-pen-to-square fa-2xl"></i>
+              </BtnCard>
+            </BtnCardContRight>
+          ) : null}
         </BtnCardCont>
         <TextCont>
           <Link

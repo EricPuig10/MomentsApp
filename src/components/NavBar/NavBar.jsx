@@ -12,8 +12,14 @@ import {
   BtnNavSearch,
   BtnNavNotification,
 } from "./NavBar.styled";
+import { AuthService } from "../../services/AuthService";
+import { LogOutButton } from "../MomentsList/MomentsList.styled";
+import { loginServices } from "../../services/loginServices";
 
 export const NavBar = (props) => {
+  const logout = () => {
+    loginServices.logout();
+  };
   return (
     <nav>
       <NavBarDiv>
@@ -48,15 +54,22 @@ export const NavBar = (props) => {
               <i className="fa-regular fa-heart fa-2xl"></i>
             </BtnNavHeart>
           </Link>
-
-          <Link to="/auth/signin">
-            <LogInBtn>
-              <i className="fa-regular fa-user fa-2xl"></i>
-            </LogInBtn>
-            {/* <DivUserImg>
+          {AuthService.isLogged() ? (
+            <Link to="/user">
+              <BtnNavHeart onClick={logout}>
+                Log Out
+              </BtnNavHeart>
+            </Link>
+          ) : (
+            <Link to="/auth/signin">
+              <LogInBtn>
+                <i className="fa-regular fa-user fa-2xl"></i>
+              </LogInBtn>
+              {/* <DivUserImg>
               <UserImg src='https://media-exp2.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_400_400/0/1587477510501?e=1661385600&v=beta&t=lxPzlDjTbmYs0vSz-B7ef95gRfs-T5Dxj_RTLrcSO8Y'/>
             </DivUserImg> */}
-          </Link>
+            </Link>
+          )}
         </BtnDiv>
       </NavBarDiv>
     </nav>

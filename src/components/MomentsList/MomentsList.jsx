@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+import { AuthService } from "../../services/AuthService";
 import { commentsServices } from "../../services/commentsServices";
 import { favServices } from "../../services/favServices";
+import { loginServices } from "../../services/loginServices";
 import { momentsServices } from "../../services/momentsServices";
 import { UserContext } from "../../UserContext";
 import { Modal } from "../Modals/Modal";
@@ -8,7 +10,7 @@ import { MomentCard } from "../MomentCard/MomentCard";
 import { MomentForm } from "../MomentForm/MomentForm";
 import { NavBar } from "../NavBar/NavBar";
 import { NavBarDownMbl } from "../NavBarDownMbl/NavBarDownMbl";
-import { ContainerMoments } from "./MomentsList.styled";
+import { ContainerMoments, LogOutButton } from "./MomentsList.styled";
 
 export const MomentsList = () => {
   const [moments, setMoments] = useState([]);
@@ -25,8 +27,6 @@ export const MomentsList = () => {
   const [isPreview, setIsPreview] = useState(false);
   const [comments, setComments] = useState([]);
   const [msg, setMsg] = useState();
-
-  const missatge = useContext(UserContext)
 
   useEffect(() => {
     getAllMoments();
@@ -129,10 +129,14 @@ export const MomentsList = () => {
     getAllMoments();
   };
 
+  const logout = () => {
+    loginServices.logout();
+  };
+
   return (
     <section>
       <NavBar showForm={showForm} />
-      {missatge}
+
       {isShowForm ? (
         <MomentForm
           addNewMoment={addNewMoment}
