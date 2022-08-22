@@ -27,6 +27,7 @@ import { NavBar } from "../NavBar/NavBar";
 import { userServices } from "../../services/userServices";
 import { useEffect, useState } from "react";
 import { momentsServices } from "../../services/momentsServices";
+import { AuthService } from "../../services/AuthService";
 
 export const Profile = () => {
   const [user, setUser] = useState({});
@@ -85,7 +86,8 @@ export const Profile = () => {
           <TextInfo>{user.dateOfBirth}</TextInfo>
           <TextInfo>{user.ubication}</TextInfo>
           <TextInfo>{user.description}</TextInfo>
-          <EditProfileBtn>Edit profile</EditProfileBtn>
+          {AuthService.isUserLogged(user.id) ? (<EditProfileBtn>Edit profile</EditProfileBtn>):(null)}
+          
         </ProfileInfoDiv>
         <StorysDiv>
           <StoryDiv>

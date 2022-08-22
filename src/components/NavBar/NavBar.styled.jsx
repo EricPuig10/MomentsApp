@@ -170,8 +170,8 @@ export const LogInBtn = styled.button`
   font-weight: bold;
   margin-right: 2%;
   font-size: 0.8em;
-  padding-top: 22%;
-  padding-bottom: 22%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   cursor: pointer;
   &:active,
   :hover {
@@ -197,3 +197,21 @@ export const UserImg = styled.img`
   object-fit: cover;
   border-radius: 50%;
 `;
+
+export const LogOutBtn = styled.button`
+background-color: rgb(255, 255, 255);
+  border: none;
+  color: black;
+  font-size: 1em;
+  width: 10%;
+  cursor: pointer;
+  &:active,
+  :hover {
+    color: #5b5b5b;
+  }
+  @media (max-width: 450px) {
+    display: none;
+  }
+`
+
+

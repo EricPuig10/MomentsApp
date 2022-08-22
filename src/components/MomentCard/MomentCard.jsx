@@ -51,8 +51,6 @@ export const MomentCard = (props) => {
     setUserId(props.moment.creator.id);
   }, [props.moment]);
 
-
-
   const ellipse = (element) => {
     if (element.length > 100) {
       element = element.substr(0, 100) + "...";
@@ -73,7 +71,6 @@ export const MomentCard = (props) => {
       setMomentComments(moment.commentsCount++);
     } else return;
   };
-
 
   return (
     <MomentCardDiv>
@@ -131,7 +128,7 @@ export const MomentCard = (props) => {
               </BtnCard>
             </Link> */}
           </BtnCardContLeft>
-          {!AuthService.isAuthor(userId) ? (
+          {!AuthService.isAuthor(userId) ? null : (
             <BtnCardContRight>
               <BtnCard onClick={() => props.deleteMoment(moment.id)}>
                 <i className="fa-regular fa-trash-can fa-2xl"></i>
@@ -140,7 +137,7 @@ export const MomentCard = (props) => {
                 <i className="fa-regular fa-pen-to-square fa-2xl"></i>
               </BtnCard>
             </BtnCardContRight>
-          ) : null}
+          )}
         </BtnCardCont>
         <TextCont>
           <Link

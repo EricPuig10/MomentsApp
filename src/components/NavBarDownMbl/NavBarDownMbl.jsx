@@ -7,11 +7,20 @@ import {
   BtnNavMbl,
   BtnSearcherMbl,
   LogInBtnMbl,
+  LogOutBtnMbl,
   NavBarDivMbl,
 } from "./NavBarDownMbl.style";
+import { AuthService } from "../../services/AuthService";
+import { loginServices } from "../../services/loginServices";
+import { LogOutBtn } from "../NavBar/NavBar.styled";
 
 export const NavBarDownMbl = (props) => {
+  const logout = () => {
+    loginServices.logout();
+  };
+
   return (
+    
     <nav>
       <NavBarDivMbl>
         <BtnDivMbl>
@@ -33,13 +42,20 @@ export const NavBarDownMbl = (props) => {
               <i className="fa-solid fa-heart fa-2xl"></i>
             </BtnNavMbl>
           </Link>
-          <Link to="/auth/signin">
-            <LogInBtnMbl>
-              <i className="fa-solid fa-user fa-2xl"></i>
-            </LogInBtnMbl>
-          </Link>
+          {AuthService.isLogged() ? (
+            <LogOutBtnMbl onClick={logout}>
+              <b>LogOut</b>
+            </LogOutBtnMbl>
+          ) : (
+            <Link to="/auth/signin">
+              <LogInBtnMbl>
+                <i className="fa-regular fa-user fa-2xl"></i>
+              </LogInBtnMbl>
+            </Link>
+          )}
         </BtnDivMbl>
       </NavBarDivMbl>
     </nav>
+    
   );
 };

@@ -1,9 +1,15 @@
 
 export const AuthService = {
+  
 
   isAuthor(userId) {
-    if (this.getAuthUser().id === userId) return false;
-    return true;
+    if (this.getAuthUser().id === userId) return true;
+    return false;
+  },
+
+  isUserLogged(userId) {
+    if (this.getAuthUser().id === userId) return true;
+    return false;
   },
 
   isLogged(){
@@ -23,6 +29,7 @@ export const AuthService = {
   saveAuthUser(authUser) {
     localStorage.setItem("auth", JSON.stringify(authUser));
   },
+
 
   isAuthUserInLove(moment) {
     if (!moment.faved) return false;

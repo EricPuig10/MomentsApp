@@ -39,8 +39,6 @@ export const LogInForm = () => {
     setErrorMessage(errorMessage);
   };
 
-
-
   //form
 
   const handleInput = (e) => {
@@ -59,21 +57,25 @@ export const LogInForm = () => {
       password: login.password,
     };
 
-    axios.post("/auth/signin", data).then((res)=> {
+    axios.post("/auth/signin", data).then((res) => {
       console.log(res);
-      if(!res) openModal(errorMessage)
+      if (!res) openModal(errorMessage);
       const authUser = {
         token: res.data.accessToken,
         username: res.data.username,
         id: res.data.id,
+        img: res.data.img
       };
       localStorage.setItem("auth_token", res.data.accessToken);
       localStorage.setItem("auth_user", res.data.username);
       localStorage.setItem("auth_id", res.data.id);
+      localStorage.setItem("auth_img", res.data.img);
 
       AuthService.saveAuthUser(authUser);
-      window.location = "/"
-    })
+      console.log(authUser)
+      window.location = "/";
+      
+    });
   };
 
   console.log(login);
@@ -84,55 +86,52 @@ export const LogInForm = () => {
       {errorMessage !== undefined ? (
         <Modal msg={errorMessage} closeModal={closeModal} />
       ) : null}
-      {isLogged ? (
-        <BtnLogOut onClick={() => setIsLogged(false)}>LogOut</BtnLogOut>
-      ) : (
-        <div className="border">
-          <form onSubmit={loginSubmit}>
-            <ImgContainer>
-              <ButtonImg>
-                <i className="fa-solid fa-user text-red"></i>
-              </ButtonImg>
-            </ImgContainer>
 
-            <Container>
-              <Label>
-                <b>Username</b>
-              </Label>
-              <InputsLogIn
-                type="text"
-                placeholder="Enter Username"
-                value={login.username}
-                onChange={handleInput}
-                name="username"
-                required
-              />
+      <div className="border">
+        <form onSubmit={loginSubmit}>
+          <ImgContainer>
+            <ButtonImg>
+              <i className="fa-solid fa-user text-red"></i>
+            </ButtonImg>
+          </ImgContainer>
 
-              <Label>
-                <b>Password</b>
-              </Label>
-              <InputsLogIn
-                type="password"
-                placeholder="Enter Password"
-                name="password"
-                onChange={handleInput}
-                value={login.password}
-                required
-              />
-              <SpanPsw>Forgot password?</SpanPsw>
-              <LabelRemember>
-                <CheckBox type="checkbox" name="remember" />
-                Remember me
-              </LabelRemember>
-              <BtnLogIn type="submit">Login </BtnLogIn>
-            </Container>
-            <SpanPsw>Don't you have an account?</SpanPsw>
-            <Link to="/auth/signup">
-              <BtnSignUp>SignUp</BtnSignUp>
-            </Link>
-          </form>
-        </div>
-      )}
+          <Container>
+            <Label>
+              <b>Username</b>
+            </Label>
+            <InputsLogIn
+              type="text"
+              placeholder="Enter Username"
+              value={login.username}
+              onChange={handleInput}
+              name="username"
+              required
+            />
+
+            <Label>
+              <b>Password</b>
+            </Label>
+            <InputsLogIn
+              type="password"
+              placeholder="Enter Password"
+              name="password"
+              onChange={handleInput}
+              value={login.password}
+              required
+            />
+            <SpanPsw>Forgot password?</SpanPsw>
+            <LabelRemember>
+              <CheckBox type="checkbox" name="remember" />
+              Remember me
+            </LabelRemember>
+            <BtnLogIn type="submit">Login </BtnLogIn>
+          </Container>
+          <SpanPsw>Don't you have an account?</SpanPsw>
+          <Link to="/auth/signup">
+            <BtnSignUp>SignUp</BtnSignUp>
+          </Link>
+        </form>
+      </div>
 
       <NavBarDownMbl />
     </div>

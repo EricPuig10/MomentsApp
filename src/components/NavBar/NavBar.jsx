@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   NavBarDiv,
   Title,
@@ -11,15 +11,39 @@ import {
   BtnNavAdd,
   BtnNavSearch,
   BtnNavNotification,
+  DivUserImg,
+  UserImg,
+  LogOutBtn,
 } from "./NavBar.styled";
 import { AuthService } from "../../services/AuthService";
 import { LogOutButton } from "../MomentsList/MomentsList.styled";
 import { loginServices } from "../../services/loginServices";
+import { useState } from "react";
+
+const initialUser = {
+  username: "",
+  img: "",
+  id: "",
+  error_list: [],
+};
 
 export const NavBar = (props) => {
+  const [user, setUser] = useState(initialUser);
+
   const logout = () => {
     loginServices.logout();
   };
+
+  const getUserData = () => {
+    setUser(AuthService.getAuthUser());
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  console.log(user);
+
   return (
     <nav>
       <NavBarDiv>
@@ -28,9 +52,13 @@ export const NavBar = (props) => {
         </Title>
 
         <BtnDiv>
-          <BtnNavNotification>
-            <i className="fa-solid fa-bell fa-2xl"></i>
-          </BtnNavNotification>
+          {AuthService.getAuthUser() ? <Link to={`/users/${user.id}`}>
+              <BtnNavNotification>
+                <UserImg src={user.img} />
+              </BtnNavNotification>
+            </Link> : (
+            null
+          )}
 
           <Link to="/">
             <BtnNavHome>
@@ -55,19 +83,14 @@ export const NavBar = (props) => {
             </BtnNavHeart>
           </Link>
           {AuthService.isLogged() ? (
-            <Link to="/user">
-              <BtnNavHeart onClick={logout}>
-                Log Out
-              </BtnNavHeart>
-            </Link>
+            <LogOutBtn onClick={logout}>
+              <b>LogOut</b>
+            </LogOutBtn>
           ) : (
             <Link to="/auth/signin">
               <LogInBtn>
                 <i className="fa-regular fa-user fa-2xl"></i>
               </LogInBtn>
-              {/* <DivUserImg>
-              <UserImg src='https://media-exp2.licdn.com/dms/image/C4D03AQG17WUfd78sgA/profile-displayphoto-shrink_400_400/0/1587477510501?e=1661385600&v=beta&t=lxPzlDjTbmYs0vSz-B7ef95gRfs-T5Dxj_RTLrcSO8Y'/>
-            </DivUserImg> */}
             </Link>
           )}
         </BtnDiv>

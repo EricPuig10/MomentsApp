@@ -5,12 +5,20 @@ import { NavBarDownMbl } from "../NavBarDownMbl/NavBarDownMbl";
 import { useState } from "react";
 import { loginServices } from "../../services/loginServices";
 import { Modal } from "../Modals/Modal";
+import { AuthService } from "../../services/AuthService";
+import axios from "axios";
+
+const initialRegister = {
+  username: "",
+  email:"",
+  password: "",
+  error_list: [],
+};
 
 export const SignUpForm = () => {
   const [errorMessage, setErrorMessage] = useState();
-  const [user, setUser] = useState({ username: "", password: "", email:"" });
+  const [register, setRegister] = useState(initialRegister);
   const [isLogged, setIsLogged] = useState(false);
-  
   const closeModal = () => {
     setErrorMessage(undefined);
   };
@@ -19,44 +27,31 @@ export const SignUpForm = () => {
     setErrorMessage(errorMessage);
   }
 
-  const register = () => {
-    loginServices.register(user).then((res) => {
-      console.log(res);
-      if (res.error) {
-        openModal(res.error);
-
-      }
+  const handleInput = (e) => {
+    e.persist();
+    setRegister({
+      ...register,
+      [e.target.name]: e.target.value,
     });
-    resetInputs();
   };
 
-
-
-  //form
-
-  const onInputChange = (e) => {
-    let name = e.target.name;
-    let value = e.target.value;
-    setUser({ ...user, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
+  const registerSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
-    register();
-    setIsLogged(true);
 
+    const data = {
+      username: register.username,
+      email: register.email,
+      password: register.password,
+    };
+
+    axios.post("/auth/signup", data).then((res)=> {
+      console.log(res);
+      if(!res) openModal(errorMessage)
+
+      window.location = "/auth/signin"
+    })
   };
 
-  const resetInputs = () => {
-    setUser({
-      username: "",
-      password: "",
-      email:""
-    });
-  };
-
-  console.log(user);
 
   return (
     <div>
@@ -65,25 +60,15 @@ export const SignUpForm = () => {
         <Modal msg={errorMessage} closeModal={closeModal} />
       ) : null}
       <div className="border">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={registerSubmit}>
           <Container>
-            {/* <Label>
-              <b>Name</b>
-            </Label>
-            <InputsLogIn
-              onChange={onInputChange}
-              value={user.name}
-              type="text"
-              placeholder="Enter name"
-              name="name"
-              required
-            /> */}
+
             <Label>
               <b>Username</b>
             </Label>
             <InputsLogIn
-              onChange={onInputChange}
-              value={user.username}
+              onChange={handleInput}
+              value={register.username}
               type="text"
               placeholder="Enter Username"
               name="username"
@@ -94,8 +79,8 @@ export const SignUpForm = () => {
               <b>E-mail</b>
             </Label>
             <InputsLogIn
-              onChange={onInputChange}
-              value={user.email}
+              onChange={handleInput}
+              value={register.email}
               type="text"
               placeholder="Enter E-mail"
               name="email"
@@ -105,25 +90,13 @@ export const SignUpForm = () => {
               <b>Password</b>
             </Label>
             <InputsLogIn
-              onChange={onInputChange}
-              value={user.password}
+              onChange={handleInput}
+              value={register.password}
               type="password"
               placeholder="Enter Password"
               name="password"
               required
             />
-            {/* <Label>
-              <b>Confirm password</b>
-            </Label>
-
-            <InputsLogIn
-              onChange={onInputChange}
-              value={newUser.password}
-              type="password"
-              placeholder="Confirm Password"
-              name="password"
-              required
-            /> */}
             <BtnLogIn type="submit">Create Account </BtnLogIn>
           </Container>
         </form>

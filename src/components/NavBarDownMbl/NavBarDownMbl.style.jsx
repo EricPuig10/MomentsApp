@@ -11,7 +11,7 @@ export const NavBarDivMbl = styled.div`
     width: 100%;
     z-index: 10000;
     position: fixed;
-    bottom:0%;
+    bottom: 0%;
     border: 1px solid #dedede;
   }
 `;
@@ -111,7 +111,7 @@ export const LogInBtnMbl = styled.button`
     margin-left: 20%; */
     padding-top: 30%;
     padding-bottom: 30%;
-    width:122%;
+    width: 122%;
     font-size: 1em;
     &:active,
     :hover {
@@ -119,5 +119,23 @@ export const LogInBtnMbl = styled.button`
       border: 3px solid grey;
       cursor: pointer;
     }
+  }
+`;
+
+export const LogOutBtnMbl = styled.button`
+  background-color: rgb(255, 255, 255);
+  border: none;
+  color: black;
+  font-weight: bold;
+  /* margin-top: 52%;
+  margin-bottom: 2%;
+  margin-left: -20%; */
+  font-size: 1.2em;
+  width: 10%;
+  /* margin-right: 7%; */
+  &:active,
+  :hover {
+    color: grey;
+    cursor: pointer;
   }
 `;

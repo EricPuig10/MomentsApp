@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { AuthService } from "../../services/AuthService";
 import { commentsServices } from "../../services/commentsServices";
 import { favServices } from "../../services/favServices";
@@ -9,6 +10,7 @@ import { Modal } from "../Modals/Modal";
 import { MomentCard } from "../MomentCard/MomentCard";
 import { MomentForm } from "../MomentForm/MomentForm";
 import { NavBar } from "../NavBar/NavBar";
+import { BtnNavNotification, UserImg } from "../NavBar/NavBar.styled";
 import { NavBarDownMbl } from "../NavBarDownMbl/NavBarDownMbl";
 import { ContainerMoments, LogOutButton } from "./MomentsList.styled";
 
@@ -28,8 +30,10 @@ export const MomentsList = () => {
   const [comments, setComments] = useState([]);
   const [msg, setMsg] = useState();
 
+
   useEffect(() => {
     getAllMoments();
+    // loginServices.logout();
     //showLikeList();
   }, []);
 
@@ -133,6 +137,9 @@ export const MomentsList = () => {
     loginServices.logout();
   };
 
+
+
+  
   return (
     <section>
       <NavBar showForm={showForm} />

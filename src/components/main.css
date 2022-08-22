@@ -18,3 +18,8 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid rgb(255, 255, 255);  /* creates padding around scroll thumb */
 }
 
+a {
+  display: contents;
+  text-decoration: none;
+  color: inherit;
+}

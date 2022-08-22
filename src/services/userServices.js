@@ -28,8 +28,5 @@ export const userServices = {
   //   return logged;
   // },
 
-  logUser(data) {
-    const logged = axios.post(`${urlLogin}`, data).then((res) => res.data);
-    return logged;
-  },
+
 };
