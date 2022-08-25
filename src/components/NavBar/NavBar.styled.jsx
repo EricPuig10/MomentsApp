@@ -75,14 +75,14 @@ export const BtnNavNotification = styled.button`
   color: black;
   font-weight: bold;
   font-size: 1em;
-  width: 10%;
+  width: 12%;
   cursor: pointer;
   &:active,
   :hover {
     color: grey;
   }
-  @media (max-width: 450px) {
-    margin-left: 60%;
+  @media (max-width: 800px) {
+    display: none;
   }
 `;
 
@@ -118,7 +118,7 @@ export const BtnNavHeart = styled.button`
   :hover {
     color: #5b5b5b;
   }
-  @media (max-width: 450px) {
+  @media (max-width: 800px) {
     display: none;
   }
 `;
@@ -210,7 +210,7 @@ background-color: rgb(255, 255, 255);
     color: #5b5b5b;
   }
   @media (max-width: 450px) {
-    display: none;
+    margin-left: -50%;
   }
 `
 

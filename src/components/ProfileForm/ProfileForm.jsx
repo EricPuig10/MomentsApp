@@ -18,7 +18,7 @@ export const ProfileForm = (props) => {
 
   useEffect(() =>{
     getUser(id);
-  },[])
+  },[id])
 
   const getUser = (id) => {
     userServices.getUsersById(id).then((res) => {
@@ -59,6 +59,7 @@ export const ProfileForm = (props) => {
       <CancelButton onClick={props.showForm}>
         <i className="fa-solid fa-xmark fa-xl"></i>
       </CancelButton>
+      <label  style={{fontSize:20}}>Username</label>
       <InputFormProfile
         type="text"
         placeholder="Enter username"
@@ -66,6 +67,7 @@ export const ProfileForm = (props) => {
         name="username"
         value={user.username}
       />
+      <label  style={{fontSize:20}}>Date of Birth</label>
       <InputFormProfile
         name="dateOfBirth"
         placeholder="Enter Date of birth"
@@ -73,6 +75,7 @@ export const ProfileForm = (props) => {
         onChange={onInputChange}
         value={user.dateOfBirth}
       />
+      <label  style={{fontSize:20}}>Location</label>
       <InputFormProfile
         placeholder="Enter living location"
         type="text"
@@ -80,6 +83,7 @@ export const ProfileForm = (props) => {
         name="ubication"
         value={user.ubication}
       />
+      <label  style={{fontSize:20}}>Description</label>
       <InputFormProfile
         type="text"
         onChange={onInputChange}
@@ -87,6 +91,7 @@ export const ProfileForm = (props) => {
         placeholder="Enter a little description"
         value={user.description}
       />
+      <label style={{fontSize:20}}>Profile Image</label>
       <InputFormProfile
         type="url"
         onChange={onInputChange}

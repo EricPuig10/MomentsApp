@@ -5,22 +5,35 @@ import {
   BtnNavAddMbl,
   BtnNavHomeMbl,
   BtnNavMbl,
+  BtnNavMblLogged,
   BtnSearcherMbl,
   LogInBtnMbl,
-  LogOutBtnMbl,
   NavBarDivMbl,
 } from "./NavBarDownMbl.style";
 import { AuthService } from "../../services/AuthService";
-import { loginServices } from "../../services/loginServices";
-import { LogOutBtn } from "../NavBar/NavBar.styled";
+import { UserImg } from "../NavBar/NavBar.styled";
+import { useState } from "react";
+import { useEffect } from "react";
 
+const initialUser = {
+  username: "",
+  img: "",
+  id: "",
+  error_list: [],
+};
 export const NavBarDownMbl = (props) => {
-  const logout = () => {
-    loginServices.logout();
+  const [user, setUser] = useState(initialUser);
+
+
+  const getUserData = () => {
+    setUser(AuthService.getAuthUser());
   };
 
+  useEffect(() => {
+    getUserData();
+  }, []);
+
   return (
-    
     <nav>
       <NavBarDivMbl>
         <BtnDivMbl>
@@ -42,10 +55,12 @@ export const NavBarDownMbl = (props) => {
               <i className="fa-solid fa-heart fa-2xl"></i>
             </BtnNavMbl>
           </Link>
-          {AuthService.isLogged() ? (
-            <LogOutBtnMbl onClick={logout}>
-              <b>LogOut</b>
-            </LogOutBtnMbl>
+          {AuthService.getAuthUser() ? (
+            <Link to={`/users/${user.id}`}>
+              <BtnNavMblLogged>
+                <UserImg src={user.img} />
+              </BtnNavMblLogged>
+            </Link>
           ) : (
             <Link to="/auth/signin">
               <LogInBtnMbl>
@@ -56,6 +71,5 @@ export const NavBarDownMbl = (props) => {
         </BtnDivMbl>
       </NavBarDivMbl>
     </nav>
-    
   );
 };

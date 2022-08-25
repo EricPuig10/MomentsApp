@@ -24,7 +24,7 @@ export const BtnDivMbl = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-left: -5%;
+    margin-left: 0%;
   }
 `;
 export const BtnNavMbl = styled.button`
@@ -36,7 +36,7 @@ export const BtnNavMbl = styled.button`
   margin-bottom: 2%;
   margin-left: 4%; */
   font-size: 1.2em;
-  width: 10%;
+  width: 15%;
   /* margin-right: 7%; */
   &:active,
   :hover {
@@ -54,7 +54,7 @@ export const BtnSearcherMbl = styled.button`
   margin-bottom: 2%;
   margin-left: -20%; */
   font-size: 1.2em;
-  width: 10%;
+  width: 15%;
   /* margin-right: 7%; */
   &:active,
   :hover {
@@ -72,7 +72,7 @@ export const BtnNavHomeMbl = styled.button`
   margin-left: -50%;
   margin-right: 5%; */
   font-size: 1.1em;
-  width: 10%;
+  width: 15%;
   &:active,
   :hover {
     color: grey;
@@ -132,6 +132,24 @@ export const LogOutBtnMbl = styled.button`
   margin-left: -20%; */
   font-size: 1.2em;
   width: 10%;
+  /* margin-right: 7%; */
+  &:active,
+  :hover {
+    color: grey;
+    cursor: pointer;
+  }
+`;
+
+export const BtnNavMblLogged = styled.button`
+  background-color: rgb(255, 255, 255);
+  border: none;
+  color: black;
+  font-weight: bold;
+  /* margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 4%; */
+  font-size: 1.2em;
+  width: 15%;
   /* margin-right: 7%; */
   &:active,
   :hover {

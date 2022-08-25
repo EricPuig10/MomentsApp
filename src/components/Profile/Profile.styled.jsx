@@ -4,8 +4,14 @@ export const MainDiv = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  @media (max-width: 2600px) {
+  @media (max-width: 2000px) {
     padding-top:5%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+  }
+  @media (max-width: 1400px) {
+    padding-top:2%;
     display: flex;
     flex-direction: column;
     background-color: #ffffff;
