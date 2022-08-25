@@ -109,9 +109,9 @@ export const LogInBtnMbl = styled.button`
     /* margin-top: 30%;
     margin-bottom: 2%;
     margin-left: 20%; */
-    padding-top: 30%;
-    padding-bottom: 30%;
-    width: 122%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    width: 15%;
     font-size: 1em;
     &:active,
     :hover {

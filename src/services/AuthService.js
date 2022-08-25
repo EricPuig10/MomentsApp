@@ -7,6 +7,11 @@ export const AuthService = {
     return false;
   },
 
+  isAdmin(){
+    if(this.getAuthUser().id === 1) return true;
+    return false;
+  },
+
   isUserLogged(userId) {
     if (this.getAuthUser().id === userId) return true;
     return false;

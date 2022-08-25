@@ -35,6 +35,7 @@ export const MomentCard = (props) => {
   // eslint-disable-next-line
   const [momentComments, setMomentComments] = useState(moment.commentsCount);
   const [comment, setComment] = useState("");
+  // eslint-disable-next-line
   const [user, setUser] = useState();
   const [userId, setUserId] = useState("");
   // const handleChange = (e) => {
@@ -128,7 +129,7 @@ export const MomentCard = (props) => {
               </BtnCard>
             </Link> */}
           </BtnCardContLeft>
-          {!AuthService.isAuthor(userId) ? null : (
+          {!AuthService.isAuthor(userId) && !AuthService.isAdmin() ? null : (
             <BtnCardContRight>
               <BtnCard onClick={() => props.deleteMoment(moment.id)}>
                 <i className="fa-regular fa-trash-can fa-2xl"></i>

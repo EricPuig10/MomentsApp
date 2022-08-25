@@ -42,8 +42,8 @@ export const NavBar = (props) => {
     getUserData();
   }, []);
 
-  console.log(user);
 
+console.log(user.img)
   return (
     <nav>
       <NavBarDiv>

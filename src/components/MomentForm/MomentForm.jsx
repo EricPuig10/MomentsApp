@@ -7,9 +7,12 @@ import {
   FormCont,
   Input,
   InputsCont,
+  RowDiv,
   SubmitBtnForm,
   TextArea,
 } from "./MomentForm.styled";
+import { cloudinaryService } from "../../services/cloudinaryService";
+
 
 export const MomentForm = (props) => {
   const [newMoment, setNewMoment] = useState(props.momentToEdit);
@@ -46,6 +49,12 @@ export const MomentForm = (props) => {
     setNewMoment({ ...newMoment, [name]: value });
   };
 
+  const onFileChangeHandler = (e) => {
+    console.log(e.target.name, e.target.files[0]);
+    let data = { ...newMoment, file: e.target.files[0] };
+    uploadImg(data);
+  };
+
   const closeOnEscapeKeyDown = (e) => {
     if ((e.charCode || e.keyCode) === 27) {
       props.showForm();
@@ -62,11 +71,25 @@ export const MomentForm = (props) => {
     // eslint-disable-next-line
     []
   );
+
+  const uploadImg = (data) => {
+    let { file, ...inputsData } = data;
+    console.log(inputsData)
+    cloudinaryService.uploadImage(file).then((res) => {
+      console.log(res)
+      setNewMoment({ ...inputsData, imgUrl: res.url });
+    });
+  };
+
   return (
     <div>
       <BackGroundForm onClick={() => props.showForm()}></BackGroundForm>
       <div>
-        <form onSubmit={onSubmitHandler}>
+        <form
+          onSubmit={onSubmitHandler}
+          noValidate
+          encType="multipart/form-data"
+        >
           <FormCont>
             <MomentCardWithoutFunctions
               newMoment={newMoment}
@@ -81,6 +104,21 @@ export const MomentForm = (props) => {
                 type="url"
                 placeholder="Paste img url here..."
               ></Input>
+              <RowDiv>
+                <Input
+                  onChange={onFileChangeHandler}
+                  // value={newMoment.imgUrl}
+                  aria-label="imgUrl"
+                  name="imgUrl"
+                  type="file"
+                  accept="image/png, image/jpeg, image/gif"
+                  placeholder="Search in your pc..."
+                ></Input>
+                {/* <UploadButton type="button">
+                  Upload to Cloudinary and copy the url
+                </UploadButton> */}
+              </RowDiv>
+
               <Input
                 onChange={onInputChange}
                 value={newMoment.ubication}
@@ -111,14 +149,14 @@ export const MomentForm = (props) => {
                   <i className="fa-solid fa-pen-to-square fa-xl"></i>
                 </SubmitBtnForm>
               ) : (
-                <SubmitBtnForm  type="submit" className="submitBtn">
+                <SubmitBtnForm type="submit" className="submitBtn">
                   <i className="fa-solid fa-plus fa-xl"></i>
                 </SubmitBtnForm>
               )}
             </InputsCont>
 
             <CloseCont>
-              <CloseBtn  onClick={() => props.showForm()}>
+              <CloseBtn onClick={() => props.showForm()}>
                 <i className="fa-solid fa-xmark fa-xl"></i>
               </CloseBtn>
             </CloseCont>

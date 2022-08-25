@@ -290,3 +290,7 @@ export const CommentsCount = styled.p`
     text-decoration: none;
   }
 `;
+
+export const Dots = styled.button`
+
+`

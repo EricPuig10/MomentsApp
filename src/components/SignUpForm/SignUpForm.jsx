@@ -10,22 +10,22 @@ import axios from "axios";
 
 const initialRegister = {
   username: "",
-  email:"",
+  email: "",
   password: "",
   error_list: [],
 };
 
 export const SignUpForm = () => {
-  const [errorMessage, setErrorMessage] = useState();
+  const [msg, setMsg] = useState();
   const [register, setRegister] = useState(initialRegister);
   const [isLogged, setIsLogged] = useState(false);
   const closeModal = () => {
-    setErrorMessage(undefined);
+    setMsg();
   };
 
-  const openModal = () =>{
-    setErrorMessage(errorMessage);
-  }
+  const openModal = (msg) => {
+    setMsg(msg);
+  };
 
   const handleInput = (e) => {
     e.persist();
@@ -44,25 +44,27 @@ export const SignUpForm = () => {
       password: register.password,
     };
 
-    axios.post("/auth/signup", data).then((res)=> {
-      console.log(res);
-      if(!res) openModal(errorMessage)
-
-      window.location = "/auth/signin"
-    })
+    axios
+      .post("/auth/signup", data)
+      .then((res) => {
+        if (!res) return;
+        window.location = "/auth/signin";
+        openModal(res.data.message)
+      })
+      .catch((err) => {
+        openModal(err.response.data.message);
+      });
   };
-
 
   return (
     <div>
       <NavBar />
-      {errorMessage !== undefined ? (
-        <Modal msg={errorMessage} closeModal={closeModal} />
+      {msg !== undefined ? (
+        <Modal msg={msg} closeModal={closeModal} />
       ) : null}
       <div className="border">
         <form onSubmit={registerSubmit}>
           <Container>
-
             <Label>
               <b>Username</b>
             </Label>

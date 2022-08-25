@@ -1,6 +1,7 @@
 import {
   ActivityDiv,
   ActivityInfoDiv,
+  BtnDeleteImgProfile,
   ContentDiv,
   ContentTypeDiv,
   EditProfileBtn,
@@ -28,10 +29,29 @@ import { userServices } from "../../services/userServices";
 import { useEffect, useState } from "react";
 import { momentsServices } from "../../services/momentsServices";
 import { AuthService } from "../../services/AuthService";
+import { ProfileForm } from "../ProfileForm";
+import { cloudinaryService } from "../../services/cloudinaryService";
+import { BtnCard } from "../MomentCard/MomentCard.styled";
+
+const initialUser = {
+  id: "",
+  img: "",
+  username: "",
+  followers: "",
+  following: "",
+  description: "",
+  dateOfBirth: "",
+  ubication: "",
+  email: "",
+  roles: [],
+  momentsCount: "",
+};
 
 export const Profile = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(initialUser);
   const [moments, setMoments] = useState([]);
+  const [isShowForm, setIsShowForm] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
 
   const { id } = useParams();
 
@@ -51,6 +71,22 @@ export const Profile = () => {
       setMoments(res);
     });
   };
+
+  const showForm = () => {
+    if (isShowForm) setIsShowForm(false);
+    else setIsShowForm(true);
+    //resetInputsForm();
+  };
+
+
+  const updateUser = (user) => {
+    userServices.updateUser(user).then((res) => {
+      getUser(id)
+    });
+    showForm();
+  };
+
+
 
 
   return (
@@ -81,13 +117,21 @@ export const Profile = () => {
             </ActivityDiv>
           </ActivityInfoDiv>
         </TopDiv>
+        {isShowForm ? (
+          <ProfileForm
+            user={user}
+            showForm={showForm}
+            updateUser={updateUser}
+          />
+        ) : null}
         <ProfileInfoDiv>
           <TextInfoTitle>{user.username}</TextInfoTitle>
           <TextInfo>{user.dateOfBirth}</TextInfo>
           <TextInfo>{user.ubication}</TextInfo>
           <TextInfo>{user.description}</TextInfo>
-          {AuthService.isUserLogged(user.id) ? (<EditProfileBtn>Edit profile</EditProfileBtn>):(null)}
-          
+          {AuthService.isUserLogged(user.id) ? (
+            <EditProfileBtn onClick={showForm}>Edit profile</EditProfileBtn>
+          ) : null}
         </ProfileInfoDiv>
         <StorysDiv>
           <StoryDiv>
@@ -123,7 +167,8 @@ export const Profile = () => {
         {moments.map((moment, key) => (
           <FeedImgDiv key={key}>
             <Link to={`/moment-info/${moment.id}`}>
-              <FeedImg src={moment.imgUrl} />
+              <FeedImg src={moment.imgUrl}  />
+
             </Link>
           </FeedImgDiv>
         ))}

@@ -1,9 +1,7 @@
 import { NavBar } from "../../components/NavBar/NavBar";
-import { Link, useNavigate } from "react-router-dom";
-import { loginServices } from "../../services/loginServices";
+import { Link } from "react-router-dom";
 import {
   BtnLogIn,
-  BtnLogOut,
   BtnSignUp,
   ButtonImg,
   CheckBox,
@@ -19,6 +17,8 @@ import { useState } from "react";
 import { Modal } from "../Modals/Modal";
 import axios from "axios";
 import { AuthService } from "../../services/AuthService";
+import { loginServices } from "../../services/loginServices";
+
 
 const initialLogin = {
   username: "",
@@ -27,19 +27,20 @@ const initialLogin = {
 };
 
 export const LogInForm = () => {
-  const [errorMessage, setErrorMessage] = useState();
+  const [msg, setMsg] = useState();
   const [login, setLogin] = useState(initialLogin);
+  // eslint-disable-next-line
   const [isLogged, setIsLogged] = useState(false);
 
+
+
+  const openModal = (msg) => {
+    setMsg(msg);
+  };
+
   const closeModal = () => {
-    setErrorMessage();
+    setMsg();
   };
-
-  const openModal = () => {
-    setErrorMessage(errorMessage);
-  };
-
-  //form
 
   const handleInput = (e) => {
     e.persist();
@@ -57,36 +58,33 @@ export const LogInForm = () => {
       password: login.password,
     };
 
-    axios.post("/auth/signin", data).then((res) => {
-      console.log(res);
-      if (!res) openModal(errorMessage);
-      const authUser = {
-        token: res.data.accessToken,
-        username: res.data.username,
-        id: res.data.id,
-        img: res.data.img
-      };
-      localStorage.setItem("auth_token", res.data.accessToken);
-      localStorage.setItem("auth_user", res.data.username);
-      localStorage.setItem("auth_id", res.data.id);
-      localStorage.setItem("auth_img", res.data.img);
+    axios
+      .post("/auth/signin", data)
+      .then((res) => {
+        if (!res) return;
+        const authUser = {
+          token: res.data.accessToken,
+          username: res.data.username,
+          id: res.data.id,
+          img: res.data.img,
+        };
+        localStorage.setItem("auth_token", res.data.accessToken);
+        localStorage.setItem("auth_user", res.data.username);
+        localStorage.setItem("auth_id", res.data.id);
+        localStorage.setItem("auth_img", res.data.img);
 
-      AuthService.saveAuthUser(authUser);
-      console.log(authUser)
-      window.location = "/";
-      
-    });
+        AuthService.saveAuthUser(authUser);
+        console.log(authUser);
+        window.location = "/";
+      })
+      .catch((err) => {
+        openModal(err.response);
+      });
   };
 
-  console.log(login);
   return (
     <div>
       <NavBar />
-
-      {errorMessage !== undefined ? (
-        <Modal msg={errorMessage} closeModal={closeModal} />
-      ) : null}
-
       <div className="border">
         <form onSubmit={loginSubmit}>
           <ImgContainer>
@@ -132,6 +130,8 @@ export const LogInForm = () => {
           </Link>
         </form>
       </div>
+
+      {msg !== undefined ? <Modal msg={msg} closeModal={closeModal} /> : null}
 
       <NavBarDownMbl />
     </div>

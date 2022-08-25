@@ -4,6 +4,12 @@ export const MainDiv = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
+  @media (max-width: 2600px) {
+    padding-top:5%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+  }
   @media (max-width: 450px) {
     display: flex;
     flex-direction: column;
@@ -340,6 +346,7 @@ export const FeedImgDiv = styled.div`
   height: 300px;
   width: 32.9%;
   margin: 0.2%;
+  position: relative;
   @media (max-width: 450px) {
     /* background-color: yellow; */
     height: 150px;
@@ -359,3 +366,5 @@ export const FeedImg = styled.img`
     object-fit: cover;
   }
 `;
+
+

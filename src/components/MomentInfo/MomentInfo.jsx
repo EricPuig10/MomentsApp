@@ -5,6 +5,7 @@ import { momentsServices } from "../../services/momentsServices";
 import {
   BtnCommentLiked,
   BtnCommentUnLiked,
+  BtnDeleteImgProfile,
   Comment,
   CommentImageUser,
   CommentNameUser,
@@ -26,6 +27,7 @@ import {
 import { commentsServices } from "../../services/commentsServices";
 import InputEmojiWithRef from "react-input-emoji";
 import { favServices } from "../../services/favServices";
+import { cloudinaryService } from "../../services/cloudinaryService";
 
 
 export const MomentInfo = () => {
@@ -92,6 +94,17 @@ export const MomentInfo = () => {
     moment.commentsCount = moment.commentsCount++;
   };
 
+  const deleteMoment = (id) => {
+    
+    momentsServices.deleteMoment(parseInt(id)).then((res) => {
+      cloudinaryService.delete(res.id).then((res) => {
+        console.log(res);
+      });
+      if (!res) return;
+      window.location="/"
+    });
+    };
+
   return (
     <div>
       <Container>
@@ -104,6 +117,9 @@ export const MomentInfo = () => {
 
             <ImageCont>
               <ImageOfMoment src={moment.imgUrl} alt="momentfoto" />
+              <BtnDeleteImgProfile onClick={() => deleteMoment(moment.id)}>
+                <i className="fa-regular fa-trash-can fa-2xl"></i>
+              </BtnDeleteImgProfile>
             </ImageCont>
           </ContainerRow>
           <ContainerCol>

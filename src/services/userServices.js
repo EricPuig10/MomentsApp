@@ -18,15 +18,19 @@ export const userServices = {
     return user;
   },
 
-  // logUser(data) {
-  //   const logged = axios
-  //     .post(`${urlLogin}`, data)
-  //     .then((data) =>{
-  //       axios.defaults.headers.common["Authorization"] = "Bearer" + data;
-  //       Router.push("/")
-  //     });
-  //   return logged;
-  // },
+  updateUser(user){
+    const updatedUser = axios
+    .put(baseURL + "/users/" + user.id, user)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      window.alert("Cant edit this moment");
+    });
+  return updatedUser;
+  }
+
+
 
 
 };

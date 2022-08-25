@@ -23,6 +23,7 @@ export const DivModal = styled.dialog`
   border-radius: 0.75rem;
   padding: 2.5%;
   margin-top: 10%;
+  position: relative;
   @media (max-width: 450px) {
     width: 90%;
     margin: 0;
@@ -38,6 +39,8 @@ export const TextModal = styled.p`
 `;
 
 export const CloseModalBtn = styled.button`
+  position: absolute;
+  top:80%;
   height: 20px;
   width: 20px;
   margin: 2.5%;

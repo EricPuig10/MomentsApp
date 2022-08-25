@@ -1,18 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { AuthService } from "../../services/AuthService";
+import React, { useEffect, useState } from "react";
+import { cloudinaryService } from "../../services/cloudinaryService";
 import { commentsServices } from "../../services/commentsServices";
 import { favServices } from "../../services/favServices";
-import { loginServices } from "../../services/loginServices";
 import { momentsServices } from "../../services/momentsServices";
-import { UserContext } from "../../UserContext";
 import { Modal } from "../Modals/Modal";
 import { MomentCard } from "../MomentCard/MomentCard";
 import { MomentForm } from "../MomentForm/MomentForm";
 import { NavBar } from "../NavBar/NavBar";
-import { BtnNavNotification, UserImg } from "../NavBar/NavBar.styled";
 import { NavBarDownMbl } from "../NavBarDownMbl/NavBarDownMbl";
-import { ContainerMoments, LogOutButton } from "./MomentsList.styled";
+import { ContainerMoments } from "./MomentsList.styled";
 
 export const MomentsList = () => {
   const [moments, setMoments] = useState([]);
@@ -29,7 +25,6 @@ export const MomentsList = () => {
   const [isPreview, setIsPreview] = useState(false);
   const [comments, setComments] = useState([]);
   const [msg, setMsg] = useState();
-
 
   useEffect(() => {
     getAllMoments();
@@ -70,6 +65,7 @@ export const MomentsList = () => {
   const addNewMoment = (data) => {
     momentsServices.addMoment(data).then((res) => {
       setMoments([...moments, res]);
+      
     });
     setIsShowForm(false);
   };
@@ -84,6 +80,9 @@ export const MomentsList = () => {
     console.log(filterMoments);
 
     momentsServices.deleteMoment(parseInt(id)).then((res) => {
+      cloudinaryService.delete(res.id).then((res) => {
+        console.log(res);
+      });
       if (!res) return;
       if (res.error) {
         openModal(res.error);
@@ -133,13 +132,11 @@ export const MomentsList = () => {
     getAllMoments();
   };
 
-  const logout = () => {
-    loginServices.logout();
-  };
+  // const logout = () => {
+  //   loginServices.logout();
+  // };
 
-
-
-  
+  console.log(moments)
   return (
     <section>
       <NavBar showForm={showForm} />

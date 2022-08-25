@@ -1,4 +1,4 @@
-import styled, {keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const moveDivUpToDown = keyframes`
 from {
@@ -29,7 +29,7 @@ export const FormCont = styled.div`
   justify-content: center;
   position: fixed;
   left: 8%;
-  top:12%;
+  top: 12%;
   background-color: white;
   z-index: 300;
   animation: ${moveDivUpToDown} 2s;
@@ -158,4 +158,23 @@ export const CloseBtn = styled.button`
     left: 44%;
     background-color: transparent;
   }
+`;
+export const UploadButton = styled.button`
+  padding: 1%;
+  background-color: rgb(190, 190, 190);
+  padding: 1.5%;
+  border-radius: 1vw;
+  border-style: solid;
+  border-color: #110000;
+  font-size: 0.9em;
+  width: 35%;
+  color: black;
+  margin-bottom: 2%;
+
+  /* height: 50%; */
+`;
+
+export const RowDiv = styled.div`
+  display: flex;
+  align-items: center;
 `;

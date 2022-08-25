@@ -66,6 +66,7 @@ export const ImageCont = styled.div`
   height: 60vh;
   border-radius: 2vw;
   margin-left: 2%;
+  position: relative;
   @media (max-width: 450px) {
     width: 100%;
     margin-left: 0%;
@@ -154,7 +155,7 @@ export const CommentNameUser = styled.p`
 `;
 
 export const CommentImageUser = styled.img`
-  width: 95%;
+  width: 5%;
   height: 40px;
   border-radius: 50%;
   margin-right: 1%;
@@ -227,4 +228,18 @@ export const PublishInfo = styled.button`
   background-color: transparent;
   border: none;
   text-decoration: none;
+`;
+
+export const BtnDeleteImgProfile = styled.button`
+  position: absolute;
+  top:5%;
+  left:88%;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  margin-right: 2%;
+  cursor: pointer;
+  &:hover {
+    color: grey;
+  }
 `;
