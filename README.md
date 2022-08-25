@@ -1,3 +1,120 @@
+#   MOMENTS APP
+
+## 🔗 LINK
+Not deployed yet.
+
+## 📜 BRIEFING
+This is a website prototype like instagram with the aim of sharing moments. 
+
+## ✅ OBJECTIVES ⇒ Requisitos Funcionales (User Stories)
+
+---
+
+### SPRINT 1
+
+> Como usuario 
+Quiero ver una lista con todos los “moments”.
+> 
+> - Cada ‘moment’ deberá tener una imagen, un título y una descripción
+
+> Como usuario 
+Quiero ver el detalle de cada “moment” seleccionado.
+> 
+> - Deberá abrirse otra página al hacer click en la imagen de la lista
+
+> Como usuario 
+Quiero un formulario para poder crear/editar “moments”.
+> 
+
+> Como usuario 
+Quiero un botón en cada “card” para poder eliminar cada “moment”.
+> 
+
+> Como usuario 
+Quiero un campo para poder buscar palabras existentes en los “moments”.
+> 
+> - La búsqueda deberá hacerse en el backend, ya sea utilizando el título o/y la descripción.
+
+### SPRINT 2
+
+> Como usuario 
+Quiero ver los comentarios de cada moment  en la página de detalle de cada “moment” ordenados por la fecha más próxima. EndPoint (”/moments/1/comments”)
+> 
+
+> Como usuario 
+Quiero ver la suma de comentarios de cada moment la lista de cards
+> 
+
+> Como usuario 
+Quiero ver quien es el autor de cada moment la lista de cards
+> 
+
+> Como usuario 
+Quiero poder darle ‘like’ a un moment para añadirlo como favorito.
+> 
+
+> Como usuario 
+Quiero poder quitar el ‘like’ a un moment para sacarlo de mis favoritos.
+> 
+
+> Como usuario 
+Quiero ver la suma de los likes de cada moment la lista de cards
+> 
+
+> Como usuario 
+Quiero ver una página con la lista de mis momentos favoritos.
+> 
+
+### SPRINT 3
+
+> **Como** usuario 
+**Quiero** tener un formulario de registro (SignUp)
+**Para** poder formar parte de la red
+> 
+
+> **Como** usuario 
+**Quiero** tener un formulario de acceso - login (SignIn)
+**Para** autenticarme en la aplicación
+> 
+
+…… continue ….. **⎇**
+
+### 🌍 ⇒ IDEAS PARA UN NUEVO MUNDO
+
+Desarrolla alguna feature de interés para tu proyecto. Te damos algunas ideas:
+
+> **Como** usuario que crea momentos
+**Quiero** subir imágenes desde mi sistema a un servidor (mejor en el Cloud: Cloudinary, Gdrive, AWS, etc..)
+**Para** guardar imágenes propias
+>
+
+## 💻 TECHNOLOGIES
+- HTML 5
+- CSS 3
+- JS ES6  VANILLA
+- REACT
+- NODE
+- GIT
+
+### MORE...
+- POSTMAN
+- AXIOS
+- STYLED-COMPONENTS
+- API REST
+
+## ⚙️ TECHNIQUES USED
+- Responsive Design.
+- Modularity.
+- Basics of JS
+- Arrays methods.
+- React basics.
+
+##  👁️‍🗨️ SCREENSHOT PREVIEW
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
